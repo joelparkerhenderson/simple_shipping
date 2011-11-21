@@ -1,4 +1,4 @@
-class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Base::Builder
+class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
   TYPE_CODES = {:letter            => '01',
                 :customer_supplied => '02',
                 :tube              => '03',

@@ -6,7 +6,7 @@
 # * _company_name_ (optional if person_name is provided)
 # * _phone_number_
 # * _email_ (optional)
-class SimpleShipping::Contact < SimpleShipping::Base::Model
+class SimpleShipping::Contact < SimpleShipping::Abstract::Model
   attr_accessor :person_name,
 		:company_name,
                 :phone_number,
@@ -16,6 +16,6 @@ class SimpleShipping::Contact < SimpleShipping::Base::Model
   validate :validate_name
 
   def validate_name
-    errors.add(:base, "person_name or company_name must be present") unless (person_name || company_name)
+    errors.add(:abstract, "person_name or company_name must be present") unless (person_name || company_name)
   end
 end

@@ -1,6 +1,6 @@
 module SimpleShipping
   module Fedex
-    class ShipmentBuilder < SimpleShipping::Base::Builder
+    class ShipmentBuilder < SimpleShipping::Abstract::Builder
       RATE_REQUEST_TYPE = 'ACCOUNT'
       PACKAGE_COUNT = '1'
 

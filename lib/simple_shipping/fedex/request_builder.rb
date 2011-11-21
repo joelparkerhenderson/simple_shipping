@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  class RequestBuilder < SimpleShipping::Base::RequestBuilder
+  class RequestBuilder < SimpleShipping::Abstract::RequestBuilder
     def build_request(shipment, opts)
       {'WebAuthenticationDetail' => build_web_authentication_detail,
        'ClientDetail'            => build_client_detail,

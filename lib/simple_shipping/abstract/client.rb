@@ -1,7 +1,7 @@
 # Abstract class which provides common interfaces for the next concrete clients:
 # * {Fedex::Client}
 # * {Ups::Client}
-class SimpleShipping::Base::Client
+class SimpleShipping::Abstract::Client
   class_attribute :required_credetials, :wsdl_document, :builder_class
 
   def self.set_required_credetials(*args)

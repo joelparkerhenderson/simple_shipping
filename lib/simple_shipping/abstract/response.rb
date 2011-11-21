@@ -1,5 +1,5 @@
 # Represents a response returned by remote service for request initiated
-# by {SimpleShipping::Base::Client client}.
+# by {SimpleShipping::Abstract::Client client}.
 #
 # It's kind of an abstract class which provides a common interface. In real world you have deal with its subclasses:
 # * {SimpleShipping::Fedex::Response}
@@ -9,15 +9,15 @@
 #   response = client.request(shipper, recipient, package)  
 #   response.response # => #<Savon::SOAP::Response ...>
 #
-#   # get the label as base64 encoded data
-#   response.label_image_base64 # => "odGqk/KmgLaawV..."
+#   # get the label as abstract64 encoded data
+#   response.label_image_abstract64 # => "odGqk/KmgLaawV..."
 #
 #   # get the label as binary data
 #   response.label_image # => "\221,^-\036\277\024..."
 #
 #   # save the label as a file
 #   response.save_label("path/to/file")
-class SimpleShipping::Base::Response
+class SimpleShipping::Abstract::Response
   attr_reader :response
   class_attribute :label_image_path
 
@@ -30,11 +30,11 @@ class SimpleShipping::Base::Response
   end
 
   def label_image
-    raise NoLabelError unless label_image_base64
-    label_image_base64.unpack('m').first
+    raise NoLabelError unless label_image_abstract64
+    label_image_abstract64.unpack('m').first
   end
 
-  def label_image_base64
+  def label_image_abstract64
     @response.to_array(*label_image_path).first
   end
 end

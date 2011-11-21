@@ -8,7 +8,7 @@
 #
 # If one of attributes is missed an appropriate exception will be raised
 # when you build a request.
-class SimpleShipping::Party < SimpleShipping::Base::Model
+class SimpleShipping::Party < SimpleShipping::Abstract::Model
   attr_accessor :contact,
                 :address,
 		:account_number

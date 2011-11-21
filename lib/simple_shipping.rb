@@ -10,7 +10,7 @@ require 'savon'
 require 'ostruct'
 
 require 'simple_shipping/exceptions'
-require 'simple_shipping/base'
+require 'simple_shipping/abstract'
 
 require 'simple_shipping/shipment'
 require 'simple_shipping/package'

@@ -1,4 +1,4 @@
-class SimpleShipping::Base::Model
+class SimpleShipping::Abstract::Model
   include ActiveModel::Validations
 
   class_attribute :default_values

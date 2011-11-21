@@ -5,7 +5,7 @@
 # * _city_
 # * _street_line_
 # * _postal_code_
-class SimpleShipping::Address < SimpleShipping::Base::Model
+class SimpleShipping::Address < SimpleShipping::Abstract::Model
   attr_accessor :country_code,
 		:state_code,
                 :city,

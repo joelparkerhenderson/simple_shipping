@@ -1,5 +1,5 @@
 module SimpleShipping
-  module Base
+  module Abstract
     class RequestBuilder
       attr_reader :credentials
 

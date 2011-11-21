@@ -1,4 +1,4 @@
-class SimpleShipping::Fedex::PackageBuilder < SimpleShipping::Base::Builder
+class SimpleShipping::Fedex::PackageBuilder < SimpleShipping::Abstract::Builder
   WEIGHT_UNITS = {:kg => 'KG',
                   :lb => 'LB'}
 

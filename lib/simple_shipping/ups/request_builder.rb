@@ -1,5 +1,5 @@
 module SimpleShipping::Ups
-  class RequestBuilder < SimpleShipping::Base::RequestBuilder
+  class RequestBuilder < SimpleShipping::Abstract::RequestBuilder
     REQUEST_OPTION = 'nonvalidate'
 
     def build_request(shipment, opts = {})

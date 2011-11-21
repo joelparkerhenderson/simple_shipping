@@ -1,5 +1,5 @@
 module SimpleShipping
-  class Ups::PartyBuilder < Base::Builder
+  class Ups::PartyBuilder < Abstract::Builder
     def build
       contact = @model.contact
       {'v11:Name'          => (contact.person_name || contact.company_name),

@@ -1,4 +1,4 @@
-class SimpleShipping::Fedex::PartyBuilder < ::SimpleShipping::Base::Builder
+class SimpleShipping::Fedex::PartyBuilder < ::SimpleShipping::Abstract::Builder
   def build
     {'Contact' => build_contact,
      'Address' => build_address,

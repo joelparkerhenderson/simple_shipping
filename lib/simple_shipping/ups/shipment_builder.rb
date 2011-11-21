@@ -1,5 +1,5 @@
 module SimpleShipping::Ups
-  class ShipmentBuilder < SimpleShipping::Base::Builder
+  class ShipmentBuilder < SimpleShipping::Abstract::Builder
     PAYMENT_TYPE = '01' # 01 - Transportation, 02 - Duties and Taxes
     SERVICE_CODES = {:next_day_air            => '01',
 		     :second_day_air          => '02',

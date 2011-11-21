@@ -5,7 +5,7 @@
 # * _recipient_ (an instance of {SimpleShipping::Party}
 # * _package_ (an instance of {SimpleShipping::Package}
 # * _payor_  (:shipper, :recipient). Default value is :shipper
-class SimpleShipping::Shipment < SimpleShipping::Base::Model
+class SimpleShipping::Shipment < SimpleShipping::Abstract::Model
   attr_accessor :shipper,
                 :recipient,
 		:package,
@@ -27,6 +27,6 @@ class SimpleShipping::Shipment < SimpleShipping::Base::Model
   private
 
   def validate_payor_account_number
-    errors.add(:base, "Payor account number is missing") unless payor_account_number
+    errors.add(:abstract, "Payor account number is missing") unless payor_account_number
   end
 end

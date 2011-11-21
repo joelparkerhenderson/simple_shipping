@@ -1,5 +1,5 @@
 module SimpleShipping
-  class Base::Builder
+  class Abstract::Builder
     class_attribute :default_opts
 
     def self.build(model, opts = {})

@@ -8,7 +8,7 @@
 # * _width_ (in dimension units)
 # * _height_ (in dimension units)
 # * _weight_ (in weight  units)
-class SimpleShipping::Package < SimpleShipping::Base::Model
+class SimpleShipping::Package < SimpleShipping::Abstract::Model
   attr_accessor :length, :width, :height, :dimension_units,
                 :weight, :weight_units, :type_code
 
