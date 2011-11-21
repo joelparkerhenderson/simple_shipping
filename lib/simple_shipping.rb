@@ -2,9 +2,12 @@ module SimpleShipping
   WSDL_DIR = File.expand_path("../../wsdl", __FILE__)
 end
 
-require 'ostruct'
+
 require 'active_support/core_ext/class'
 require 'active_model'
+require 'savon'
+
+require 'ostruct'
 
 require 'simple_shipping/exceptions'
 require 'simple_shipping/base'
