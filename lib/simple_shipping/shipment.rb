@@ -13,14 +13,14 @@ class SimpleShipping::Shipment < SimpleShipping::Abstract::Model
 
   set_default_values :payor => :shipper
 
-  validates_presence_of :shipper, :recipient, :package
+  validates_presence_of :shipper, :recipient, :package, :payor
   validates_inclusion_of :payor, :in => [:shipper, :recipient]
   validate :validate_payor_account_number
 
   def payor_account_number
     case payor
-      when :shipper   then shipper.account_number
-      when :recipient then recipient.account_number
+      when :shipper   then shipper && shipper.account_number
+      when :recipient then recipient && recipient.account_number
     end
   end
 

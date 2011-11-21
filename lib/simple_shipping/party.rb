@@ -14,10 +14,21 @@ class SimpleShipping::Party < SimpleShipping::Abstract::Model
 		:account_number
 
   validates_presence_of :contact, :address
-  validate :validate_submodels
+  validate :validate_contact, :validate_address
 
-  def validate_submodels
-    errors.add(:contact, "contact is invalid") if contact && !contact.valid?
-    errors.add(:address, "address is invalid") if address && !address.valid?
+  def validate_contact
+    if !address.instance_of?(SimpleShipping::Address)
+      errors.add(:address, "must be an instance of SimpleShipping::Address") 
+    elsif address.invalid?
+      errors.add(:address, "is invalid")
+    end
+  end
+
+  def validate_address
+    if !contact.instance_of?(SimpleShipping::Contact)
+      errors.add(:contact, "must be an instance of SimpleShipping::Contact") 
+    elsif contact.invalid?
+      errors.add(:contact, "is invalid")
+    end
   end
 end
