@@ -1,3 +1,11 @@
+# Represents a contact information of {SimpleShipping::Party party} who takes 
+# a part in shipment process.
+#
+# == Attributes
+# * _person_name_ (optional if company_name is provided)
+# * _company_name_ (optional if person_name is provided)
+# * _phone_number_
+# * _email_ (optional)
 class SimpleShipping::Contact < SimpleShipping::Base::Model
   attr_accessor :person_name,
 		:company_name,

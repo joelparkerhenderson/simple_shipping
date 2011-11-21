@@ -1,3 +1,10 @@
+# Represent a shipment
+#
+# == Attributes:
+# * _shipper_ (an instance of {SimpleShipping::Party}
+# * _recipient_ (an instance of {SimpleShipping::Party}
+# * _package_ (an instance of {SimpleShipping::Package}
+# * _payor_  (:shipper, :recipient). Default value is :shipper
 class SimpleShipping::Shipment < SimpleShipping::Base::Model
   attr_accessor :shipper,
                 :recipient,

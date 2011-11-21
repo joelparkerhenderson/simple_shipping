@@ -1,5 +1,8 @@
 module SimpleShipping
-  class ValidationError < Exception
+  class Error < Exception; end
+  class NoLabelError < Error ; end
+
+  class ValidationError < Error
     def initialize(model_or_msg)
       @message = case model_or_msg
 	when Base::Model

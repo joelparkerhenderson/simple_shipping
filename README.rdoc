@@ -2,18 +2,18 @@
 
 Provides common simple API to build labels for the next shipping services:
 
-* {http://fedex.com FedEx}
-* {http://ups.com UPS}
+* FedEx (http://fedex.com)
+* UPS (http://ups.com)
 
 == Entities
 
 The main entities you probably want to have a deal with are:
 
-* {SimpleShipping::Party Party}
-* {SimpleShipping::Contact Contact}
-* {SimpleShipping::Address Address}
-* {SimpleShipping::Package Package}
-* {SimpleShipping::Base::Response Response}
+* Party
+* Contact
+* Address
+* Package
+* Response
 
 
 == Usage
@@ -90,15 +90,15 @@ The main entities you probably want to have a deal with are:
 You can customize request using specific for service options passing :extrta_opts option.
 
 === FedEx extra options
-* :dropoff_type (see {SimpleShipping::Fedex::ShipmentBuilder::DROPOFF_TYPES} for available values)
-* :service_type (see {SimpleShipping::Fedex::ShipmentBuilder::SERVICE_TYPES} for available values)
-* :packaging_type (see {SimpleShipping::Fedex::ShipmentBuilder::PACKAGING_TYPES} for available values)
+* :dropoff_type (see SimpleShipping::Fedex::ShipmentBuilder::DROPOFF_TYPES for available values)
+* :service_type (see SimpleShipping::Fedex::ShipmentBuilder::SERVICE_TYPES for available values)
+* :packaging_type (see SimpleShipping::Fedex::ShipmentBuilder::PACKAGING_TYPES for available values)
 
 *Example*
     fedex_client.request(shipper, recipient, package, :extra_opts => {:packaging_type => :tube})
 
 === UPS extra options
-* :service_code (see {SimpleShipping::Ups::ShipmentBuilder::SERVICE_CODES})
+* :service_code (see SimpleShipping::Ups::ShipmentBuilder::SERVICE_CODES)
 
 *Example*
     ups_client.request(shipper, recipient, package, :extra_opts => {:service_code => :express})
