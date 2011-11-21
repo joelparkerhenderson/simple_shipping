@@ -103,7 +103,35 @@ You can customize request using specific for service options passing :extrta_opt
 *Example*
     ups_client.request(shipper, recipient, package, :extra_opts => {:service_code => :express})
 
+
+== Developers infromation
+
+SimpleShipping provides the next models which inherit 
+SimpleShipping::Abstract::Model:
+* Shipment
+* Package
+* Party
+* Address
+* Contact
+
+Every service adapter has its own builders which know how to represent every
+separated model to build SOAP request for a specific service. For example to represent
+Package model Fedex adapter has Fedex::PackageBuilder and UPS adapter has 
+Ups::PackageBuilder. All these model builders inherit SimpleShipping::Abstract::Builder.
+
+Request builders are used to build whole request for the service. They inherit
+Abstract::RequestBuilder.
+
+Client is a facade which provides a public API to the user.
+Every service has its own client but they all inherit Abstract::Client.
+All clients provide the same interface:
+* .new(credentials_hash)
+* #request(shipper, recipient, package, opts)
+
+
+
 == TODO
+
 * More documentation for entities(party, contact, address, etc.)
 * Write specs
 * Common interface for service types, packaging type.
