@@ -14,7 +14,7 @@ module SimpleShipping
       self.default_opts = opts
     end
 
-    def initialize(model, opts)
+    def initialize(model = nil, opts = {})
       self.default_opts ||= {}
       @opts  = default_opts.merge(opts)
       @model = model

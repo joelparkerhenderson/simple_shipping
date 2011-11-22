@@ -21,7 +21,7 @@ class SimpleShipping::Abstract::Response
   attr_reader :response
   class_attribute :label_image_path
 
-  def initialize(savon_resp)
+  def initialize(savon_resp = nil)
     @response = savon_resp    
   end
 
@@ -30,11 +30,11 @@ class SimpleShipping::Abstract::Response
   end
 
   def label_image
-    raise NoLabelError unless label_image_abstract64
-    label_image_abstract64.unpack('m').first
+    raise NoLabelError unless label_image_base64
+    label_image_base64.unpack('m').first
   end
 
-  def label_image_abstract64
+  def label_image_base64
     @response.to_array(*label_image_path).first
   end
 end
