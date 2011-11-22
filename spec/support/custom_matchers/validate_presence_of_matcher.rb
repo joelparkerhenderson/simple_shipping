@@ -1,7 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class ValidatePresenceOfMatcher
-
+    class ValidatePresenceOfMatcher < BasicMatcher
       def initialize(attribute)
 	@attribute = attribute.to_sym
       end
@@ -11,14 +10,6 @@ module SimpleShipping
 	model.valid?
 	model.errors.messages[@attribute] and
 	model.errors.messages[@attribute].include? "can't be blank"
-      end
-
-      def failure_message
-	"expected to validate presence of #{@attribute.inspect}"
-      end
-
-      def negative_failure_message
-	"expected to not validate presence of #{@attribute.inspect}"
       end
 
       def description

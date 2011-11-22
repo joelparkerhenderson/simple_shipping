@@ -1,7 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class ValidateSubmodelMatcher
-
+    class ValidateSubmodelMatcher < BasicMatcher
       def initialize(attribute)
 	@attribute = attribute.to_sym
       end
@@ -20,14 +19,6 @@ module SimpleShipping
         submodel.stub!(:valid? => true)
         @model.send("#{@attribute}=", submodel)
         !has_error?
-      end
-
-      def failure_message
-	"expected to #{description}"
-      end
-
-      def negative_failure_message
-	"expected to #{description}"
       end
 
       def as(klass)

@@ -1,7 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class HaveAttributeMatcher
-
+    class HaveAttributeMatcher < BasicMatcher
       def initialize(attribute)
 	@attribute = attribute.to_sym
       end
@@ -9,14 +8,6 @@ module SimpleShipping
       def matches?(model)
 	model.respond_to?(@attribute) &&
 	model.respond_to?("#{@attribute}=")
-      end
-
-      def failure_message
-	"expected to have attribute #{@attribute.inspect}"
-      end
-
-      def negative_failure_message
-        "expected to not have attribute #{@attribute.inspect}"
       end
 
       def description

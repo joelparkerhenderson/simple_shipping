@@ -1,6 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class HaveDefaultValueMatcher
+    class HaveDefaultValueMatcher < BasicMatcher
       def initialize(value)
         @value = value
       end
@@ -12,14 +12,6 @@ module SimpleShipping
       def for_attribute(attribute)
         @attribute = attribute.to_sym
         self
-      end
-
-      def failure_message
-	"expected to #{description}"
-      end
-
-      def negative_failure_message
-	"expected to not #{description}"
       end
 
       def description

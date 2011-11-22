@@ -1,6 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class HaveErrorsOnMatcher
+    class HaveErrorsOnMatcher < BasicMatcher
 
       def initialize(attribute)
 	@attribute = attribute.to_sym
@@ -9,14 +9,6 @@ module SimpleShipping
       def matches?(model)
         model.valid?
 	!!model.errors.messages[@attribute]
-      end
-
-      def failure_message
-	"expected to have errors on #{@attribute.inspect}"
-      end
-
-      def negative_failure_message
-	"expected to not have errors on #{@attribute.inspect}"
       end
 
       def description

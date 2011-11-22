@@ -1,6 +1,6 @@
 module SimpleShipping
   module CustomMatchers
-    class ValidateInclusionOfMatcher
+    class ValidateInclusionOfMatcher < BasicMatcher
       def initialize(attribute)
 	@attribute = attribute.to_sym
       end
@@ -17,14 +17,6 @@ module SimpleShipping
       def in(*enumeration)
         @enumeration = enumeration
         self
-      end
-
-      def failure_message
-	"expected to #{description}"
-      end
-
-      def negative_failure_message
-	"expected to not #{description}"
       end
 
       def description
