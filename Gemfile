@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'activesupport'
 gem 'activemodel'
 gem 'savon'
+gem 'rmagick'
 
 group :development do
   gem "rspec", "~> 2.3.0"
@@ -12,5 +13,7 @@ group :development do
   gem "rcov", ">= 0"
   gem "reek", "~> 1.2.8"
   gem "roodi", "~> 2.1.0"
-  gem "ruby-debug"
+
+  gem "ruby-debug", :platforms => :ruby_18
+  gem "ruby-debug19", :platforms => :ruby_19
 end

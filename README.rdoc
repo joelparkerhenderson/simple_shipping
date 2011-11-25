@@ -80,11 +80,10 @@ The main entities you probably want to have a deal with are:
     ups_resp   = ups.request(shipper, recipient, package)
     fedex_resp = fedex.request(shipper, recipient, package, :payor => :recipient)
 
-    # NOTE: 
-    #  FedEx returns image in PNG format
-    #  UPS returns image in GIF format
-    ups_resp.save_label_as_gif("ups_label.gif")
-    fedex_resp.save_label_as_png("fedex_label.png")
+    # You can use any format supported by RMagick to save lables:
+    ups_resp.save_label("ups_label.png")
+    ups_resp.save_label("ups_label.gif")
+    fedex_resp.save_label("fedex_label.jpg")
 
 == Specific extra options
 You can customize request using specific for service options passing :extrta_opts option.

@@ -6,6 +6,7 @@ end
 require 'active_support/core_ext/class'
 require 'active_model'
 require 'savon'
+require 'RMagick'
 
 require 'ostruct'
 
