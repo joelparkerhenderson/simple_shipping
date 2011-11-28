@@ -1,27 +1,26 @@
 class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
-  TYPE_CODES = {:letter            => '01',
-                :customer_supplied => '02',
-                :tube              => '03',
-                :pak               => '04',
-                :express_box       => '21',
-                :box_25kg          => '24',
-                :box_10kg          => '25',
-                :pallet            => '30',
-                :small_box         => '2a',
-                :medium_box        => '2b',
-                :large_box         => '2c'}
+  PACKAGING_TYPES = {
+    :envelope => '01',  # letter
+    :your     => '02',  # customer supplied
+    :tube     => '03',  # tube
+    :pak      => '04',  # UPS Packaging
+    :box      => '2b',  # medium box
+    :box_10kg => '25',  
+    :box_10kg => '24'
+  }
+  WEIGHT_UNITS = {
+    :kg => 'KGS',
+    :lb => 'LBS'
+  }
+  DIMENSION_UNITS = {
+    :in => 'IN',
+    :cm => 'CM'
+  }
 
-  WEIGHT_UNITS = {:kg => 'KGS',
-                  :lb => 'LBS'}
-
-  DIMENSION_UNITS = {:in => 'IN',
-                     :cm => 'CM'}
-
-  
   def build
     { 
       'v11:Packaging' => {
-	'v11:Code' => TYPE_CODES[@model.type_code]
+	'v11:Code' => PACKAGING_TYPES[@model.packaging_type]
       },
       'v11:Dimensions' => {
 	'v11:UnitOfMeasurement' => {

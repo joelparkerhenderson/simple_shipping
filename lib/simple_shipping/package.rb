@@ -8,16 +8,25 @@
 # * _width_ (in dimension units)
 # * _height_ (in dimension units)
 # * _weight_ (in weight  units)
+# * _packaging_type_ 
+#
+# == Packaging type values:
+# * :envelope
+# * :your
+# * :tube
+# * :pak
+# * :box
+# * :box_10kg
+# * :box_25kg
 class SimpleShipping::Package < SimpleShipping::Abstract::Model
-  attr_accessor :length, :width, :height, :dimension_units,
-                :weight, :weight_units, :type_code
+  attr_accessor :length, :width, :height, :dimension_units, :weight, :weight_units, :packaging_type
 
-  validates_presence_of :length, :width, :height, :dimension_units,
-                        :weight, :weight_units
+  validates_presence_of :length, :width, :height, :dimension_units, :weight, :weight_units
   validates_inclusion_of :weight_units   , :in => [:kg, :lb]
   validates_inclusion_of :dimension_units, :in => [:in, :cm]
+  validates_inclusion_of :packaging_type , :in => [:envelope, :pak, :tube, :your, :box, :box_10kg, :box_25kg]
 
-  set_default_values :type_code       => :customer_supplied,
+  set_default_values :packaging_type  => :your,
                      :weight_units    => :lb,
                      :dimension_units => :in
 end

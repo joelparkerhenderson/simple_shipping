@@ -10,6 +10,7 @@ describe SimpleShipping::Package do
     it { should have_attribute :dimension_units }
     it { should have_attribute :weight }
     it { should have_attribute :weight_units }
+    it { should have_attribute :packaging_type }
   end
 
   describe 'validations' do
@@ -21,6 +22,7 @@ describe SimpleShipping::Package do
     it { should validate_presence_of :weight_units }
     it { should validate_inclusion_of(:weight_units).in(:kg, :lb) }
     it { should validate_inclusion_of(:dimension_units).in(:cm, :in) }
+    it { should validate_inclusion_of(:packaging_type).in(:envelope, :pak, :tube, :your, :box, :box_10kg, :box_25kg) }
   end
 
   describe 'default values' do
