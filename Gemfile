@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem 'activesupport'
-gem 'activemodel'
+gem 'activesupport', '~> 3.1.3'
+gem 'activemodel', '~> 3.1.3'
 gem 'savon'
 gem 'rmagick'
 
