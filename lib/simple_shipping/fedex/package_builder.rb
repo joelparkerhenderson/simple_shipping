@@ -1,7 +1,6 @@
 class SimpleShipping::Fedex::PackageBuilder < SimpleShipping::Abstract::Builder
   WEIGHT_UNITS = {:kg => 'KG',
                   :lb => 'LB'}
-
   DIMENSION_UNITS = {:in => 'IN',
                      :cm => 'CM'}
   
