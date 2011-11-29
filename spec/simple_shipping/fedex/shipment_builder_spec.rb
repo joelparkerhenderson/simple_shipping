@@ -19,10 +19,5 @@ describe SimpleShipping::Fedex::ShipmentBuilder do
       lambda { build_it(:service_type => :bad_value) }.should raise_error SimpleShipping::ValidationError
       lambda { build_it(:service_type => :fedex_ground ) }.should_not raise_error SimpleShipping::ValidationError
     end
-
-    it 'validates inclusion of :packaging_type' do
-      lambda { build_it(:packaging_type => :bad_value) }.should raise_error SimpleShipping::ValidationError
-      lambda { build_it(:packaging_type => :box_10kg) }.should_not raise_error SimpleShipping::ValidationError
-    end
   end
 end

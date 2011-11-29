@@ -48,8 +48,7 @@ module SimpleShipping
       }
 
       set_default_opts :dropoff_type   => :business_service_center,
-                       :service_type   => :first_overnight,
-                       :packaging_type => :envelope
+                       :service_type   => :fedex_ground
 
       def build
         {'ShipTimestamp'             => build_ship_timestamp,
@@ -72,7 +71,6 @@ module SimpleShipping
       def validate
         validate_inclusion_of(:dropoff_type  , DROPOFF_TYPES)
         validate_inclusion_of(:service_type  , SERVICE_TYPES)
-        validate_inclusion_of(:packaging_type, PACKAGING_TYPES)
       end
 
 
