@@ -1,7 +1,9 @@
 module SimpleShipping::Ups
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
     PAYMENT_TYPE = '01' # 01 - Transportation, 02 - Duties and Taxes
-    SERVICE_CODES = {:next_day_air            => '01',
+
+    # service codes in UPS terminology 
+    SERVICE_TYPES = {:next_day_air            => '01',
 		     :second_day_air          => '02',
 		     :ground                  => '03',
 		     :express                 => '07',
@@ -19,7 +21,7 @@ module SimpleShipping::Ups
 		     :today_express           => '85',
 		     :today_express_saver     => '86'}
 
-    set_default_opts :service_code => :ground
+    set_default_opts :service_type => :ground
 
     def build
       { 'v11:Shipper'            => PartyBuilder.build(@model.shipper, :shipper => true),
@@ -27,8 +29,7 @@ module SimpleShipping::Ups
 	'v11:PaymentInformation' => build_payment_info,
 	'v11:Service'            => build_service,
 	'v11:Package'            => PackageBuilder.build(@model.package),
-	:order! => ['v11:Shipper', 'v11:ShipTo', 'v11:PaymentInformation', 'v11:Service', 'v11:Package'] }
-    end
+	:order! => ['v11:Shipper', 'v11:ShipTo', 'v11:PaymentInformation', 'v11:Service', 'v11:Package'] } end
 
     def build_payment_info
       {'v11:ShipmentCharge' => build_simpment_charge }
@@ -47,11 +48,11 @@ module SimpleShipping::Ups
     end
 
     def build_service
-      {'v11:Code' => SERVICE_CODES[@opts[:service_code]]}
+      {'v11:Code' => SERVICE_TYPES[@opts[:service_type]]}
     end
 
     def validate
-      validate_inclusion_of(:service_code, SERVICE_CODES)
+      validate_inclusion_of(:service_type, SERVICE_TYPES)
     end
   end
 end

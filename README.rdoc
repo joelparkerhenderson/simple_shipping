@@ -83,13 +83,13 @@ You can customize request using specific for service options passing :extrta_opt
 * :service_type (see SimpleShipping::Fedex::ShipmentBuilder::SERVICE_TYPES for available values)
 
 *Example*
-    fedex_client.request(shipper, recipient, package, :extra_opts => {:packaging_type => :tube})
+    fedex_client.request(shipper, recipient, package, :extra_opts => {:dropoff_type => :drop_box})
 
 === UPS extra options
-* :service_code (see SimpleShipping::Ups::ShipmentBuilder::SERVICE_CODES)
+* :service_type (see SimpleShipping::Ups::ShipmentBuilder::SERVICE_TYPES for available values)
 
 *Example*
-    ups_client.request(shipper, recipient, package, :extra_opts => {:service_code => :express})
+    ups_client.request(shipper, recipient, package, :extra_opts => {:service_type => :express})
 
 
 == Developers infromation
