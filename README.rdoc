@@ -70,7 +70,7 @@ Provides common simple API to build labels for the next shipping services:
     ups_resp   = ups.request(shipper, recipient, package)
     fedex_resp = fedex.request(shipper, recipient, package, :payor => :recipient)
 
-    # You can use any format supported by RMagick to save lables:
+    # You can use any format supported by RMagick to save labels:
     ups_resp.save_label("ups_label.png")
     ups_resp.save_label("ups_label.gif")
     fedex_resp.save_label("fedex_label.jpg")
