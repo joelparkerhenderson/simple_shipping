@@ -91,8 +91,36 @@ You can customize request using specific for service options passing :extrta_opt
 *Example*
     ups_client.request(shipper, recipient, package, :extra_opts => {:service_type => :express})
 
+== Requirements
 
-== Developers infromation
+You must have ImageMagick installed.
+
+=== Linux
+
+==== Gentoo
+
+  emerge -pv imagemagick
+  emerge imagemagick
+
+==== Ubuntu
+
+  apt-get install imagemagick
+
+=== OS X
+
+==== Homebrew
+
+  brew install imagemagick
+
+==== MacPorts
+
+  sudo port install imagemagick
+
+==== Fink
+
+  fink install imagemagick
+
+== Developers information
 
 SimpleShipping provides the next models which inherit 
 SimpleShipping::Abstract::Model:
