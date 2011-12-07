@@ -12,7 +12,7 @@ class SimpleShipping::Fedex::PackageBuilder < SimpleShipping::Abstract::Builder
     { 'Weight'     => {'Units' => WEIGHT_UNITS[@model.weight_units],
                        'Value' => @model.weight,
                        :order! => ['ins0:Units', 'ins0:Value']},
-      'Dimensions' => {'Length' => @model.weight,
+      'Dimensions' => {'Length' => @model.length,
                        'Width'  => @model.width,
                        'Height' => @model.height,
                        'Units'  => DIMENSION_UNITS[@model.dimension_units],

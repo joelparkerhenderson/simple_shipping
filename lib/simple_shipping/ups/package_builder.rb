@@ -1,3 +1,4 @@
+# Builds hash for Savon which represents {Package package}
 class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
   # Mapping for UPS packaging types
   # Not all UPS values listed here in order to provide common interface with Fedex.

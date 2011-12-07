@@ -42,7 +42,7 @@ module SimpleShipping::Ups
       if @model.payor == :shipper
         result['v11:BillShipper'] = {'v11:AccountNumber' => @model.shipper.account_number}
         result[:order!] << 'v11:BillShipper'
-      elsif @model.payor == :recipient
+      else
         result['v11:BillReceiver'] = {'v11:AccountNumber' => @model.recipient.account_number}
         result[:order!] << 'v11:BillReceiver'
       end

@@ -26,7 +26,7 @@ class SimpleShipping::Abstract::Response
   end
 
   def save_label(file_path)
-    File.open(file_path, 'w'){|f| f.write(label_image) }
+    File.open(file_path, 'w'){|file| file.write(label_image) }
   end
 
   def label_image

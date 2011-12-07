@@ -24,9 +24,9 @@ class SimpleShipping::Shipment < SimpleShipping::Abstract::Model
   def payor_account_number
     case payor
       when :shipper
-        shipper.respond_to?(:account_number) && shipper.account_number
+        shipper.account_number if shipper.respond_to?(:account_number)
       when :recipient 
-        recipient.respond_to?(:account_number) && recipient.account_number
+        recipient.account_number if recipient.respond_to?(:account_number) 
     end
   end
 
