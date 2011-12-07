@@ -1,9 +1,14 @@
+# Knows how to convert {Party} model to SOAP element for Fedex.
 class SimpleShipping::Fedex::PartyBuilder < ::SimpleShipping::Abstract::Builder
+  # Builds a SOAP party element as a hash for Savon.
   def build
     {'Contact' => build_contact,
      'Address' => build_address,
      :order! => ['ins0:Contact', 'ins0:Address']}
   end
+
+
+  private
 
   def build_contact
     result = {:order! => []}

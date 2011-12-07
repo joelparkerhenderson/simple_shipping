@@ -1,4 +1,5 @@
 module SimpleShipping::Ups
+  # Builds shipment element for UPS SOAP service.
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
     PAYMENT_TYPE = '01' # 01 - Transportation, 02 - Duties and Taxes
 
@@ -23,6 +24,7 @@ module SimpleShipping::Ups
 
     set_default_opts :service_type => :ground
 
+    # Returns a hash for Savon representing shipment model.
     def build
       { 'v11:Shipper'            => PartyBuilder.build(@model.shipper, :shipper => true),
         'v11:ShipTo'             => PartyBuilder.build(@model.recipient),

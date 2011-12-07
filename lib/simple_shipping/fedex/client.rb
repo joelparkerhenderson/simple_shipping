@@ -15,6 +15,8 @@ module SimpleShipping::Fedex
     set_required_credentials :key, :password, :account_number, :meter_number
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "fedex/ship_service_v10.wsdl")
 
+    # Sends ProcessShipmentRequest request to the Fedex service and returns
+    # response wrapped in {Fedex::Response} object.
     def request(shipper, recipient, package, opts = {})
       extra_opts = opts.delete(:extra_opts) || {}
       shipment = create_shipment(shipper, recipient, package, opts)

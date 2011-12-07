@@ -14,6 +14,7 @@ module SimpleShipping
       set_required_credentials :username, :password, :access_license_number
       set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "ups/Ship.wsdl")
 
+      # Performs ShipmentRequest to UPS service.
       # TODO: refactor. {Ups::Client#request} and {Fedex::Client#request} are quite similar
       def request(shipper, recipient, package, opts = {})
         extra_opts = opts.delete(:extra_opts) || {}

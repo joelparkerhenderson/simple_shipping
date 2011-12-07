@@ -1,5 +1,7 @@
 module SimpleShipping::Fedex
+  # Builds complete for Fedex service.
   class RequestBuilder < SimpleShipping::Abstract::RequestBuilder
+    # Build complete request from {Shipment shipment} object
     def build_request(shipment, opts)
       {'WebAuthenticationDetail' => build_web_authentication_detail,
        'ClientDetail'            => build_client_detail,

@@ -20,6 +20,7 @@ class SimpleShipping::Shipment < SimpleShipping::Abstract::Model
   validates_submodel :package  , :as => SimpleShipping::Package
   validate :validate_payor_account_number
 
+  # returns account number of payor.
   def payor_account_number
     case payor
       when :shipper

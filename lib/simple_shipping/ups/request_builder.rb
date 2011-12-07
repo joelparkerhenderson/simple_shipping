@@ -1,7 +1,9 @@
 module SimpleShipping::Ups
+  # Builds complete request for UPS 
   class RequestBuilder < SimpleShipping::Abstract::RequestBuilder
     REQUEST_OPTION = 'nonvalidate'
 
+    # Builds a request from {Shipment shipment} object.
     def build_request(shipment, opts = {})
       { 'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
