@@ -13,8 +13,8 @@ module SimpleShipping::Fedex
 
     def build_web_authentication_detail
       { 'UserCredential' => {'Key'      => @credentials.key,
-			     'Password' => @credentials.password,
-			     :order!    => ['ins0:Key', 'ins0:Password']}}
+                             'Password' => @credentials.password,
+                             :order!    => ['ins0:Key', 'ins0:Password']}}
     end
 
     def build_client_detail

@@ -2,18 +2,18 @@ module SimpleShipping
   module CustomMatchers
     class ValidatePresenceOfMatcher < BasicMatcher
       def initialize(attribute)
-	@attribute = attribute.to_sym
+        @attribute = attribute.to_sym
       end
       
       def matches?(model)
-	model.send("#{@attribute}=", nil)
-	model.valid?
-	model.errors.messages[@attribute] and
-	model.errors.messages[@attribute].include? "can't be blank"
+        model.send("#{@attribute}=", nil)
+        model.valid?
+        model.errors.messages[@attribute] and
+        model.errors.messages[@attribute].include? "can't be blank"
       end
 
       def description
-	"validate presence of #{@attribute.inspect}"
+        "validate presence of #{@attribute.inspect}"
       end
     end
 

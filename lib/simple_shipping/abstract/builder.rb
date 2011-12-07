@@ -28,7 +28,7 @@ module SimpleShipping
 
     def validate_inclusion_of(option, enumeration)
       unless enumeration.has_key?(@opts[option])
-	raise ValidationError.new("#{option} has an unavailable value(#{@opts[option]}). Available values are #{enumeration.keys.inspect}") 
+        raise ValidationError.new("#{option} has an unavailable value(#{@opts[option]}). Available values are #{enumeration.keys.inspect}") 
       end
     end
   end

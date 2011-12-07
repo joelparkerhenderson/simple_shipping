@@ -2,7 +2,7 @@ module SimpleShipping
   module CustomMatchers
     class ValidateSubmodelMatcher < BasicMatcher
       def initialize(attribute)
-	@attribute = attribute.to_sym
+        @attribute = attribute.to_sym
       end
       
       def matches?(model)
@@ -27,14 +27,14 @@ module SimpleShipping
       end
 
       def description
-	"validate submodel #{@attribute.inspect} as instance of #{@class}"
+        "validate submodel #{@attribute.inspect} as instance of #{@class}"
       end
 
       private
 
       def has_error?
         @model.valid?
-	!!@model.errors.messages[@attribute]
+        !!@model.errors.messages[@attribute]
       end
     end
 

@@ -2,7 +2,7 @@ module SimpleShipping
   module CustomMatchers
     class ValidateInclusionOfMatcher < BasicMatcher
       def initialize(attribute)
-	@attribute = attribute.to_sym
+        @attribute = attribute.to_sym
       end
       
       def matches?(model)
@@ -20,13 +20,13 @@ module SimpleShipping
       end
 
       def description
-	"validate inclusion of #{@attribute.inspect} in #{@enumeration.inspect}"
+        "validate inclusion of #{@attribute.inspect} in #{@enumeration.inspect}"
       end
 
       def has_error?(model)
         model.valid?
-	model.errors.messages[@attribute] and
-	model.errors.messages[@attribute].include?("is not included in the list")
+        model.errors.messages[@attribute] and
+        model.errors.messages[@attribute].include?("is not included in the list")
       end
     end
 

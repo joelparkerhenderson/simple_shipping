@@ -11,7 +11,7 @@
 class SimpleShipping::Party < SimpleShipping::Abstract::Model
   attr_accessor :contact,
                 :address,
-		:account_number
+                :account_number
 
   validates_presence_of :contact, :address
   validates_submodel :address, :as => SimpleShipping::Address

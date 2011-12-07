@@ -15,7 +15,7 @@ module SimpleShipping
       end
 
       def description
-	"have default value #{@value.inspect} for attribute #{@attribute.inspect}"
+        "have default value #{@value.inspect} for attribute #{@attribute.inspect}"
       end
     end
 

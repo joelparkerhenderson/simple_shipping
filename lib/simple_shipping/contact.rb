@@ -8,9 +8,9 @@
 # * _email_ (optional)
 class SimpleShipping::Contact < SimpleShipping::Abstract::Model
   attr_accessor :person_name,
-		:company_name,
+                :company_name,
                 :phone_number,
-		:email
+                :email
 
   validates_presence_of :phone_number
   validate :validate_name
