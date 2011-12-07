@@ -23,7 +23,7 @@ module SimpleShipping
 
     def validate
       if @opts[:shipper] && !@model.account_number
-	raise ValidationError.new("account_number is required for party who is shipper")
+        raise ValidationError.new("account_number is required for party who is shipper")
       end
     end
   end

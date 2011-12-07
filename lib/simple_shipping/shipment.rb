@@ -8,8 +8,8 @@
 class SimpleShipping::Shipment < SimpleShipping::Abstract::Model
   attr_accessor :shipper,
                 :recipient,
-		:package,
-		:payor
+                :package,
+                :payor
 
   set_default_values :payor => :shipper
 

@@ -4,7 +4,7 @@ module SimpleShipping
       attr_reader :credentials
 
       def initialize(credentials)
-	@credentials = credentials
+        @credentials = credentials
       end
     end
   end

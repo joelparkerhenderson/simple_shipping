@@ -3,16 +3,16 @@ module SimpleShipping
     class HaveErrorsOnMatcher < BasicMatcher
 
       def initialize(attribute)
-	@attribute = attribute.to_sym
+        @attribute = attribute.to_sym
       end
       
       def matches?(model)
         model.valid?
-	!!model.errors.messages[@attribute]
+        !!model.errors.messages[@attribute]
       end
 
       def description
-	"have errors on #{@attribute.inspect}"
+        "have errors on #{@attribute.inspect}"
       end
     end
 

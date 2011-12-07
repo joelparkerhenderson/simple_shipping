@@ -33,8 +33,8 @@ class SimpleShipping::Abstract::Client
 
   def create_shipment(shipper, recipient, package, opts = {})
     shipment = SimpleShipping::Shipment.new(:shipper   => shipper,
-			                    :recipient => recipient,
-			                    :package   => package)
+                                            :recipient => recipient,
+                                            :package   => package)
     shipment.payor = opts[:payor] if opts[:payor]
     shipment
   end
