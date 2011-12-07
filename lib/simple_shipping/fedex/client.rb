@@ -12,7 +12,7 @@ module SimpleShipping::Fedex
   #                                             :METER_NUMBER   => "METER NUMBER")
   #  client.request(shipper, recipient, package) # => #<SimpleShipping::Fedex::Response ...>
   class Client < SimpleShipping::Abstract::Client
-    set_required_credetials :key, :password, :account_number, :meter_number
+    set_required_credentials :key, :password, :account_number, :meter_number
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "fedex/ship_service_v10.wsdl")
 
     def request(shipper, recipient, package, opts = {})
