@@ -18,7 +18,7 @@ class SimpleShipping::Abstract::Model
       end
     end
   end
-	
+
   def initialize(values = {})
     values.reverse_merge!(default_values || {})
     values.each do |attribute, value|
