@@ -26,7 +26,7 @@ class SimpleShipping::Abstract::Model
       end
     end
   end
-	
+
   # Creates new model and sets default and passed values.
   def initialize(values = {})
     values.reverse_merge!(default_values || {})
