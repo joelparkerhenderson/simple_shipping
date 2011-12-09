@@ -1,5 +1,7 @@
 module SimpleShipping
+  # Knows how to convert {Party} model to SOAP element for UPS
   class Ups::PartyBuilder < Abstract::Builder
+    # Builds a hash for Savon which represents {Party party}.
     def build
       contact = @model.contact
       {'v11:Name'          => (contact.person_name || contact.company_name),

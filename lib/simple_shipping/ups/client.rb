@@ -11,9 +11,10 @@ module SimpleShipping
     #                                             :access_license_number => "LICENSE NUMBER")
     #  client.request(shipper, recipient, package) # => #<SimpleShipping::Ups::Response ...>
     class Client < SimpleShipping::Abstract::Client
-      set_required_credetials :username, :password, :access_license_number
+      set_required_credentials :username, :password, :access_license_number
       set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "ups/Ship.wsdl")
 
+      # Performs ShipmentRequest to UPS service.
       # TODO: refactor. {Ups::Client#request} and {Fedex::Client#request} are quite similar
       def request(shipper, recipient, package, opts = {})
         extra_opts = opts.delete(:extra_opts) || {}

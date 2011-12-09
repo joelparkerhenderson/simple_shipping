@@ -1,10 +1,11 @@
 module SimpleShipping
   module Fedex
+    # Builds a shipment element for Fedex SOAP service
     class ShipmentBuilder < SimpleShipping::Abstract::Builder
       RATE_REQUEST_TYPE = 'ACCOUNT'
       PACKAGE_COUNT = '1'
 
-      # Package types mapping
+      # Mapping for package types
       PACKAGING_TYPES = {
         :box_10kg => 'FEDEX_10KG_BOX',
         :box_25kg => 'FEDEX_25KG_BOX',
@@ -15,6 +16,7 @@ module SimpleShipping
         :your     => 'YOUR_PACKAGING'
       }
 
+      # Mapping for service types
       SERVICE_TYPES = {
         :europe_first_international_priority => 'EUROPE_FIRST_INTERNATIONAL_PRIORITY',
         :fedex_1_day_freight                 => 'FEDEX_1_DAY_FREIGHT',
@@ -39,6 +41,7 @@ module SimpleShipping
         :standard_overnight                  => 'STANDARD_OVERNIGHT'
       }
 
+      # Mapping for dropoff types
       DROPOFF_TYPES = {
         :business_service_center => 'BUSINESS_SERVICE_CENTER',
         :drop_box                => 'DROP_BOX',
@@ -50,6 +53,7 @@ module SimpleShipping
       set_default_opts :dropoff_type   => :business_service_center,
                        :service_type   => :fedex_ground
 
+      # Builds shipment representation a hash for Savon client.
       def build
         {'ShipTimestamp'             => build_ship_timestamp,
          'DropoffType'               => DROPOFF_TYPES[@opts[:dropoff_type]],
@@ -68,6 +72,7 @@ module SimpleShipping
         }
       end
 
+      # Performs validations
       def validate
         validate_inclusion_of(:dropoff_type  , DROPOFF_TYPES)
         validate_inclusion_of(:service_type  , SERVICE_TYPES)

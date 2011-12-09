@@ -1,4 +1,7 @@
+# Builds hash for Savon which represents {Package package}
 class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
+  # Mapping for UPS packaging types
+  # Not all UPS values listed here in order to provide common interface with Fedex.
   PACKAGING_TYPES = {
     :envelope => '01',  # letter
     :your     => '02',  # customer supplied
@@ -8,15 +11,20 @@ class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
     :box_10kg => '25',  
     :box_10kg => '24'
   }
+
+  # Mapping for UPS weight units
   WEIGHT_UNITS = {
     :kg => 'KGS',
     :lb => 'LBS'
   }
+  
+  # Mapping for UPS dimension units
   DIMENSION_UNITS = {
     :in => 'IN',
     :cm => 'CM'
   }
 
+  # Builds a hash from a {Package package} which will be used by Savon.
   def build
     { 
       'v11:Packaging' => {
