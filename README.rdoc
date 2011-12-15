@@ -70,11 +70,13 @@ Provides common simple API to build labels for the next shipping services:
     ups_resp   = ups.request(shipper, recipient, package)
     fedex_resp = fedex.request(shipper, recipient, package, :payor => :recipient)
 
-    # NOTE: 
-    #  FedEx returns image in PNG format
-    #  UPS returns image in GIF format
-    ups_resp.save_label_as_gif("ups_label.gif")
-    fedex_resp.save_label_as_png("fedex_label.png")
+    # Save label to Doc Store
+    response.save_label_to_doc_store  # => key returned from doc store
+
+    # You can use any format supported by RMagick to save labels:
+    ups_resp.save_label("ups_label.png")
+    ups_resp.save_label("ups_label.gif")
+    fedex_resp.save_label("fedex_label.jpg")
 
 == Specific extra options
 You can customize request using specific for service options passing :extrta_opts option.
@@ -92,8 +94,36 @@ You can customize request using specific for service options passing :extrta_opt
 *Example*
     ups_client.request(shipper, recipient, package, :extra_opts => {:service_type => :express})
 
+== Requirements
 
-== Developers infromation
+You must have ImageMagick installed.
+
+=== Linux
+
+==== Gentoo
+
+  emerge -pv imagemagick
+  emerge imagemagick
+
+==== Ubuntu
+
+  apt-get install imagemagick
+
+=== OS X
+
+==== Homebrew
+
+  brew install imagemagick
+
+==== MacPorts
+
+  sudo port install imagemagick
+
+==== Fink
+
+  fink install imagemagick
+
+== Developers information
 
 SimpleShipping provides the next models which inherit 
 SimpleShipping::Abstract::Model:
