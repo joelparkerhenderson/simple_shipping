@@ -14,6 +14,8 @@ group :development do
   gem "rcov"   , ">= 0"
   gem "reek"   , "~> 1.2.8"
   gem "roodi"  , "~> 2.1.0"
+  gem "gemfury", :require => false
+  gem "json_pure"
 
   gem "ruby-debug"  , :platforms => :ruby_18
   gem "ruby-debug19", :platforms => :ruby_19
