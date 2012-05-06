@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey"]
   s.date = "2012-05-06"
-  s.description = "TODO: longer description of your gem"
+  s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -87,7 +87,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.17"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Interacts with UPS and FedEx APIs"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

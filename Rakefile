@@ -17,8 +17,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "simple_shipping"
   gem.homepage = "http://github.com/greyblake/simple_shipping"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Interacts with UPS and FedEx APIs}
+  gem.description = %Q{This gem uses the APIs provided by UPS and FedEx to
+    service various requests on behalf of an application. In particular, it is
+    used to create shipping labels so a customer can send a package
+    postage-free}
   gem.email = "blake131313@gmail.com"
   gem.authors = ["Potapov Sergey"]
   # dependencies defined in Gemfile
