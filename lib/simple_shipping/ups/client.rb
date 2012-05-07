@@ -29,6 +29,8 @@ module SimpleShipping
           soap.body   = builder.build_request(shipment, extra_opts)
         end
         Response.new(savon_response)
+      rescue => e
+        raise RequestError.new(e)
       end
     end
   end

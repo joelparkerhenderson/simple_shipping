@@ -1,6 +1,6 @@
 module SimpleShipping
   # Parent error for all SimpleShipping errors
-  class Error < Exception; end
+  class Error < StandardError; end
 
   # Error raises when response does not contain a label
   class NoLabelError < Error ; end
@@ -14,6 +14,24 @@ module SimpleShipping
       when String
         model_or_msg
       end
+    end
+
+    def message
+      @message
+    end
+  end
+
+  class RequestError < Error
+    def initialize(savon_fault)
+      fault = savon_fault.to_hash[:fault]
+
+      @message = 
+        if fault[:faultcode] # SOAP 1.1 fault.
+          detail = fault[:detail][:errors][:error_detail][:primary_error_code]
+          "#{fault[:faultstring]} #{detail[:description]}"
+        elsif fault[:code] # SOAP 1.2 fault.
+          "(#{fault[:code][:value]}) #{fault[:reason][:text]}"
+        end
     end
 
     def message
