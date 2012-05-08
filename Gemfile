@@ -2,9 +2,7 @@ source "http://rubygems.org"
 
 gem 'activesupport' , '~> 3.1.3'
 gem 'activemodel'   , '~> 3.1.3'
-gem 'activeresource', '~> 3.1.3'
 gem 'savon'
-gem 'rmagick'
 
 group :development do
   gem "rspec"  , "~> 2.3.0"
