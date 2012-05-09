@@ -22,7 +22,7 @@ module SimpleShipping::Ups
                      :today_express           => '85',
                      :today_express_saver     => '86'}
 
-    set_default_opts :service_type => :ground
+    set_default_opts :service_type => :second_day_air
 
     # Returns a hash for Savon representing shipment model.
     def build
