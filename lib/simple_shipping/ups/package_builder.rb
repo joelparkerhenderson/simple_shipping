@@ -24,7 +24,8 @@ class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
     :cm => 'CM'
   }
 
-  # Builds a hash from a {Package package} which will be used by Savon.
+  # Build a hash from a custom {Package package} which will be used by Savon.
+  # A custom package requires specification of LWH dimensions.
   def build_custom
     { 
       'v11:Packaging' => {
@@ -50,6 +51,8 @@ class SimpleShipping::Ups::PackageBuilder < SimpleShipping::Abstract::Builder
     }
   end
 
+  # Build a hash from a standard {Package package} which will be used by Savon.
+  # A standard package requires no specification of LWH dimensions.
   def build_standard
     { 
       'v11:Packaging' => {
