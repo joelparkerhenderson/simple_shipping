@@ -1,8 +1,14 @@
 module SimpleShipping::Ups; end
 
-require 'simple_shipping/ups/request_builder'
 require 'simple_shipping/ups/client'
+
+require 'simple_shipping/ups/request'
+require 'simple_shipping/ups/request/ship_confirm_request'
+require 'simple_shipping/ups/request/shipment_request'
+
 require 'simple_shipping/ups/response'
+require 'simple_shipping/ups/response/ship_confirm_response'
+require 'simple_shipping/ups/response/shipment_response'
 
 require 'simple_shipping/ups/package_builder'
 require 'simple_shipping/ups/party_builder'

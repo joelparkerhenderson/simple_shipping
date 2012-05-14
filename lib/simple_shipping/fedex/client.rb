@@ -15,17 +15,24 @@ module SimpleShipping::Fedex
     set_required_credentials :key, :password, :account_number, :meter_number
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "fedex/ship_service_v10.wsdl")
 
+    def shipment_request(shipper, recipient, package, opts = {})
+      shipment = create_shipment(shipper, recipient, package, opts)
+      request = ShipmentRequest.new(@credentials, shipment)
+      execute(request)
+    end
+
+    def ship_confirm_request(shipper, recipient, package, opts = {})
+      fail "Not Implemented"
+    end
+
     # Sends ProcessShipmentRequest request to the Fedex service and returns
     # response wrapped in {Fedex::Response} object.
-    def request(shipper, recipient, package, opts = {})
-      extra_opts = opts.delete(:extra_opts) || {}
-      shipment = create_shipment(shipper, recipient, package, opts)
-
-      builder = RequestBuilder.new(@credentials)
-      savon_response = @client.request("ProcessShipmentRequest") do
-        soap.body = builder.build_request(shipment, extra_opts)
+    def execute(request)
+      savon_response = @client.request(request.type) do
+        soap.body = request.body
       end
-      Response.new(savon_response)
+
+      request.response(savon_response)
     end
   end
 end

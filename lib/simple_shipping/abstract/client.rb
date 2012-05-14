@@ -25,8 +25,8 @@ class SimpleShipping::Abstract::Client
 
   # Sends request and returns kind of {SimpleShipping::Abstract::Response}
   # The method must be redefined by subclasses.
-  def request(shipper, recipient, package, opts)
-    raise "#request should be implemented"
+  def execute(shipper, recipient, package, opts)
+    raise "#execute should be implemented"
   end
 
 
