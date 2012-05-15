@@ -3,7 +3,10 @@ module SimpleShipping
   # * {Fedex::Client}
   # * {Ups::Client}
   class Abstract::Client
-    class_attribute :required_credentials, :wsdl_document, :builder_class
+    class_attribute :required_credentials,
+                    :wsdl_document,
+                    :production_address,
+                    :testing_address
 
     # Sets credentials which should be validated.
     def self.set_required_credentials(*args)
@@ -15,21 +18,26 @@ module SimpleShipping
       self.wsdl_document = wsdl_path
     end
 
+    def self.set_production_address(address)
+      self.production_address = address
+    end
+
+    def self.set_testing_address(address)
+      self.testing_address = address
+    end
+
     # Creates instance of a client.
     # == Parameters:
     #   * credentials - a hash with credentials.
-    def initialize(credentials)
+    def initialize(options)
+      credentials = options.dup
+      live = credentials.delete(:live)
+
       validate_credentials(credentials)
       @credentials = OpenStruct.new(credentials)
       @client      = Savon::Client.new(wsdl_document)
+      @client.wsdl.endpoint = options[:live] ? self.class.production_address : self.class.testing_address
     end
-
-    # Sends request and returns kind of {SimpleShipping::Abstract::Response}
-    # The method must be redefined by subclasses.
-    def execute(shipper, recipient, package, opts)
-      raise "#execute should be implemented"
-    end
-
 
     # Validates all required credentials are passed.
     def validate_credentials(credentials)

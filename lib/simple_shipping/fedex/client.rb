@@ -13,7 +13,10 @@ module SimpleShipping::Fedex
   #  client.request(shipper, recipient, package) # => #<SimpleShipping::Fedex::Response ...>
   class Client < SimpleShipping::Abstract::Client
     set_required_credentials :key, :password, :account_number, :meter_number
+
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "fedex/ship_service_v10.wsdl")
+    set_testing_address     "https://wsbeta.fedex.com:443/web-services/ship"
+    set_production_address  "https://wsbeta.fedex.com:443/web-services/ship" # Not configured
 
     def shipment_request(shipper, recipient, package, opts = {})
       shipment = create_shipment(shipper, recipient, package, opts)

@@ -114,10 +114,7 @@
 	<!-- Ship Web Service-->
 	<wsdl:service name="ShipService">
 		<wsdl:port name="ShipPort" binding="tns:ShipBinding">
-			<!-- Production URL -->
 			<!-- <soap:address location="https://onlinetools.ups.com/webservices/Ship"/> -->
-			<!-- CIE (Customer Integration Environment) URL -->
-			<soap:address location="https://wwwcie.ups.com/webservices/Ship"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
