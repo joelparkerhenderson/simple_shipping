@@ -28,6 +28,11 @@ module SimpleShipping::Ups
       execute(request)
     end
 
+    def ship_accept_request(shipment_digest)
+      request =  ShipAcceptRequest.new(@credentials, shipment_digest)
+      execute(request)
+    end
+
     # Performs ShipmentRequest to UPS service.
     def execute(request)
       savon_response = @client.request(request.type) do

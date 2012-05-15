@@ -3,22 +3,6 @@ module SimpleShipping::Ups
   class Request < SimpleShipping::Abstract::Request
     REQUEST_OPTION = 'nonvalidate'
 
-    def initialize(credentials, shipment)
-      super(credentials)
-      @shipment = shipment
-    end
-
-    # Builds a request from {Shipment shipment} object.
-    def body(opts = {})
-      { 'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
-        },
-        'v11:Shipment' => ShipmentBuilder.build(@shipment, opts),
-        'v11:LabelSpecification' => label_specification,
-        :order! => ['v12:Request', 'v11:Shipment', 'v11:LabelSpecification']
-      }
-    end
-
     def header
       { 'v1:UPSSecurity' => {
           'v1:UsernameToken' => {

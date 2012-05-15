@@ -4,6 +4,10 @@ module SimpleShipping::Ups
       value_of(:shipment_results, :shipment_digest)
     end
 
+    def shipment_identification_number
+      value_of(:shipment_results, :shipment_identification_number)
+    end
+
     # Fetches the value of an XML attribute at the path specified as an array
     # of node names but appends the implicit namespace on to the front of the
     # path
