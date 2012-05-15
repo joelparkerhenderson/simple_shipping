@@ -29,14 +29,12 @@ module SimpleShipping
     # Should be implemented by subclass if subclass needs to do some validation.
     def validate; end
 
-
-    private
-
     def initialize(model = nil, opts = {})
       self.default_opts ||= {}
       @opts  = default_opts.merge(opts)
       @model = model
     end
+    private :initialize
 
     # Raises {ValidationError} if option has invalid value.
     def validate_inclusion_of(option, enumeration)
@@ -44,6 +42,6 @@ module SimpleShipping
         raise ValidationError.new("#{option} has an unavailable value(#{@opts[option]}). Available values are #{enumeration.keys.inspect}") 
       end
     end
-
+    private :validate_inclusion_of
   end
 end

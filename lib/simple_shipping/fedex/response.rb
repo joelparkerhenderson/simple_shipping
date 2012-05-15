@@ -1,3 +1,5 @@
-# A wrapper for Fedex response.
-class SimpleShipping::Fedex::Response < SimpleShipping::Abstract::Response
+module SimpleShipping::Fedex
+  # A wrapper for Fedex response.
+  class Response < SimpleShipping::Abstract::Response
+  end
 end

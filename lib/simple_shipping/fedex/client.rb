@@ -34,5 +34,6 @@ module SimpleShipping::Fedex
 
       request.response(savon_response)
     end
+    private :execute
   end
 end
