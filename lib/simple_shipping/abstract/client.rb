@@ -30,13 +30,14 @@ module SimpleShipping
     # == Parameters:
     #   * credentials - a hash with credentials.
     def initialize(options)
-      credentials = options.dup
-      live = credentials.delete(:live)
+      @options = options.dup
+      live = @options.delete(:live)
+      credentials = @options.delete(:credentials)
 
       validate_credentials(credentials)
       @credentials = OpenStruct.new(credentials)
       @client      = Savon::Client.new(wsdl_document)
-      @client.wsdl.endpoint = options[:live] ? self.class.production_address : self.class.testing_address
+      @client.wsdl.endpoint = live ? self.class.production_address : self.class.testing_address
     end
 
     # Validates all required credentials are passed.
@@ -56,5 +57,24 @@ module SimpleShipping
       shipment
     end
     private :create_shipment
+
+    def log_request(soap)
+      log_soap("request", soap)
+    end
+    private :log_request
+
+    def log_response(soap)
+      log_soap("response", soap)
+    end
+    private :log_response
+
+    def log_soap(name, soap)
+      if @options[:debug]
+        debug_path = @options.fetch(:debug_path, '.')
+        path = File.join(debug_path, "#{name}.xml")
+        File.open(path, 'w') {|f| f.write soap.to_xml}
+      end
+    end
+    private :log_soap
   end
 end

@@ -41,8 +41,10 @@ module SimpleShipping::Ups
         soap.namespaces['xmlns:v12'] = "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
         soap.header = request.header
         soap.body   = request.body
+        log_request(soap)
       end
 
+      log_response(savon_response)
       request.response(savon_response)
     rescue Savon::SOAP::Fault => e
       raise SimpleShipping::RequestError.new(e)
