@@ -8,5 +8,13 @@ module SimpleShipping::Ups
     def label_image_base64
       value_of(:shipment_results, :package_results, :shipping_label, :graphic_image)
     end
+
+    def label_html
+      Base64.decode64 value_of(:shipment_results, :package_results, :shipping_label, :html_image)
+    end
+
+    def receipt_html
+      Base64.decode64 value_of(:shipment_results, :control_log_receipt, :graphic_image)
+    end
   end
 end

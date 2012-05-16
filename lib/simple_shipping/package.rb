@@ -20,7 +20,9 @@ module SimpleShipping
   # * :box_10kg
   # * :box_25kg
   class Package < Abstract::Model
-    attr_accessor :length, :width, :height, :dimension_units, :weight, :weight_units, :packaging_type
+    attr_accessor :length, :width, :height, :dimension_units
+    attr_accessor :weight, :weight_units, :packaging_type
+    attr_accessor :insured_value, :declared_value
 
     validates_presence_of :length, :width, :height, :dimension_units, :if => :custom_package?
     validates_presence_of :weight, :weight_units
