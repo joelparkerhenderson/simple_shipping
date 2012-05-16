@@ -16,20 +16,20 @@ module SimpleShipping::Ups
     set_production_address  "https://onlinetools.ups.com/webservices/Ship"
     set_testing_address     "https://wwwcie.ups.com/webservices/Ship"
 
-    def shipment_request(shipper, recipient, package, opts = {})
-      shipment = create_shipment(shipper, recipient, package, opts)
-      request =  ShipmentRequest.new(@credentials, shipment)
+    def shipment_request(shipper, recipient, package, options = {})
+      shipment = create_shipment(shipper, recipient, package, options)
+      request =  ShipmentRequest.new(@credentials, shipment, options)
       execute(request)
     end
 
-    def ship_confirm_request(shipper, recipient, package, opts = {})
-      shipment = create_shipment(shipper, recipient, package, opts)
-      request =  ShipConfirmRequest.new(@credentials, shipment)
+    def ship_confirm_request(shipper, recipient, package, options = {})
+      shipment = create_shipment(shipper, recipient, package, options)
+      request =  ShipConfirmRequest.new(@credentials, shipment, options)
       execute(request)
     end
 
-    def ship_accept_request(shipment_digest)
-      request =  ShipAcceptRequest.new(@credentials, shipment_digest)
+    def ship_accept_request(shipment_digest, options = {})
+      request =  ShipAcceptRequest.new(@credentials, shipment_digest, options)
       execute(request)
     end
 

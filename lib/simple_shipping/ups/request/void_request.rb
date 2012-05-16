@@ -1,14 +1,15 @@
 module SimpleShipping::Ups
   class VoidRequest < Request
-    def initialize(credentials, shipment_identification_number, tracking_number = nil)
+    def initialize(credentials, shipment_identification_number, options = {})
       @credentials = credentials
       @shipment_identification_number = shipment_identification_number
-      @tracking_number = tracking_number
+      @tracking_number = options[:tracking_number]
+      @options = options
       @type = "v11:VoidShipmentRequest"
     end
 
     # Builds a request from {Shipment shipment} object.
-    def body(opts = {})
+    def body
       {
         'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
@@ -22,13 +23,12 @@ module SimpleShipping::Ups
       data = { 'v11:ShipmentIdentificationNumber' => @shipment_identification_number }
 
       if @tracking_number
-        data.merge!(
-          'v11:TrackingNumber' => @tracking_number,
-          :order! => ['v11:ShipmentIdentificationNumber', 'v11:TrackingNumber']
-        )
+        data['v11:TrackingNumber'] = @tracking_number
+        data[:order!] = ['v11:ShipmentIdentificationNumber', 'v11:TrackingNumber']
       end
 
       data
     end
+    private :void_shipment
   end
 end

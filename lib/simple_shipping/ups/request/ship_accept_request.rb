@@ -1,12 +1,13 @@
 module SimpleShipping::Ups
   class ShipAcceptRequest < Request
-    def initialize(credentials, shipment_digest)
+    def initialize(credentials, shipment_digest, options = {})
       @credentials = credentials
       @shipment_digest = shipment_digest
+      @options = options
       @type = "v11:ShipAcceptRequest"
     end
 
-    def body(opts = {})
+    def body
       { 'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
         },

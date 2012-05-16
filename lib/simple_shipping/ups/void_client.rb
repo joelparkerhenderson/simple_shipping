@@ -16,8 +16,8 @@ module SimpleShipping::Ups
     set_production_address  "https://onlinetools.ups.com/webservices/Void"
     set_testing_address     "https://wwwcie.ups.com/webservices/Void"
 
-    def void_request(shipment_identification_number, tracking_number = nil)
-      request =  VoidRequest.new(@credentials, shipment_identification_number, tracking_number)
+    def void_request(shipment_identification_number, options = {})
+      request =  VoidRequest.new(@credentials, shipment_identification_number, options)
       execute(request)
     end
 
