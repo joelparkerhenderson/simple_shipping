@@ -37,7 +37,7 @@ def gem_version
 end
 
 def gem_file_name
-  "iovation-#{gem_version}.gem"
+  "simple_shipping-#{gem_version}.gem"
 end
 
 namespace :gemfury do
