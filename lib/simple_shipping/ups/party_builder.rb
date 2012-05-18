@@ -1,6 +1,6 @@
-module SimpleShipping
+module SimpleShipping::Ups
   # Knows how to convert {Party} model to SOAP element for UPS
-  class Ups::PartyBuilder < Abstract::Builder
+  class PartyBuilder < SimpleShipping::Abstract::Builder
     # Builds a hash for Savon which represents {Party party}.
     def build
       contact = @model.contact
@@ -25,7 +25,7 @@ module SimpleShipping
 
     def validate
       if @opts[:shipper] && !@model.account_number
-        raise ValidationError.new("account_number is required for party who is shipper")
+        raise SimpleShipping::ValidationError.new("account_number is required for party who is shipper")
       end
     end
   end

@@ -58,3 +58,5 @@ tmp/*
 tmp/metric_fu/*
 # except for the _data directory to track metrical outputs
 !tmp/metric_fu/_data/
+
+script/ups_certification_package

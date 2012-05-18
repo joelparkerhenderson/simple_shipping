@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple_shipping"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey"]
-  s.date = "2012-05-09"
+  s.date = "2012-05-18"
   s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "lib/simple_shipping/abstract/builder.rb",
     "lib/simple_shipping/abstract/client.rb",
     "lib/simple_shipping/abstract/model.rb",
-    "lib/simple_shipping/abstract/request_builder.rb",
+    "lib/simple_shipping/abstract/request.rb",
     "lib/simple_shipping/abstract/response.rb",
     "lib/simple_shipping/address.rb",
     "lib/simple_shipping/contact.rb",
@@ -42,24 +42,37 @@ Gem::Specification.new do |s|
     "lib/simple_shipping/fedex/client.rb",
     "lib/simple_shipping/fedex/package_builder.rb",
     "lib/simple_shipping/fedex/party_builder.rb",
-    "lib/simple_shipping/fedex/request_builder.rb",
+    "lib/simple_shipping/fedex/request.rb",
+    "lib/simple_shipping/fedex/request/shipment_request.rb",
     "lib/simple_shipping/fedex/response.rb",
+    "lib/simple_shipping/fedex/response/shipment_response.rb",
     "lib/simple_shipping/fedex/shipment_builder.rb",
     "lib/simple_shipping/package.rb",
     "lib/simple_shipping/party.rb",
     "lib/simple_shipping/shipment.rb",
     "lib/simple_shipping/ups.rb",
-    "lib/simple_shipping/ups/client.rb",
     "lib/simple_shipping/ups/package_builder.rb",
     "lib/simple_shipping/ups/party_builder.rb",
-    "lib/simple_shipping/ups/request_builder.rb",
+    "lib/simple_shipping/ups/request.rb",
+    "lib/simple_shipping/ups/request/ship_accept_request.rb",
+    "lib/simple_shipping/ups/request/ship_confirm_request.rb",
+    "lib/simple_shipping/ups/request/shipment_request.rb",
+    "lib/simple_shipping/ups/request/void_request.rb",
     "lib/simple_shipping/ups/response.rb",
+    "lib/simple_shipping/ups/response/ship_accept_response.rb",
+    "lib/simple_shipping/ups/response/ship_confirm_response.rb",
+    "lib/simple_shipping/ups/response/shipment_response.rb",
+    "lib/simple_shipping/ups/response/void_response.rb",
+    "lib/simple_shipping/ups/ship_client.rb",
     "lib/simple_shipping/ups/shipment_builder.rb",
+    "lib/simple_shipping/ups/void_client.rb",
+    "script/ups_certification.rb",
     "simple_shipping.gemspec",
     "spec/simple_shipping/address_spec.rb",
     "spec/simple_shipping/contact_spec.rb",
     "spec/simple_shipping/fedex/package_builder_spec.rb",
     "spec/simple_shipping/fedex/party_builder_spec.rb",
+    "spec/simple_shipping/fedex/response/shipment_reponse_spec.rb",
     "spec/simple_shipping/fedex/response_spec.rb",
     "spec/simple_shipping/fedex/shipment_builder_spec.rb",
     "spec/simple_shipping/package_spec.rb",
@@ -67,6 +80,7 @@ Gem::Specification.new do |s|
     "spec/simple_shipping/shipment_spec.rb",
     "spec/simple_shipping/ups/package_builder_spec.rb",
     "spec/simple_shipping/ups/party_builder_spec.rb",
+    "spec/simple_shipping/ups/response/shipment_response_spec.rb",
     "spec/simple_shipping/ups/response_spec.rb",
     "spec/simple_shipping/ups/shipment_builder_spec.rb",
     "spec/spec_helper.rb",
@@ -80,13 +94,13 @@ Gem::Specification.new do |s|
     "spec/support/shared_behaviours/builders_behaviour.rb",
     "spec/support/shared_behaviours/responses_behaviour.rb",
     "wsdl/fedex/ship_service_v10.wsdl",
-    "wsdl/ups/Ship-production.wsdl",
-    "wsdl/ups/Ship-testing.wsdl"
+    "wsdl/ups/Ship.wsdl",
+    "wsdl/ups/Void.wsdl"
   ]
   s.homepage = "http://github.com/greyblake/simple_shipping"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.17"
+  s.rubygems_version = "1.8.21"
   s.summary = "Interacts with UPS and FedEx APIs"
 
   if s.respond_to? :specification_version then
@@ -105,6 +119,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<roodi>, ["~> 2.1.0"])
       s.add_development_dependency(%q<gemfury>, [">= 0"])
       s.add_development_dependency(%q<json_pure>, [">= 0"])
+      s.add_development_dependency(%q<forgery>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
     else
@@ -120,6 +135,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<roodi>, ["~> 2.1.0"])
       s.add_dependency(%q<gemfury>, [">= 0"])
       s.add_dependency(%q<json_pure>, [">= 0"])
+      s.add_dependency(%q<forgery>, [">= 0"])
       s.add_dependency(%q<ruby-debug>, [">= 0"])
       s.add_dependency(%q<ruby-debug19>, [">= 0"])
     end
@@ -136,6 +152,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<roodi>, ["~> 2.1.0"])
     s.add_dependency(%q<gemfury>, [">= 0"])
     s.add_dependency(%q<json_pure>, [">= 0"])
+    s.add_dependency(%q<forgery>, [">= 0"])
     s.add_dependency(%q<ruby-debug>, [">= 0"])
     s.add_dependency(%q<ruby-debug19>, [">= 0"])
   end

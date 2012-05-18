@@ -17,6 +17,3 @@ require 'simple_shipping/contact'
 require 'simple_shipping/package'
 require 'simple_shipping/party'
 require 'simple_shipping/shipment'
-
-require 'simple_shipping/fedex'
-require 'simple_shipping/ups'

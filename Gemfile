@@ -14,6 +14,7 @@ group :development do
   gem "roodi"  , "~> 2.1.0"
   gem "gemfury", :require => false
   gem "json_pure"
+  gem "forgery"
 
   gem "ruby-debug"  , :platforms => :ruby_18
   gem "ruby-debug19", :platforms => :ruby_19

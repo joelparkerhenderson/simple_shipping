@@ -30,12 +30,11 @@ module SimpleShipping
         "validate submodel #{@attribute.inspect} as instance of #{@class}"
       end
 
-      private
-
       def has_error?
         @model.valid?
         !!@model.errors.messages[@attribute]
       end
+      private :has_error?
     end
 
     def validate_submodel(attr_name)

@@ -1,50 +1,80 @@
-# Abstract class which provides common interfaces for the next concrete clients:
-# * {Fedex::Client}
-# * {Ups::Client}
-class SimpleShipping::Abstract::Client
-  class_attribute :required_credentials, :wsdl_document, :builder_class
+module SimpleShipping
+  # Abstract class which provides common interfaces for the next concrete clients:
+  # * {Fedex::Client}
+  # * {Ups::Client}
+  class Abstract::Client
+    class_attribute :required_credentials,
+                    :wsdl_document,
+                    :production_address,
+                    :testing_address
 
-  # Sets credentials which should be validated.
-  def self.set_required_credentials(*args)
-    self.required_credentials = args
-  end
+    # Sets credentials which should be validated.
+    def self.set_required_credentials(*args)
+      self.required_credentials = args
+    end
 
-  # Sets WSDL document used by Savon.
-  def self.set_wsdl_document(wsdl_path)
-    self.wsdl_document = wsdl_path
-  end
+    # Sets WSDL document used by Savon.
+    def self.set_wsdl_document(wsdl_path)
+      self.wsdl_document = wsdl_path
+    end
 
-  # Creates instance of a client.
-  # == Parameters:
-  #   * credentials - a hash with credentials.
-  def initialize(credentials)
-    validate_credentials(credentials)
-    @credentials = OpenStruct.new(credentials)
-    @client      = Savon::Client.new(wsdl_document)
-  end
+    def self.set_production_address(address)
+      self.production_address = address
+    end
 
-  # Sends request and returns kind of {SimpleShipping::Abstract::Response}
-  # The method must be redefined by subclasses.
-  def request(shipper, recipient, package, opts)
-    raise "#request should be implemented"
-  end
+    def self.set_testing_address(address)
+      self.testing_address = address
+    end
 
+    # Creates instance of a client.
+    # == Parameters:
+    #   * credentials - a hash with credentials.
+    def initialize(options)
+      @options = options.dup
+      live = @options.delete(:live)
+      credentials = @options.delete(:credentials)
 
-  private 
+      validate_credentials(credentials)
+      @credentials = OpenStruct.new(credentials)
+      @client      = Savon::Client.new(wsdl_document)
+      @client.wsdl.endpoint = live ? self.class.production_address : self.class.testing_address
+    end
 
-  # Validates all required credentials are passed.
-  def validate_credentials(credentials)
-    credentials.assert_valid_keys(required_credentials)
-    missing = required_credentials - credentials.keys
-    raise(Error.new "The next credentials are missing for #{self}: #{missing.join(', ')}") unless missing.empty?
-  end
+    # Validates all required credentials are passed.
+    def validate_credentials(credentials)
+      credentials.assert_valid_keys(required_credentials)
+      missing = required_credentials - credentials.keys
+      raise(Error.new "The next credentials are missing for #{self}: #{missing.join(', ')}") unless missing.empty?
+    end
+    private :validate_credentials
 
-  # Builds {Shipment shipment} model
-  def create_shipment(shipper, recipient, package, opts = {})
-    shipment = SimpleShipping::Shipment.new(:shipper   => shipper,
-                                            :recipient => recipient,
-                                            :package   => package)
-    shipment.payor = opts[:payor] if opts[:payor]
-    shipment
+    # Builds {Shipment shipment} model
+    def create_shipment(shipper, recipient, package, opts = {})
+      shipment = SimpleShipping::Shipment.new(:shipper   => shipper,
+                                              :recipient => recipient,
+                                              :package   => package)
+      shipment.payor = opts[:payor] if opts[:payor]
+      shipment
+    end
+    private :create_shipment
+
+    def log_request(soap)
+      log_soap("request", soap)
+    end
+    private :log_request
+
+    def log_response(soap)
+      log_soap("response", soap)
+    end
+    private :log_response
+
+    def log_soap(name, soap)
+      if @options[:debug]
+        debug_path = @options.fetch(:debug_path, '.')
+        path = File.join(debug_path, "#{name}.xml")
+        File.open(path, 'w') {|f| f.write soap.to_xml}
+      end
+    end
+    private :log_soap
   end
 end

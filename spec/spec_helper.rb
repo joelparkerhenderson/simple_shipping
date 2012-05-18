@@ -2,6 +2,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'simple_shipping'
+require 'simple_shipping/fedex'
+require 'simple_shipping/ups'
 require 'ruby-debug'
 
 
