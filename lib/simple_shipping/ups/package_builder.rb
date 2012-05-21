@@ -60,7 +60,7 @@ module SimpleShipping::Ups
     # Build a hash from a custom {Package package} which will be used by Savon.
     # A custom package requires specification of LWH dimensions.
     def custom_package
-      base_package do |package|
+      base_package.tap do |package|
         package['v11:Dimensions'] = {
           'v11:UnitOfMeasurement' => {
             'v11:Code' => DIMENSION_UNITS[@model.dimension_units]
@@ -70,14 +70,14 @@ module SimpleShipping::Ups
           'v11:Height' => @model.height,
           :order! => ['v11:UnitOfMeasurement', 'v11:Length', 'v11:Width', 'v11:Height']
         }
-        package[:order!] = ['v11:Packaging', 'v11:Dimensions', 'v11:PackageWeight']
+        package[:order!] = ['v11:Packaging', 'v11:PackageServiceOptions', 'v11:Dimensions', 'v11:PackageWeight']
       end
     end
 
     # Build a hash from a standard {Package package} which will be used by Savon.
     # A standard package requires no specification of LWH dimensions.
     def standard_package
-      base_package do |package| 
+      base_package.tap do |package| 
         package[:order!] = ['v11:Packaging', 'v11:PackageServiceOptions', 'v11:PackageWeight']
       end
     end
