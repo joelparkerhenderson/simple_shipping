@@ -14,7 +14,7 @@ module SimpleShipping::Ups
 
     def build_address
       addr = @model.address
-      {'v11:AddressLine'       => addr.street_line,
+      {'v11:AddressLine'       => [addr.street_line, addr.street_line_2, addr.street_line_3].compact,
        'v11:City'              => addr.city,
        'v11:StateProvinceCode' => addr.state_code,
        'v11:PostalCode'        => addr.postal_code,

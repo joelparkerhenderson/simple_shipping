@@ -8,6 +8,8 @@ describe SimpleShipping::Address do
     it { should have_attribute :state_code }
     it { should have_attribute :city }
     it { should have_attribute :street_line }
+    it { should have_attribute :street_line_2 }
+    it { should have_attribute :street_line_3 }
     it { should have_attribute :postal_code }
   end
 
