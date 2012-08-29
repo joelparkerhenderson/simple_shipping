@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem 'activesupport' , '~> 3.1.3'
-gem 'activemodel'   , '~> 3.1.3'
+gem 'activesupport' , '~> 3.1'
+gem 'activemodel'   , '~> 3.1'
 gem 'savon'
 
 group :development do
