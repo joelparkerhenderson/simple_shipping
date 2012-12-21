@@ -23,8 +23,12 @@ Jeweler::Tasks.new do |gem|
     used to create shipping labels so a customer can send a package
     postage-free}
   gem.email = "blake131313@gmail.com"
-  gem.authors = ["Potapov Sergey"]
-  # dependencies defined in Gemfile
+  gem.authors = ["Potapov Sergey", "Zachary Belzer"]
+
+  gem.add_dependency 'gyoku', '~> 0.4.0'
+  gem.add_dependency 'savon', '~> 0.9.0'
+  gem.add_dependency 'activesupport', '~> 3.1'
+  gem.add_dependency 'activemodel', '~> 3.1'
 end
 
 # Jeweler functions
