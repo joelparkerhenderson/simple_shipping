@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple_shipping"
-  s.version = "0.0.8"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Potapov Sergey"]
-  s.date = "2012-08-29"
+  s.authors = ["Potapov Sergey", "Zachary Belzer"]
+  s.date = "2012-12-26"
   s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
@@ -100,7 +100,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/greyblake/simple_shipping"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.17"
+  s.rubygems_version = "1.8.24"
   s.summary = "Interacts with UPS and FedEx APIs"
 
   if s.respond_to? :specification_version then
@@ -109,7 +109,8 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_runtime_dependency(%q<activemodel>, ["~> 3.1"])
-      s.add_runtime_dependency(%q<savon>, [">= 0"])
+      s.add_runtime_dependency(%q<gyoku>, ["~> 0.4.0"])
+      s.add_runtime_dependency(%q<savon>, ["~> 0.9.0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
@@ -125,7 +126,8 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_dependency(%q<activemodel>, ["~> 3.1"])
-      s.add_dependency(%q<savon>, [">= 0"])
+      s.add_dependency(%q<gyoku>, ["~> 0.4.0"])
+      s.add_dependency(%q<savon>, ["~> 0.9.0"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
@@ -142,7 +144,8 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<activesupport>, ["~> 3.1"])
     s.add_dependency(%q<activemodel>, ["~> 3.1"])
-    s.add_dependency(%q<savon>, [">= 0"])
+    s.add_dependency(%q<gyoku>, ["~> 0.4.0"])
+    s.add_dependency(%q<savon>, ["~> 0.9.0"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, [">= 0"])

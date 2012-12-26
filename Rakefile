@@ -23,7 +23,7 @@ Jeweler::Tasks.new do |gem|
     used to create shipping labels so a customer can send a package
     postage-free}
   gem.email = "blake131313@gmail.com"
-  gem.authors = ["Potapov Sergey"]
+  gem.authors = ["Potapov Sergey", "Zachary Belzer"]
   # dependencies defined in Gemfile
 end
 
