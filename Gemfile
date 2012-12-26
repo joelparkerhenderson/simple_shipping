@@ -1,6 +1,5 @@
 source "http://rubygems.org"
 
-# gemspec is freezing here, so I'll just repeat the gemspec
 gem 'activesupport' , '~> 3.1'
 gem 'activemodel'   , '~> 3.1'
 gem 'gyoku', '~> 0.4.0'
