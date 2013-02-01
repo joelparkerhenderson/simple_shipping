@@ -35,18 +35,18 @@ module SimpleShipping::Ups
 
     # Performs ShipmentRequest to UPS service.
     def execute(request)
-      savon_response = @client.request(request.type) do
-        soap.namespaces['xmlns:v1']  = "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
-        soap.namespaces['xmlns:v11'] = "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
-        soap.namespaces['xmlns:v12'] = "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
-        soap.header = request.header
-        soap.body   = request.body
-        log_request(soap)
+      savon_response = @client.call(request.type) do |locals|
+        locals.namespaces['xmlns:v1']  = "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
+        locals.namespaces['xmlns:v11'] = "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
+        locals.namespaces['xmlns:v12'] = "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
+        locals.header = request.header
+        locals.message   = request.body
+        log_request(locals)
       end
 
       log_response(savon_response)
       request.response(savon_response)
-    rescue Savon::SOAP::Fault => e
+    rescue Savon::SOAPFault => e
       raise SimpleShipping::RequestError.new(e)
     end
     private :execute

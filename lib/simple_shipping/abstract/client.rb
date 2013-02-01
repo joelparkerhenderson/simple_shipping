@@ -36,8 +36,11 @@ module SimpleShipping
 
       validate_credentials(credentials)
       @credentials = OpenStruct.new(credentials)
-      @client      = Savon::Client.new(wsdl_document)
-      @client.wsdl.endpoint = live ? self.class.production_address : self.class.testing_address
+      endpoint = live ? self.class.production_address : self.class.testing_address
+      @client      = Savon.client(
+        :wsdl     => wsdl_document,
+        :endpoint => endpoint
+      )
     end
 
     # Validates all required credentials are passed.

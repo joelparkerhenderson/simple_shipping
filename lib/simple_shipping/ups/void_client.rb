@@ -34,7 +34,7 @@ module SimpleShipping::Ups
 
       log_response(savon_response)
       request.response(savon_response)
-    rescue Savon::SOAP::Fault => e
+    rescue Savon::SOAPFault => e
       raise SimpleShipping::RequestError.new(e)
     end
     private :execute
