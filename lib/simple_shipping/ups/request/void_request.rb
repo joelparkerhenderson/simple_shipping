@@ -11,11 +11,11 @@ module SimpleShipping::Ups
     # Builds a request from {Shipment shipment} object.
     def body
       {
-        'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
+        'common:Request' => {
+          'common:RequestOption' => REQUEST_OPTION
         },
         'VoidShipment' => void_shipment,
-        :order! => ['v12:Request', 'VoidShipment']
+        :order! => ['common:Request', 'VoidShipment']
       }
     end
 

@@ -9,12 +9,12 @@ module SimpleShipping::Ups
 
     # Builds a request from {Shipment shipment} object.
     def body
-      { 'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
+      { 'common:Request' => {
+          'common:RequestOption' => REQUEST_OPTION
         },
         'Shipment' => ShipmentBuilder.build(@shipment, @options),
         'LabelSpecification' => label_specification,
-        :order! => ['v12:Request', 'Shipment', 'LabelSpecification']
+        :order! => ['common:Request', 'Shipment', 'LabelSpecification']
       }
     end
   end

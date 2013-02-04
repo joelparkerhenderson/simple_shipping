@@ -15,9 +15,9 @@ module SimpleShipping::Ups
       super.deep_merge(
         :element_form_default => :qualified,
         :namespaces => {
-          'xmlns:v1'  => "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0",
-          'xmlns:ship' => "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0",
-          'xmlns:v12' => "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
+          'xmlns:upss'   => "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0",
+          'xmlns:ship'   => "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0",
+          'xmlns:common' => "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
           #soap.namespaces['xmlns:v11'] = "http://www.ups.com/XMLSchema/XOLTWS/Void/v1.1"
         },
         :soap_header => soap_header

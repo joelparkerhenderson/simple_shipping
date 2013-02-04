@@ -8,11 +8,11 @@ module SimpleShipping::Ups
     end
 
     def body
-      { 'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
+      { 'common:Request' => {
+          'common:RequestOption' => REQUEST_OPTION
         },
         'ShipmentDigest' => @shipment_digest,
-        :order! => ['v12:Request', 'ShipmentDigest']
+        :order! => ['common:Request', 'ShipmentDigest']
       }
     end
   end
