@@ -28,16 +28,16 @@ module SimpleShipping::Ups
     # @return [Hash] of SOAP envelope header contents
     def soap_header
       {
-        'v1:UPSSecurity' => {
-          'v1:UsernameToken' => {
-            'v1:Username' => @credentials.username,
-            'v1:Password' => @credentials.password,
-            :order!    => ['v1:Username', 'v1:Password']
+        'upss:UPSSecurity' => {
+          'upss:UsernameToken' => {
+            'upss:Username' => @credentials.username,
+            'upss:Password' => @credentials.password,
+            :order!    => ['upss:Username', 'upss:Password']
           },
-          'v1:ServiceAccessToken' => {
-            'v1:AccessLicenseNumber' => @credentials.access_license_number
+          'upss:ServiceAccessToken' => {
+            'upss:AccessLicenseNumber' => @credentials.access_license_number
           },
-          :order! => {'v1:UsernameToken', 'v1:ServiceAccessToken'}
+          :order! => {'upss:UsernameToken', 'upss:ServiceAccessToken'}
         }
       }
     end
