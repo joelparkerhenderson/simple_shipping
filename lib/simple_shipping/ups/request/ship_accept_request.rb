@@ -4,7 +4,7 @@ module SimpleShipping::Ups
       @credentials = credentials
       @shipment_digest = shipment_digest
       @options = options
-      @type = "v11:ShipAcceptRequest"
+      @type = :prcoess_ship_accept
     end
 
     def body

@@ -5,7 +5,7 @@ module SimpleShipping::Ups
       @shipment_identification_number = shipment_identification_number
       @tracking_number = options[:tracking_number]
       @options = options
-      @type = "v11:VoidShipmentRequest"
+      @type = :process_void_shipment
     end
 
     # Builds a request from {Shipment shipment} object.

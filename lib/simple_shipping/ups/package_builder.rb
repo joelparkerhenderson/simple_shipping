@@ -26,10 +26,10 @@ module SimpleShipping::Ups
     }
 
     # Custom package order
-    CUSTOM_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:Dimensions v11:PackageWeight).freeze
+    CUSTOM_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:Dimensions v11:PackageWeight)
 
     # Standard package order
-    STANDARD_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:PackageWeight).freeze
+    STANDARD_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:PackageWeight)
 
     def base_package
       base = {
@@ -69,14 +69,14 @@ module SimpleShipping::Ups
       base_package.tap do |package|
         package['v11:Dimensions'] = {
           'v11:UnitOfMeasurement' => {
-            'v11:Code' => DIMENSION_UNITS[@model.dimension_units]
+            'v11:Code' => DIMENSION_UNITS[@model.dimension_units].clone
           },
           'v11:Length' => @model.length,
           'v11:Width'  => @model.width,
           'v11:Height' => @model.height,
           :order! => ['v11:UnitOfMeasurement', 'v11:Length', 'v11:Width', 'v11:Height']
         }
-        package[:order!] = CUSTOM_PACKAGE_ORDER
+        package[:order!] = CUSTOM_PACKAGE_ORDER.clone
       end
     end
 
@@ -84,7 +84,7 @@ module SimpleShipping::Ups
     # A standard package requires no specification of LWH dimensions.
     def standard_package
       base_package.tap do |package| 
-        package[:order!] = STANDARD_PACKAGE_ORDER
+        package[:order!] = STANDARD_PACKAGE_ORDER.clone
       end
     end
 

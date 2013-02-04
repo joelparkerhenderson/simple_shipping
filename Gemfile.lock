@@ -87,11 +87,11 @@ GEM
       archive-tar-minitar (>= 0.5.2)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
-    savon (2.0.3)
+    savon (2.1.0)
       akami (~> 1.2.0)
       builder (>= 2.1.2)
       gyoku (~> 1.0.0)
-      httpi (~> 2.0.0)
+      httpi (~> 2.0.2)
       nokogiri (>= 1.4.0)
       nori (~> 2.0.3)
       wasabi (~> 3.0.0)
@@ -120,5 +120,5 @@ DEPENDENCIES
   rspec (~> 2.3.0)
   ruby-debug
   ruby-debug19
-  savon (~> 2.0)
+  savon (~> 2.1)
   yard (~> 0.6.0)

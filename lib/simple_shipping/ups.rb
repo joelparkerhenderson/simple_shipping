@@ -1,5 +1,6 @@
 module SimpleShipping::Ups; end
 
+require 'simple_shipping/ups/client'
 require 'simple_shipping/ups/ship_client'
 require 'simple_shipping/ups/void_client'
 

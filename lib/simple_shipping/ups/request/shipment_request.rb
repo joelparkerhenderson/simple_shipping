@@ -4,7 +4,7 @@ module SimpleShipping::Ups
       @credentials = credentials
       @shipment = shipment
       @options = options
-      @type = "v11:ShipmentRequest"
+      @type = :process_shipment
     end
 
     # Builds a request from {Shipment shipment} object.

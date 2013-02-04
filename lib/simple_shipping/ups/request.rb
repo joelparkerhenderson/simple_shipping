@@ -3,20 +3,6 @@ module SimpleShipping::Ups
   class Request < SimpleShipping::Abstract::Request
     REQUEST_OPTION = 'nonvalidate'
 
-    def header
-      { 'v1:UPSSecurity' => {
-          'v1:UsernameToken' => {
-            'v1:Username' => credentials.username,
-            'v1:Password' => credentials.password,
-            :order!    => ['v1:Username', 'v1:Password']
-          },
-          'v1:ServiceAccessToken' => {
-            'v1:AccessLicenseNumber' => credentials.access_license_number
-          }
-        }
-      }
-    end
-
     def label_specification
       { 'v11:LabelImageFormat' => {'v11:Code' => 'GIF'},
         'v11:LabelStockSize' => {

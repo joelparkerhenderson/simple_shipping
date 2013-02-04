@@ -9,7 +9,7 @@ module SimpleShipping::Ups
 #                                             :password              => "PASSWORD",
 #                                             :access_license_number => "LICENSE NUMBER")
   #  client.request(shipper, recipient, package) # => #<SimpleShipping::Ups::Response ...>
-  class VoidClient < SimpleShipping::Abstract::Client
+  class VoidClient < Client
     set_required_credentials :username, :password, :access_license_number
 
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "ups/Void.wsdl")
@@ -23,15 +23,7 @@ module SimpleShipping::Ups
 
     # Performs ShipmentRequest to UPS service.
     def execute(request)
-      savon_response = @client.request(request.type) do
-        soap.namespaces['xmlns:v1']  = "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
-        soap.namespaces['xmlns:v11'] = "http://www.ups.com/XMLSchema/XOLTWS/Void/v1.1"
-        soap.namespaces['xmlns:v12'] = "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
-        soap.header = request.header
-        soap.body   = request.body
-        log_request(soap)
-      end
-
+      savon_response = @client.call(request.type, :message => request.body)
       log_response(savon_response)
       request.response(savon_response)
     rescue Savon::SOAPFault => e
