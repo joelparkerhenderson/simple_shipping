@@ -33,6 +33,18 @@ module SimpleShipping::Ups
       execute(request)
     end
 
+    def client_options
+      super.deep_merge(
+        :namespaces => {
+          # Savon parses have WSDL instead of XMLSchema which is not accepted by UPS
+          # So we have to again set namespace explicitly :( -- aignatev 20130204
+          'xmlns:ship' => "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
+        }
+      )
+    end
+    protected :client_options
+
+
     # Performs ShipmentRequest to UPS service.
     def execute(request)
       savon_response = @client.call(request.type, :message => request.body)
