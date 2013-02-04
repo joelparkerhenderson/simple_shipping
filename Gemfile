@@ -17,6 +17,15 @@ group :development do
   gem "forgery"
   gem 'rmagick'
 
-  gem "ruby-debug"  , :platforms => :ruby_18
-  gem "ruby-debug19", :platforms => :ruby_19
+  unless ENV['RM_INFO']
+    gem "ruby-debug"  , :platforms => :ruby_18
+    gem "ruby-debug19", :platforms => :ruby_19
+  end
+end
+
+group :test do
+  gem 'webmock'
+  gem 'timecop'
+  gem 'erubis'
+  gem 'equivalent-xml'
 end
