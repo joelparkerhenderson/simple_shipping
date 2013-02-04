@@ -29,7 +29,7 @@ module SimpleShipping::Ups
 
       shipper = SimpleShipping::Party.new(:contact => contact, :address => address)
       party = PartyBuilder.build(shipper)
-      party['v11:Address']['v11:AddressLine'].should have(3).addresses
+      party['Address']['AddressLine'].should have(3).addresses
     end
 
     it "should exclude nil addresses" do
@@ -41,7 +41,7 @@ module SimpleShipping::Ups
 
       shipper = SimpleShipping::Party.new(:contact => contact, :address => address)
       party = PartyBuilder.build(shipper)
-      party['v11:Address']['v11:AddressLine'].should have(2).addresses
+      party['Address']['AddressLine'].should have(2).addresses
     end
   end
 end

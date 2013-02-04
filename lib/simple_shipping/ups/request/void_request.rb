@@ -14,17 +14,17 @@ module SimpleShipping::Ups
         'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
         },
-        'v11:VoidShipment' => void_shipment,
-        :order! => ['v12:Request', 'v11:VoidShipment']
+        'VoidShipment' => void_shipment,
+        :order! => ['v12:Request', 'VoidShipment']
       }
     end
 
     def void_shipment
-      data = { 'v11:ShipmentIdentificationNumber' => @shipment_identification_number }
+      data = { 'ShipmentIdentificationNumber' => @shipment_identification_number }
 
       if @tracking_number
-        data['v11:TrackingNumber'] = @tracking_number
-        data[:order!] = ['v11:ShipmentIdentificationNumber', 'v11:TrackingNumber']
+        data['TrackingNumber'] = @tracking_number
+        data[:order!] = ['ShipmentIdentificationNumber', 'TrackingNumber']
       end
 
       data

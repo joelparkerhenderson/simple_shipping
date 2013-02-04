@@ -4,13 +4,13 @@ module SimpleShipping::Ups
     REQUEST_OPTION = 'nonvalidate'
 
     def label_specification
-      { 'v11:LabelImageFormat' => {'v11:Code' => 'GIF'},
-        'v11:LabelStockSize' => {
-          'v11:Height' => '6',
-          'v11:Width' => '4',
-          :order! => ['v11:Height', 'v11:Width']
+      { 'LabelImageFormat' => {'Code' => 'GIF'},
+        'LabelStockSize' => {
+          'Height' => '6',
+          'Width' => '4',
+          :order! => ['Height', 'Width']
         },
-        :order! => ['v11:LabelImageFormat', 'v11:LabelStockSize']
+        :order! => ['LabelImageFormat', 'LabelStockSize']
       }      
     end
 

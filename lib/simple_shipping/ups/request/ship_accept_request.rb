@@ -11,8 +11,8 @@ module SimpleShipping::Ups
       { 'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
         },
-        'v11:ShipmentDigest' => @shipment_digest,
-        :order! => ['v12:Request', 'v11:ShipmentDigest']
+        'ShipmentDigest' => @shipment_digest,
+        :order! => ['v12:Request', 'ShipmentDigest']
       }
     end
   end

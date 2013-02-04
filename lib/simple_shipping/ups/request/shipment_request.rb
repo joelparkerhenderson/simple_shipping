@@ -12,9 +12,9 @@ module SimpleShipping::Ups
       { 'v12:Request' => {
           'v12:RequestOption' => REQUEST_OPTION
         },
-        'v11:Shipment' => ShipmentBuilder.build(@shipment, @options),
-        'v11:LabelSpecification' => label_specification,
-        :order! => ['v12:Request', 'v11:Shipment', 'v11:LabelSpecification']
+        'Shipment' => ShipmentBuilder.build(@shipment, @options),
+        'LabelSpecification' => label_specification,
+        :order! => ['v12:Request', 'Shipment', 'LabelSpecification']
       }
     end
   end

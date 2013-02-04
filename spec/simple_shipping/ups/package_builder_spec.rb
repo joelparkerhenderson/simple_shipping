@@ -11,14 +11,14 @@ module SimpleShipping
       it "should include dimensions when packaging_type is 'your'" do
         package = @package.packaging_type = :your
         attributes = described_class.build(@package)
-        attributes.should have_key('v11:Dimensions')
+        attributes.should have_key('Dimensions')
       end
 
       (Ups::PackageBuilder::PACKAGING_TYPES.keys - [:your]).each do |type|
         it "should not include dimensions when packaging_type is '#{type}'" do
           package = @package.packaging_type = :envelope
           attributes = described_class.build(@package)
-          attributes.should_not have_key('v11:Dimensions')
+          attributes.should_not have_key('Dimensions')
         end
       end
     end
