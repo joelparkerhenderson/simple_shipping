@@ -11,7 +11,9 @@ module SimpleShipping::Ups
   #      i.e. UPSSecurity, Request/RequestOptions etc
   #
   class Client < SimpleShipping::Abstract::Client
-    def client_options
+
+    # @param [Hash] options Savon client options
+    def client_options(options = {})
       super.deep_merge(
         :element_form_default => :qualified,
         :namespaces => {

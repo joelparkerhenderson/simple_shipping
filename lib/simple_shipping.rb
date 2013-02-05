@@ -1,4 +1,4 @@
-require 'active_support/core_ext/class'
+require 'active_support/core_ext'
 require 'active_model'
 require 'savon'
 require 'ostruct'

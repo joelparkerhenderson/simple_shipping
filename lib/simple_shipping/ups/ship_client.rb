@@ -33,7 +33,8 @@ module SimpleShipping::Ups
       execute(request)
     end
 
-    def client_options
+    # @param [Hash] options Savon client options
+    def client_options(options = {})
       super.deep_merge(
         :namespaces => {
           # Savon parses have WSDL instead of XMLSchema which is not accepted by UPS
