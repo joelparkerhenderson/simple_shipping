@@ -1,19 +1,21 @@
-module SimpleShipping
-  WSDL_DIR = File.expand_path("../../wsdl", __FILE__)
-end
-
-
 require 'active_support/core_ext/class'
 require 'active_model'
 require 'savon'
-
 require 'ostruct'
 
-require 'simple_shipping/exceptions'
-require 'simple_shipping/abstract'
+module SimpleShipping
+  extend ActiveSupport::Autoload
 
-require 'simple_shipping/address'
-require 'simple_shipping/contact'
-require 'simple_shipping/package'
-require 'simple_shipping/party'
-require 'simple_shipping/shipment'
+  WSDL_DIR = File.expand_path("../../wsdl", __FILE__)
+
+  autoload :Abstract
+  autoload :Address
+  autoload :Contact
+  autoload :Package
+  autoload :Party
+  autoload :Shipment
+end
+
+require 'simple_shipping/exceptions'
+
+

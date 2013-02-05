@@ -1,6 +1,9 @@
 module SimpleShipping::Fedex
   # Builds complete for Fedex service.
   class Request < SimpleShipping::Abstract::Request
+    extend ActiveSupport::Autoload
+
+    autoload :ShipmentRequest
 
     def initialize(credentials, shipment)
       super(credentials)
