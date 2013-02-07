@@ -2,15 +2,12 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'simple_shipping'
-require 'simple_shipping/fedex'
-require 'simple_shipping/ups'
 
 require "savon/mock/spec_helper"
 require 'webmock/rspec'
 require "timecop"
 require "erubis"
 require 'equivalent-xml'
-
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

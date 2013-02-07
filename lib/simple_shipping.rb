@@ -14,6 +14,9 @@ module SimpleShipping
   autoload :Package
   autoload :Party
   autoload :Shipment
+
+  autoload :Ups
+  autoload :Fedex
 end
 
 require 'simple_shipping/exceptions'
