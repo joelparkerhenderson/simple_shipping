@@ -4,17 +4,17 @@ module SimpleShipping::Ups
       @credentials = credentials
       @shipment = shipment
       @options = options
-      @type = "v11:ShipmentRequest"
+      @type = :process_shipment
     end
 
     # Builds a request from {Shipment shipment} object.
     def body
-      { 'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
+      { 'common:Request' => {
+          'common:RequestOption' => REQUEST_OPTION
         },
-        'v11:Shipment' => ShipmentBuilder.build(@shipment, @options),
-        'v11:LabelSpecification' => label_specification,
-        :order! => ['v12:Request', 'v11:Shipment', 'v11:LabelSpecification']
+        'Shipment' => ShipmentBuilder.build(@shipment, @options),
+        'LabelSpecification' => label_specification,
+        :order! => ['common:Request', 'Shipment', 'LabelSpecification']
       }
     end
   end

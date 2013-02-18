@@ -96,7 +96,6 @@ You can customize request using specific for service options passing an options 
 You must have ImageMagick installed to run the demos.
 
 === Linux
-
 ==== Gentoo
 
   emerge -pv imagemagick
@@ -104,7 +103,7 @@ You must have ImageMagick installed to run the demos.
 
 ==== Ubuntu
 
-  apt-get install imagemagick
+  sudo apt-get install imagemagick libmagic-dev libmagicwand-dev
 
 === OS X
 

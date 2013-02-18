@@ -31,10 +31,7 @@ module SimpleShipping::Fedex
     # Sends ProcessShipmentRequest request to the Fedex service and returns
     # response wrapped in {Fedex::Response} object.
     def execute(request)
-      savon_response = @client.request(request.type) do
-        soap.body = request.body
-      end
-
+      savon_response = @client.call(request.type, :message => request.body)
       request.response(savon_response)
     end
     private :execute

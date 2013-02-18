@@ -1,20 +1,27 @@
-module SimpleShipping::Ups; end
+module SimpleShipping::Ups
+  extend ActiveSupport::Autoload
 
-require 'simple_shipping/ups/ship_client'
-require 'simple_shipping/ups/void_client'
+  autoload :Client
+  autoload :ShipClient
+  autoload :VoidClient
 
-require 'simple_shipping/ups/request'
-require 'simple_shipping/ups/request/ship_confirm_request'
-require 'simple_shipping/ups/request/ship_accept_request'
-require 'simple_shipping/ups/request/shipment_request'
-require 'simple_shipping/ups/request/void_request'
+  autoload :Request
+  autoload :Response
+  autoload :PackageBuilder
+  autoload :PartyBuilder
+  autoload :SharedResponseAttributes
+  autoload :ShipmentBuilder
 
-require 'simple_shipping/ups/response'
-require 'simple_shipping/ups/response/ship_confirm_response'
-require 'simple_shipping/ups/response/ship_accept_response'
-require 'simple_shipping/ups/response/shipment_response'
-require 'simple_shipping/ups/response/void_response'
+  autoload :ShipConfirmResponse
+  autoload :ShipAcceptResponse
+  autoload :ShipmentResponse
+  autoload :VoidResponse
 
-require 'simple_shipping/ups/package_builder'
-require 'simple_shipping/ups/party_builder'
-require 'simple_shipping/ups/shipment_builder'
+  autoload :ShipConfirmRequest
+  autoload :ShipAcceptRequest
+  autoload :ShipmentRequest
+  autoload :VoidRequest
+end
+
+
+

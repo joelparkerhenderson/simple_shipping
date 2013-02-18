@@ -26,35 +26,35 @@ module SimpleShipping::Ups
 
     # Return a hash for Savon representing a shipment model.
     def build
-      { 'v11:Shipper'            => PartyBuilder.build(@model.shipper, :shipper => true),
-        'v11:ShipTo'             => PartyBuilder.build(@model.recipient),
-        'v11:PaymentInformation' => build_payment_info,
-        'v11:Service'            => build_service,
-        'v11:Package'            => PackageBuilder.build(@model.package),
-        :order! => ['v11:Shipper', 'v11:ShipTo', 'v11:PaymentInformation', 'v11:Service', 'v11:Package'] }
+      { 'Shipper'            => PartyBuilder.build(@model.shipper, :shipper => true),
+        'ShipTo'             => PartyBuilder.build(@model.recipient),
+        'PaymentInformation' => build_payment_info,
+        'Service'            => build_service,
+        'Package'            => PackageBuilder.build(@model.package),
+        :order! => ['Shipper', 'ShipTo', 'PaymentInformation', 'Service', 'Package'] }
     end
 
     # Return the PaymentInformation hash.
     def build_payment_info
-      {'v11:ShipmentCharge' => build_shipment_charge }
+      {'ShipmentCharge' => build_shipment_charge }
     end
 
     # Return the shipment charge for the PaymentInformation hash.
     def build_shipment_charge
-      result = {'v11:Type' => PAYMENT_TYPE, :order! => ['v11:Type']}
+      result = {'Type' => PAYMENT_TYPE, :order! => ['Type']}
       if @model.payor == :shipper
-        result['v11:BillShipper'] = {'v11:AccountNumber' => @model.shipper.account_number}
-        result[:order!] << 'v11:BillShipper'
+        result['BillShipper'] = {'AccountNumber' => @model.shipper.account_number}
+        result[:order!] << 'BillShipper'
       else
-        result['v11:BillReceiver'] = {'v11:AccountNumber' => @model.recipient.account_number}
-        result[:order!] << 'v11:BillReceiver'
+        result['BillReceiver'] = {'AccountNumber' => @model.recipient.account_number}
+        result[:order!] << 'BillReceiver'
       end
       result
     end
 
     # Return the hash representing the Service.
     def build_service
-      {'v11:Code' => SERVICE_TYPES[@opts[:service_type]]}
+      {'Code' => SERVICE_TYPES[@opts[:service_type]]}
     end
 
     # Validate that the service type is included.

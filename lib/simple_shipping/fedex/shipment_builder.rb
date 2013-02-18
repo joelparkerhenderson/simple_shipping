@@ -65,9 +65,9 @@ module SimpleShipping::Fedex
        'RateRequestTypes'          => RATE_REQUEST_TYPE,
        'PackageCount'              => PACKAGE_COUNT,
        'RequestedPackageLineItems' => PackageBuilder.build(@model.package),
-       :order! => ['ins0:ShipTimestamp', 'ins0:DropoffType'           , 'ins0:ServiceType'       , 'ins0:PackagingType'   , 'ins0:Shipper',
-                   'ins0:Recipient'    , 'ins0:ShippingChargesPayment', 'ins0:LabelSpecification', 'ins0:RateRequestTypes', 'ins0:PackageCount',
-                   'ins0:RequestedPackageLineItems']
+       :order! => ['ShipTimestamp', 'DropoffType'           , 'ServiceType'       , 'PackagingType'   , 'Shipper',
+                   'Recipient'    , 'ShippingChargesPayment', 'LabelSpecification', 'RateRequestTypes', 'PackageCount',
+                   'RequestedPackageLineItems']
       }
     end
 
@@ -85,7 +85,7 @@ module SimpleShipping::Fedex
     def shipping_charges_payment
       {'PaymentType' => payment_type,
        'Payor'       => {'AccountNumber' => @model.payor_account_number},
-       :order! => ['ins0:PaymentType', 'ins0:Payor']}
+       :order! => ['PaymentType', 'Payor']}
     end
     private :shipping_charges_payment
 
@@ -98,7 +98,7 @@ module SimpleShipping::Fedex
       { 'LabelFormatType' => 'COMMON2D',
         'ImageType'       => 'PNG',
         'LabelStockType'  => 'PAPER_4X6',
-        :order! => ['ins0:LabelFormatType', 'ins0:ImageType', 'ins0:LabelStockType'] }
+        :order! => ['LabelFormatType', 'ImageType', 'LabelStockType'] }
     end
     private :label_speicfication
   end

@@ -9,7 +9,7 @@ module SimpleShipping::Ups
   #                                             :password              => "PASSWORD",
   #                                             :access_license_number => "LICENSE NUMBER")
   #  client.request(shipper, recipient, package) # => #<SimpleShipping::Ups::Response ...>
-  class ShipClient < SimpleShipping::Abstract::Client
+  class ShipClient < Client
     set_required_credentials :username, :password, :access_license_number
 
     set_wsdl_document       File.join(SimpleShipping::WSDL_DIR, "ups/Ship.wsdl")
@@ -33,20 +33,25 @@ module SimpleShipping::Ups
       execute(request)
     end
 
+    # @param [Hash] options Savon client options
+    def client_options(options = {})
+      super.deep_merge(
+        :namespaces => {
+          # Savon parses have WSDL instead of XMLSchema which is not accepted by UPS
+          # So we have to again set namespace explicitly :( -- aignatev 20130204
+          'xmlns:ship' => "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
+        }
+      )
+    end
+    protected :client_options
+
+
     # Performs ShipmentRequest to UPS service.
     def execute(request)
-      savon_response = @client.request(request.type) do
-        soap.namespaces['xmlns:v1']  = "http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
-        soap.namespaces['xmlns:v11'] = "http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
-        soap.namespaces['xmlns:v12'] = "http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
-        soap.header = request.header
-        soap.body   = request.body
-        log_request(soap)
-      end
-
+      savon_response = @client.call(request.type, :message => request.body)
       log_response(savon_response)
       request.response(savon_response)
-    rescue Savon::SOAP::Fault => e
+    rescue Savon::SOAPFault => e
       raise SimpleShipping::RequestError.new(e)
     end
     private :execute

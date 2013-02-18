@@ -2,7 +2,7 @@ module SimpleShipping::Fedex
   class ShipmentRequest < Request
     def initialize(credentials, shipment)
       super
-      @type = "ProcessShipmentRequest"
+      @type = :process_shipment
     end
 
     def response_class

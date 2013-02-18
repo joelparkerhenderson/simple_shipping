@@ -26,37 +26,37 @@ module SimpleShipping::Ups
     }
 
     # Custom package order
-    CUSTOM_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:Dimensions v11:PackageWeight).freeze
+    CUSTOM_PACKAGE_ORDER = %w(Packaging PackageServiceOptions Dimensions PackageWeight)
 
     # Standard package order
-    STANDARD_PACKAGE_ORDER = %w(v11:Packaging v11:PackageServiceOptions v11:PackageWeight).freeze
+    STANDARD_PACKAGE_ORDER = %w(Packaging PackageServiceOptions PackageWeight)
 
     def base_package
       base = {
-        'v11:Packaging' => {
-          'v11:Code' => PACKAGING_TYPES[@model.packaging_type]
+        'Packaging' => {
+          'Code' => PACKAGING_TYPES[@model.packaging_type]
         },
-        'v11:PackageWeight' => {
-          'v11:UnitOfMeasurement' => {
-            'v11:Code' => WEIGHT_UNITS[@model.weight_units]
+        'PackageWeight' => {
+          'UnitOfMeasurement' => {
+            'Code' => WEIGHT_UNITS[@model.weight_units]
           },
-          'v11:Weight' => @model.weight,
-          :order! => ['v11:UnitOfMeasurement', 'v11:Weight']
+          'Weight' => @model.weight,
+          :order! => ['UnitOfMeasurement', 'Weight']
         },
-        'v11:PackageServiceOptions' => {}
+        'PackageServiceOptions' => {}
       }
 
       if @model.insured_value
-        base['v11:PackageServiceOptions']['v11:InsuredValue'] = {
-          'v11:CurrencyCode' => 'USD',
-          'v11:MonetaryValue' => @model.insured_value
+        base['PackageServiceOptions']['InsuredValue'] = {
+          'CurrencyCode' => 'USD',
+          'MonetaryValue' => @model.insured_value
         }
       end
 
       if @model.declared_value
-        base['v11:PackageServiceOptions']['v11:DeclaredValue'] = {
-          'v11:CurrencyCode' => 'USD',
-          'v11:MonetaryValue' => @model.declared_value
+        base['PackageServiceOptions']['DeclaredValue'] = {
+          'CurrencyCode' => 'USD',
+          'MonetaryValue' => @model.declared_value
         }
       end
 
@@ -67,16 +67,16 @@ module SimpleShipping::Ups
     # A custom package requires specification of LWH dimensions.
     def custom_package
       base_package.tap do |package|
-        package['v11:Dimensions'] = {
-          'v11:UnitOfMeasurement' => {
-            'v11:Code' => DIMENSION_UNITS[@model.dimension_units]
+        package['Dimensions'] = {
+          'UnitOfMeasurement' => {
+            'Code' => DIMENSION_UNITS[@model.dimension_units].clone
           },
-          'v11:Length' => @model.length,
-          'v11:Width'  => @model.width,
-          'v11:Height' => @model.height,
-          :order! => ['v11:UnitOfMeasurement', 'v11:Length', 'v11:Width', 'v11:Height']
+          'Length' => @model.length,
+          'Width'  => @model.width,
+          'Height' => @model.height,
+          :order! => ['UnitOfMeasurement', 'Length', 'Width', 'Height']
         }
-        package[:order!] = CUSTOM_PACKAGE_ORDER
+        package[:order!] = CUSTOM_PACKAGE_ORDER.clone
       end
     end
 
@@ -84,7 +84,7 @@ module SimpleShipping::Ups
     # A standard package requires no specification of LWH dimensions.
     def standard_package
       base_package.tap do |package| 
-        package[:order!] = STANDARD_PACKAGE_ORDER
+        package[:order!] = STANDARD_PACKAGE_ORDER.clone
       end
     end
 

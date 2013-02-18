@@ -1,13 +1,13 @@
-module SimpleShipping::Fedex; end
+module SimpleShipping::Fedex
+  extend ActiveSupport::Autoload
 
-require 'simple_shipping/fedex/client'
+  autoload :Client
+  autoload :Request
+  autoload :Response
+  autoload :ShipmentBuilder
+  autoload :PackageBuilder
+  autoload :PartyBuilder
 
-require 'simple_shipping/fedex/request'
-require 'simple_shipping/fedex/request/shipment_request'
-
-require 'simple_shipping/fedex/response'
-require 'simple_shipping/fedex/response/shipment_response'
-
-require 'simple_shipping/fedex/shipment_builder'
-require 'simple_shipping/fedex/package_builder'
-require 'simple_shipping/fedex/party_builder'
+  autoload :ShipmentRequest
+  autoload :ShipmentResponse
+end

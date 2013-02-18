@@ -31,14 +31,27 @@ module SimpleShipping
     #   * credentials - a hash with credentials.
     def initialize(options)
       @options = options.dup
-      live = @options.delete(:live)
-      credentials = @options.delete(:credentials)
+      @live = @options.delete(:live)
+      credentials = options.delete(:credentials)
 
       validate_credentials(credentials)
       @credentials = OpenStruct.new(credentials)
-      @client      = Savon::Client.new(wsdl_document)
-      @client.wsdl.endpoint = live ? self.class.production_address : self.class.testing_address
+
+      @client = Savon.client(client_options(options))
     end
+
+    # @param [Hash] options Savon client options
+    # @return [Hash{Symbol => Object}] Savon client options
+    def client_options(options = {})
+      endpoint = @live ? self.class.production_address : self.class.testing_address
+
+      options.symbolize_keys.reverse_merge(
+        :wsdl     => wsdl_document,
+        :endpoint => endpoint
+      )
+    end
+    protected :client_options
+
 
     # Validates all required credentials are passed.
     def validate_credentials(credentials)

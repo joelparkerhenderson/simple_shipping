@@ -5,26 +5,26 @@ module SimpleShipping::Ups
       @shipment_identification_number = shipment_identification_number
       @tracking_number = options[:tracking_number]
       @options = options
-      @type = "v11:VoidShipmentRequest"
+      @type = :process_void
     end
 
     # Builds a request from {Shipment shipment} object.
     def body
       {
-        'v12:Request' => {
-          'v12:RequestOption' => REQUEST_OPTION
+        'common:Request' => {
+          'common:RequestOption' => REQUEST_OPTION
         },
-        'v11:VoidShipment' => void_shipment,
-        :order! => ['v12:Request', 'v11:VoidShipment']
+        'VoidShipment' => void_shipment,
+        :order! => ['common:Request', 'VoidShipment']
       }
     end
 
     def void_shipment
-      data = { 'v11:ShipmentIdentificationNumber' => @shipment_identification_number }
+      data = { 'ShipmentIdentificationNumber' => @shipment_identification_number }
 
       if @tracking_number
-        data['v11:TrackingNumber'] = @tracking_number
-        data[:order!] = ['v11:ShipmentIdentificationNumber', 'v11:TrackingNumber']
+        data['TrackingNumber'] = @tracking_number
+        data[:order!] = ['ShipmentIdentificationNumber', 'TrackingNumber']
       end
 
       data

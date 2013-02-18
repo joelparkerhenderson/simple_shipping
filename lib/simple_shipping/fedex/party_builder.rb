@@ -5,7 +5,7 @@ module SimpleShipping::Fedex
     def build
       {'Contact' => build_contact,
        'Address' => build_address,
-       :order! => ['ins0:Contact', 'ins0:Address']}
+       :order! => ['Contact', 'Address']}
     end
 
     def build_contact
@@ -13,14 +13,14 @@ module SimpleShipping::Fedex
       contact = @model.contact
       if contact.company_name
         result['CompanyName'] = contact.company_name
-        result[:order!] << 'ins0:CompanyName'
+        result[:order!] << 'CompanyName'
       end
       if contact.person_name
         result['PersonName']  = contact.person_name
-        result[:order!] << 'ins0:PersonName'
+        result[:order!] << 'PersonName'
       end
       result['PhoneNumber'] = contact.phone_number
-      result[:order!] << 'ins0:PhoneNumber'
+      result[:order!] << 'PhoneNumber'
       result
     end
     private :build_contact
@@ -32,7 +32,7 @@ module SimpleShipping::Fedex
        'StateOrProvinceCode' => addr.state_code,
        'PostalCode'          => addr.postal_code,
        'CountryCode'         => addr.country_code,
-       :order! => [ 'ins0:StreetLines', 'ins0:City', 'ins0:StateOrProvinceCode', 'ins0:PostalCode', 'ins0:CountryCode']
+       :order! => [ 'StreetLines', 'City', 'StateOrProvinceCode', 'PostalCode', 'CountryCode']
       }
     end
     private :build_address

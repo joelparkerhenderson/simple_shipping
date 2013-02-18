@@ -1,7 +1,9 @@
-module SimpleShipping::Abstract; end
+module SimpleShipping::Abstract
+  extend ActiveSupport::Autoload
 
-require 'simple_shipping/abstract/response'
-require 'simple_shipping/abstract/model'
-require 'simple_shipping/abstract/builder'
-require 'simple_shipping/abstract/client'
-require 'simple_shipping/abstract/request'
+  autoload :Response
+  autoload :Model
+  autoload :Builder
+  autoload :Client
+  autoload :Request
+end

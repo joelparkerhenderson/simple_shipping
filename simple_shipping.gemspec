@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple_shipping"
-  s.version = "0.0.10"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey", "Zachary Belzer"]
-  s.date = "2012-12-26"
+  s.date = "2013-02-18"
   s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
@@ -26,8 +26,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "demos/fedex_demo.rb",
-    "demos/ups_demo.rb",
     "lib/simple_shipping.rb",
     "lib/simple_shipping/abstract.rb",
     "lib/simple_shipping/abstract/builder.rb",
@@ -37,37 +35,51 @@ Gem::Specification.new do |s|
     "lib/simple_shipping/abstract/response.rb",
     "lib/simple_shipping/address.rb",
     "lib/simple_shipping/contact.rb",
+    "lib/simple_shipping/demo.rb",
+    "lib/simple_shipping/demo/fedex.rb",
+    "lib/simple_shipping/demo/ups.rb",
     "lib/simple_shipping/exceptions.rb",
     "lib/simple_shipping/fedex.rb",
     "lib/simple_shipping/fedex/client.rb",
     "lib/simple_shipping/fedex/package_builder.rb",
     "lib/simple_shipping/fedex/party_builder.rb",
     "lib/simple_shipping/fedex/request.rb",
-    "lib/simple_shipping/fedex/request/shipment_request.rb",
     "lib/simple_shipping/fedex/response.rb",
-    "lib/simple_shipping/fedex/response/shipment_response.rb",
     "lib/simple_shipping/fedex/shipment_builder.rb",
+    "lib/simple_shipping/fedex/shipment_request.rb",
+    "lib/simple_shipping/fedex/shipment_response.rb",
     "lib/simple_shipping/package.rb",
     "lib/simple_shipping/party.rb",
     "lib/simple_shipping/shipment.rb",
     "lib/simple_shipping/ups.rb",
+    "lib/simple_shipping/ups/client.rb",
     "lib/simple_shipping/ups/package_builder.rb",
     "lib/simple_shipping/ups/party_builder.rb",
     "lib/simple_shipping/ups/request.rb",
-    "lib/simple_shipping/ups/request/ship_accept_request.rb",
-    "lib/simple_shipping/ups/request/ship_confirm_request.rb",
-    "lib/simple_shipping/ups/request/shipment_request.rb",
-    "lib/simple_shipping/ups/request/void_request.rb",
     "lib/simple_shipping/ups/response.rb",
-    "lib/simple_shipping/ups/response/ship_accept_response.rb",
-    "lib/simple_shipping/ups/response/ship_confirm_response.rb",
-    "lib/simple_shipping/ups/response/shipment_response.rb",
-    "lib/simple_shipping/ups/response/void_response.rb",
+    "lib/simple_shipping/ups/shared_response_attributes.rb",
+    "lib/simple_shipping/ups/ship_accept_request.rb",
+    "lib/simple_shipping/ups/ship_accept_response.rb",
     "lib/simple_shipping/ups/ship_client.rb",
+    "lib/simple_shipping/ups/ship_confirm_request.rb",
+    "lib/simple_shipping/ups/ship_confirm_response.rb",
     "lib/simple_shipping/ups/shipment_builder.rb",
+    "lib/simple_shipping/ups/shipment_request.rb",
+    "lib/simple_shipping/ups/shipment_response.rb",
     "lib/simple_shipping/ups/void_client.rb",
+    "lib/simple_shipping/ups/void_request.rb",
+    "lib/simple_shipping/ups/void_response.rb",
+    "lib/tasks/demo.rake",
     "script/ups_certification.rb",
     "simple_shipping.gemspec",
+    "spec/fixtures/fedex_shipment_request.soap.xml.erb",
+    "spec/fixtures/fedex_shipment_response.soap.xml.erb",
+    "spec/fixtures/ups_shipment_request.soap.xml.erb",
+    "spec/fixtures/ups_shipment_response.soap.xml.erb",
+    "spec/fixtures/ups_void_request.soap.xml.erb",
+    "spec/fixtures/ups_void_response.soap.xml.erb",
+    "spec/requests/fedex_spec.rb",
+    "spec/requests/ups_spec.rb",
     "spec/simple_shipping/address_spec.rb",
     "spec/simple_shipping/contact_spec.rb",
     "spec/simple_shipping/fedex/package_builder_spec.rb",
@@ -109,8 +121,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_runtime_dependency(%q<activemodel>, ["~> 3.1"])
-      s.add_runtime_dependency(%q<gyoku>, ["~> 0.4.0"])
-      s.add_runtime_dependency(%q<savon>, ["~> 0.9.0"])
+      s.add_runtime_dependency(%q<savon>, ["~> 2.1"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
@@ -121,13 +132,12 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<gemfury>, [">= 0"])
       s.add_development_dependency(%q<json_pure>, [">= 0"])
       s.add_development_dependency(%q<forgery>, [">= 0"])
+      s.add_development_dependency(%q<rmagick>, [">= 0"])
       s.add_development_dependency(%q<ruby-debug>, [">= 0"])
-      s.add_development_dependency(%q<ruby-debug19>, [">= 0"])
     else
       s.add_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_dependency(%q<activemodel>, ["~> 3.1"])
-      s.add_dependency(%q<gyoku>, ["~> 0.4.0"])
-      s.add_dependency(%q<savon>, ["~> 0.9.0"])
+      s.add_dependency(%q<savon>, ["~> 2.1"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
@@ -138,14 +148,13 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<gemfury>, [">= 0"])
       s.add_dependency(%q<json_pure>, [">= 0"])
       s.add_dependency(%q<forgery>, [">= 0"])
+      s.add_dependency(%q<rmagick>, [">= 0"])
       s.add_dependency(%q<ruby-debug>, [">= 0"])
-      s.add_dependency(%q<ruby-debug19>, [">= 0"])
     end
   else
     s.add_dependency(%q<activesupport>, ["~> 3.1"])
     s.add_dependency(%q<activemodel>, ["~> 3.1"])
-    s.add_dependency(%q<gyoku>, ["~> 0.4.0"])
-    s.add_dependency(%q<savon>, ["~> 0.9.0"])
+    s.add_dependency(%q<savon>, ["~> 2.1"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
@@ -156,8 +165,8 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<gemfury>, [">= 0"])
     s.add_dependency(%q<json_pure>, [">= 0"])
     s.add_dependency(%q<forgery>, [">= 0"])
+    s.add_dependency(%q<rmagick>, [">= 0"])
     s.add_dependency(%q<ruby-debug>, [">= 0"])
-    s.add_dependency(%q<ruby-debug19>, [">= 0"])
   end
 end
 
