@@ -15,11 +15,10 @@ group :development do
   gem "gemfury", :require => false
   gem "json_pure"
   gem "forgery"
-  gem 'rmagick'
+  gem "rmagick"
 
   unless ENV['RM_INFO']
-    gem "ruby-debug"  , :platforms => :ruby_18
-    gem "ruby-debug19", :platforms => :ruby_19
+    gem "ruby-debug"
   end
 end
 

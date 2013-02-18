@@ -11,6 +11,7 @@ module SimpleShipping
   autoload :Abstract
   autoload :Address
   autoload :Contact
+  autoload :Demo
   autoload :Package
   autoload :Party
   autoload :Shipment

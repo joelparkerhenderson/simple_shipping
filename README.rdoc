@@ -103,7 +103,7 @@ You must have ImageMagick installed to run the demos.
 
 ==== Ubuntu
 
-  apt-get install imagemagick libmagicwand-dev
+  sudo apt-get install imagemagick libmagic-dev libmagicwand-dev
 
 === OS X
 

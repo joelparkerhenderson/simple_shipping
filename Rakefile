@@ -40,6 +40,8 @@ def gem_file_name
   "simple_shipping-#{gem_version}.gem"
 end
 
+Dir.glob(File.expand_path('../lib/tasks/**/*.rake', __FILE__)).each{ |f| import f }
+
 namespace :gemfury do
   desc "Build version #{gem_version} into the pkg directory and upload to GemFury"
   task :push => [:build] do
