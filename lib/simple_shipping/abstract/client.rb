@@ -30,8 +30,8 @@ module SimpleShipping
     # == Parameters:
     #   * credentials - a hash with credentials.
     def initialize(options)
-      @options = options.dup
-      @live = @options.delete(:live)
+      @options    = options.dup
+      @live       = options.delete(:live)
       credentials = options.delete(:credentials)
 
       validate_credentials(credentials)
