@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey", "Zachary Belzer"]
-  s.date = "2013-02-19"
+  s.date = "2013-05-24"
   s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
-    ".rvmrc",
+    ".ruby-gemset",
+    ".ruby-version",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -112,7 +113,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/greyblake/simple_shipping"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.25"
   s.summary = "Interacts with UPS and FedEx APIs"
 
   if s.respond_to? :specification_version then
@@ -122,51 +123,45 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_runtime_dependency(%q<activemodel>, ["~> 3.1"])
       s.add_runtime_dependency(%q<savon>, ["~> 2.1"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.13.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<reek>, ["~> 1.2.8"])
       s.add_development_dependency(%q<roodi>, ["~> 2.1.0"])
       s.add_development_dependency(%q<gemfury>, [">= 0"])
       s.add_development_dependency(%q<json_pure>, [">= 0"])
       s.add_development_dependency(%q<forgery>, [">= 0"])
       s.add_development_dependency(%q<rmagick>, [">= 0"])
-      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
     else
       s.add_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_dependency(%q<activemodel>, ["~> 3.1"])
       s.add_dependency(%q<savon>, ["~> 2.1"])
-      s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.13.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-      s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<reek>, ["~> 1.2.8"])
       s.add_dependency(%q<roodi>, ["~> 2.1.0"])
       s.add_dependency(%q<gemfury>, [">= 0"])
       s.add_dependency(%q<json_pure>, [">= 0"])
       s.add_dependency(%q<forgery>, [">= 0"])
       s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<ruby-debug>, [">= 0"])
     end
   else
     s.add_dependency(%q<activesupport>, ["~> 3.1"])
     s.add_dependency(%q<activemodel>, ["~> 3.1"])
     s.add_dependency(%q<savon>, ["~> 2.1"])
-    s.add_dependency(%q<rspec>, ["~> 2.3.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.13.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
-    s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<reek>, ["~> 1.2.8"])
     s.add_dependency(%q<roodi>, ["~> 2.1.0"])
     s.add_dependency(%q<gemfury>, [">= 0"])
     s.add_dependency(%q<json_pure>, [">= 0"])
     s.add_dependency(%q<forgery>, [">= 0"])
     s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<ruby-debug>, [">= 0"])
   end
 end
 
