@@ -1,3 +1,6 @@
+# For git merge artifacts:
+*.orig
+
 coverage/*
 !coverage/.resultset.json
 

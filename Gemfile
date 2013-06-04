@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'activesupport' , '~> 3.1'
 gem 'activemodel'   , '~> 3.1'
@@ -15,7 +15,7 @@ group :development do
   gem "json_pure"
   gem "forgery"
   gem "rmagick"
-end
+  end
 
 group :test do
   gem 'webmock'
