@@ -3,6 +3,14 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'simple_shipping'
 
+# Run SimpleCov if it's Ruby1.9
+if RUBY_VERSION =~ /^1\.9/
+  require 'simplecov'
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
+end
+
 require "savon/mock/spec_helper"
 require 'webmock/rspec'
 require "timecop"

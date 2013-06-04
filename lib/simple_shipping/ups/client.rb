@@ -37,7 +37,7 @@ module SimpleShipping::Ups
           'upss:ServiceAccessToken' => {
             'upss:AccessLicenseNumber' => @credentials.access_license_number
           },
-          :order! => {'upss:UsernameToken', 'upss:ServiceAccessToken'}
+          :order! => ['upss:UsernameToken', 'upss:ServiceAccessToken']
         }
       }
     end
