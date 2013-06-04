@@ -22,4 +22,5 @@ group :test do
   gem 'timecop'
   gem 'erubis'
   gem 'equivalent-xml'
+  gem 'simplecov', :require => false
 end

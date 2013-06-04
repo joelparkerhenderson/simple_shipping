@@ -1,5 +1,5 @@
-# rcov generated
-coverage
+coverage/*
+!coverage/.resultset.json
 
 # rdoc generated
 rdoc
