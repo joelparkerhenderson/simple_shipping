@@ -8,6 +8,9 @@ module SimpleShipping::Ups
       value_of(:shipment_results, :shipment_identification_number)
     end
 
+    # Get package tracking number to look for delivery process on UPS site.
+    #
+    # @return [String] tracking number
     def tracking_number
       value_of(:shipment_results, :package_results, :tracking_number)
     end
