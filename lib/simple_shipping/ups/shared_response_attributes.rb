@@ -17,12 +17,5 @@ module SimpleShipping::Ups
       value = value_of(:shipment_results, :control_log_receipt, :graphic_image)
       Base64.decode64(value) if value
     end
-
-    # Get package tracking number to look for delivery process on UPS site.
-    #
-    # @return [String] tracking number
-    def tracking_number
-      value_of(:shipment_results, :package_results, :tracking_number)
-    end
   end
 end

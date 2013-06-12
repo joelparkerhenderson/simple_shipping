@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/address.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/address.rb": [
         1,
         null,
         null,
@@ -25,7 +25,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract.rb": [
         1,
         1,
         null,
@@ -36,7 +36,7 @@
         1,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract/model.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract/model.rb": [
         1,
         null,
         1,
@@ -78,7 +78,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/contact.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/contact.rb": [
         1,
         null,
         null,
@@ -103,7 +103,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex.rb": [
         1,
         1,
         null,
@@ -118,7 +118,7 @@
         1,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/package_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/package_builder.rb": [
         1,
         null,
         1,
@@ -144,7 +144,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract/builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract/builder.rb": [
         1,
         null,
         null,
@@ -193,7 +193,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/party_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/party_builder.rb": [
         1,
         null,
         1,
@@ -235,7 +235,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups.rb": [
         1,
         1,
         null,
@@ -264,7 +264,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/shipment_response.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/shipment_response.rb": [
         null,
         1,
         1,
@@ -272,7 +272,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/response.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/response.rb": [
         1,
         1,
         1,
@@ -283,8 +283,11 @@
         0,
         null,
         null,
+        null,
+        null,
+        null,
         1,
-        0,
+        1,
         null,
         null,
         null,
@@ -303,7 +306,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract/response.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract/response.rb": [
         1,
         null,
         null,
@@ -330,7 +333,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/shared_response_attributes.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/shared_response_attributes.rb": [
         1,
         1,
         null,
@@ -348,26 +351,19 @@
         null,
         1,
         0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
         0,
         null,
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/response.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/response.rb": [
         1,
         null,
         1,
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/shipment_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/shipment_builder.rb": [
         1,
         null,
         1,
@@ -474,7 +470,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/package.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/package.rb": [
         1,
         null,
         null,
@@ -518,7 +514,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/party.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/party.rb": [
         1,
         null,
         null,
@@ -541,7 +537,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/shipment.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/shipment.rb": [
         1,
         null,
         null,
@@ -582,7 +578,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/package_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/package_builder.rb": [
         null,
         1,
         1,
@@ -679,7 +675,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/party_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/party_builder.rb": [
         1,
         null,
         1,
@@ -713,7 +709,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/shipment_builder.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/shipment_builder.rb": [
         1,
         null,
         1,
@@ -780,7 +776,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/demo.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/demo.rb": [
         1,
         1,
         null,
@@ -847,7 +843,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/demo/fedex.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/demo/fedex.rb": [
         1,
         1,
         1,
@@ -892,7 +888,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/client.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/client.rb": [
         1,
         null,
         null,
@@ -933,7 +929,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract/client.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract/client.rb": [
         1,
         null,
         null,
@@ -1028,7 +1024,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/shipment_request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/shipment_request.rb": [
         1,
         1,
         1,
@@ -1042,7 +1038,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/request.rb": [
         1,
         null,
         1,
@@ -1089,7 +1085,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/abstract/request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/abstract/request.rb": [
         1,
         null,
         1,
@@ -1110,7 +1106,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/fedex/shipment_response.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/fedex/shipment_response.rb": [
         1,
         null,
         1,
@@ -1124,7 +1120,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/demo/ups.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/demo/ups.rb": [
         1,
         1,
         null,
@@ -1175,7 +1171,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/ship_client.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/ship_client.rb": [
         1,
         null,
         null,
@@ -1236,7 +1232,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/client.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/client.rb": [
         1,
         null,
         null,
@@ -1284,7 +1280,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/shipment_request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/shipment_request.rb": [
         1,
         1,
         1,
@@ -1307,7 +1303,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/request.rb": [
         1,
         null,
         1,
@@ -1331,7 +1327,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/void_client.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/void_client.rb": [
         1,
         null,
         null,
@@ -1379,7 +1375,7 @@
         null,
         null
       ],
-      "/Users/bruceb/Code/TMX/simple_shipping/lib/simple_shipping/ups/void_request.rb": [
+      "/Users/zbelzer/tmx/simple_shipping/lib/simple_shipping/ups/void_request.rb": [
         1,
         1,
         1,
@@ -1416,6 +1412,6 @@
         null
       ]
     },
-    "timestamp": 1370376656
+    "timestamp": 1371047907
   }
 }
