@@ -3,6 +3,7 @@ require 'active_model'
 require 'savon'
 require 'ostruct'
 
+
 module SimpleShipping
   extend ActiveSupport::Autoload
 
@@ -20,6 +21,5 @@ module SimpleShipping
   autoload :Fedex
 end
 
+
 require 'simple_shipping/exceptions'
-
-
