@@ -7,13 +7,13 @@ module SimpleShipping
   # * {SimpleShipping::Ups::Response}
   #
   # == Example:
-  #   response = client.request(shipper, recipient, package)  
+  #   response = client.request(shipper, recipient, package)
   #   response.response # => #<Savon::SOAP::Response ...>
   class Abstract::Response
     attr_reader :response
 
     def initialize(savon_resp = nil)
-      @response = savon_resp    
+      @response = savon_resp
     end
 
     # Fetches the value of an XML attribute at the path specified as an array
