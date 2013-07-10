@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <ship:ShipmentResponse xmlns:ship="http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0">
+      <common:Response xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+        <common:ResponseStatus>
+          <common:Code>1</common:Code>
+          <common:Description>Success</common:Description>
+        </common:ResponseStatus>
+        <common:TransactionReference/>
+      </common:Response>
+      <ship:ShipmentResults>
+        <ship:ShipmentCharges>
+          <ship:TransportationCharges>
+            <ship:CurrencyCode>USD</ship:CurrencyCode>
+            <ship:MonetaryValue>19.28</ship:MonetaryValue>
+          </ship:TransportationCharges>
+          <ship:ServiceOptionsCharges>
+            <ship:CurrencyCode>USD</ship:CurrencyCode>
+            <ship:MonetaryValue>0.00</ship:MonetaryValue>
+          </ship:ServiceOptionsCharges>
+          <ship:TotalCharges>
+            <ship:CurrencyCode>USD</ship:CurrencyCode>
+            <ship:MonetaryValue>19.28</ship:MonetaryValue>
+          </ship:TotalCharges>
+        </ship:ShipmentCharges>
+        <ship:BillingWeight>
+          <ship:UnitOfMeasurement>
+            <ship:Code>LBS</ship:Code>
+            <ship:Description>Pounds</ship:Description>
+          </ship:UnitOfMeasurement>
+          <ship:Weight>0.0</ship:Weight>
+        </ship:BillingWeight>
+        <ship:ShipmentIdentificationNumber>1Z35679R0294268838</ship:ShipmentIdentificationNumber>
+        <ship:PackageResults>
+          <ship:TrackingNumber>1Z35679R0294268838</ship:TrackingNumber>
+          <ship:ServiceOptionsCharges>
+            <ship:CurrencyCode>USD</ship:CurrencyCode>
+            <ship:MonetaryValue>0.00</ship:MonetaryValue>
+          </ship:ServiceOptionsCharges>
+          <ship:ShippingLabel>
+            <ship:ImageFormat>
+              <ship:Code>GIF</ship:Code>
+              <ship:Description>GIF</ship:Description>
+            </ship:ImageFormat>
+            <ship:GraphicImage>SU1BR0VfREFUQQ==</ship:GraphicImage>
+            <ship:HTMLImage>SFRNTF9JTUFHRV9EQVRB</ship:HTMLImage>
+          </ship:ShippingLabel>
+        </ship:PackageResults>
+      </ship:ShipmentResults>
+    </ship:ShipmentResponse>
+  </soapenv:Body>
+</soapenv:Envelope>

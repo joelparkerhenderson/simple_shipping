@@ -3,7 +3,7 @@
 Provides common simple API to build labels for the next shipping services:
 
 * FedEx (http://fedex.com)
-* UPS (http://ups.com)
+* UPS (http://ups.com) API (https://www.ups.com/upsdeveloperkit)
 
 == Usage
 

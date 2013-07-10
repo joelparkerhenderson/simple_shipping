@@ -63,9 +63,10 @@ module SimpleShipping
 
     # Builds {Shipment shipment} model
     def create_shipment(shipper, recipient, package, opts = {})
-      shipment = SimpleShipping::Shipment.new(:shipper   => shipper,
-                                              :recipient => recipient,
-                                              :package   => package)
+      shipment = SimpleShipping::Shipment.new(
+        :shipper   => shipper,
+        :recipient => recipient,
+        :package   => package)
       shipment.payor = opts[:payor] if opts[:payor]
       shipment
     end

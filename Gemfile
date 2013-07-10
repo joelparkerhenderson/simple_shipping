@@ -5,7 +5,7 @@ gem "activemodel"   , "~> 3.1"
 gem "savon", "~> 2.1"
 
 group :development do
-  gem "rspec",   "~> 2.13.0"
+  gem "rspec",   "~> 2.14.0"
   gem "yard",    "~> 0.6.0"
   gem "bundler"
   gem "jeweler", "~> 1.6.4"

@@ -9,7 +9,6 @@ module SimpleShipping::Ups
   autoload :Response
   autoload :PackageBuilder
   autoload :PartyBuilder
-  autoload :SharedResponseAttributes
   autoload :ShipmentBuilder
 
   autoload :ShipConfirmResponse
@@ -22,6 +21,3 @@ module SimpleShipping::Ups
   autoload :ShipmentRequest
   autoload :VoidRequest
 end
-
-
-

@@ -16,6 +16,14 @@ module SimpleShipping::Ups
     set_production_address  "https://onlinetools.ups.com/webservices/Ship"
     set_testing_address     "https://wwwcie.ups.com/webservices/Ship"
 
+    # @param shipper   [::SimpleShipping::Party]
+    # @param recipient [::SimpleShipping::Party]
+    # @param package   [::SimpleShipping::Package]
+    # @param options   [Hash] ({})
+    #
+    # @return [::SimpleShipping::ShipmentResponse]
+    #
+    # @raise [::SimpleShipping::RequestError] in case of SOAP errors
     def shipment_request(shipper, recipient, package, options = {})
       shipment = create_shipment(shipper, recipient, package, options)
       request =  ShipmentRequest.new(@credentials, shipment, options)

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple_shipping"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Potapov Sergey", "Zachary Belzer"]
-  s.date = "2013-07-05"
+  s.date = "2013-07-10"
   s.description = "This gem uses the APIs provided by UPS and FedEx to\n    service various requests on behalf of an application. In particular, it is\n    used to create shipping labels so a customer can send a package\n    postage-free"
   s.email = "blake131313@gmail.com"
   s.extra_rdoc_files = [
@@ -60,7 +60,6 @@ Gem::Specification.new do |s|
     "lib/simple_shipping/ups/party_builder.rb",
     "lib/simple_shipping/ups/request.rb",
     "lib/simple_shipping/ups/response.rb",
-    "lib/simple_shipping/ups/shared_response_attributes.rb",
     "lib/simple_shipping/ups/ship_accept_request.rb",
     "lib/simple_shipping/ups/ship_accept_response.rb",
     "lib/simple_shipping/ups/ship_client.rb",
@@ -79,25 +78,26 @@ Gem::Specification.new do |s|
     "spec/fixtures/fedex_shipment_response.soap.xml.erb",
     "spec/fixtures/ups_shipment_request.soap.xml.erb",
     "spec/fixtures/ups_shipment_response.soap.xml.erb",
+    "spec/fixtures/ups_shipment_response_with_faked_label_data.soap.xml.erb",
     "spec/fixtures/ups_void_request.soap.xml.erb",
     "spec/fixtures/ups_void_response.soap.xml.erb",
+    "spec/lib/simple_shipping/address_spec.rb",
+    "spec/lib/simple_shipping/contact_spec.rb",
+    "spec/lib/simple_shipping/fedex/package_builder_spec.rb",
+    "spec/lib/simple_shipping/fedex/party_builder_spec.rb",
+    "spec/lib/simple_shipping/fedex/response/shipment_reponse_spec.rb",
+    "spec/lib/simple_shipping/fedex/response_spec.rb",
+    "spec/lib/simple_shipping/fedex/shipment_builder_spec.rb",
+    "spec/lib/simple_shipping/package_spec.rb",
+    "spec/lib/simple_shipping/party_spec.rb",
+    "spec/lib/simple_shipping/shipment_spec.rb",
+    "spec/lib/simple_shipping/ups/package_builder_spec.rb",
+    "spec/lib/simple_shipping/ups/party_builder_spec.rb",
+    "spec/lib/simple_shipping/ups/response/shipment_response_spec.rb",
+    "spec/lib/simple_shipping/ups/response_spec.rb",
+    "spec/lib/simple_shipping/ups/shipment_builder_spec.rb",
     "spec/requests/fedex_spec.rb",
     "spec/requests/ups_spec.rb",
-    "spec/simple_shipping/address_spec.rb",
-    "spec/simple_shipping/contact_spec.rb",
-    "spec/simple_shipping/fedex/package_builder_spec.rb",
-    "spec/simple_shipping/fedex/party_builder_spec.rb",
-    "spec/simple_shipping/fedex/response/shipment_reponse_spec.rb",
-    "spec/simple_shipping/fedex/response_spec.rb",
-    "spec/simple_shipping/fedex/shipment_builder_spec.rb",
-    "spec/simple_shipping/package_spec.rb",
-    "spec/simple_shipping/party_spec.rb",
-    "spec/simple_shipping/shipment_spec.rb",
-    "spec/simple_shipping/ups/package_builder_spec.rb",
-    "spec/simple_shipping/ups/party_builder_spec.rb",
-    "spec/simple_shipping/ups/response/shipment_response_spec.rb",
-    "spec/simple_shipping/ups/response_spec.rb",
-    "spec/simple_shipping/ups/shipment_builder_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/custom_matchers/basic_matcher.rb",
     "spec/support/custom_matchers/have_attribute_matcher.rb",
@@ -125,7 +125,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_runtime_dependency(%q<activemodel>, ["~> 3.1"])
       s.add_runtime_dependency(%q<savon>, ["~> 2.1"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -138,7 +138,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<activesupport>, ["~> 3.1"])
       s.add_dependency(%q<activemodel>, ["~> 3.1"])
       s.add_dependency(%q<savon>, ["~> 2.1"])
-      s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -152,7 +152,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activesupport>, ["~> 3.1"])
     s.add_dependency(%q<activemodel>, ["~> 3.1"])
     s.add_dependency(%q<savon>, ["~> 2.1"])
-    s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+    s.add_dependency(%q<rspec>, ["~> 2.14.0"])
     s.add_dependency(%q<yard>, ["~> 0.6.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
