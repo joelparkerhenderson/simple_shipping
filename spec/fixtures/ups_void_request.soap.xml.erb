@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:upss="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
+              xmlns:ship="http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
+              xmlns:void="http://www.ups.com/XMLSchema/XOLTWS/Void/v1.1"
+              xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+              xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0">
+  <env:Header>
+    <upss:UPSSecurity>
+      <upss:UsernameToken>
+        <upss:Username><%= username %></upss:Username>
+        <upss:Password><%= password %></upss:Password>
+      </upss:UsernameToken>
+      <upss:ServiceAccessToken>
+        <upss:AccessLicenseNumber><%= access_license_number %></upss:AccessLicenseNumber>
+      </upss:ServiceAccessToken>
+    </upss:UPSSecurity>
+  </env:Header>
+  <env:Body>
+    <void:VoidShipmentRequest>
+      <common:Request>
+        <common:RequestOption>nonvalidate</common:RequestOption>
+      </common:Request>
+      <void:VoidShipment>
+        <void:ShipmentIdentificationNumber><%= shipment_identification_number %></void:ShipmentIdentificationNumber>
+      </void:VoidShipment>
+    </void:VoidShipmentRequest>
+  </env:Body>
+</env:Envelope>

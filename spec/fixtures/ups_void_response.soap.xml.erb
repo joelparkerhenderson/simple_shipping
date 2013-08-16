@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <soapenv:Fault>
+      <faultcode>Client</faultcode>
+      <faultstring>An exception has been raised as a result of client data.</faultstring>
+      <detail>
+        <err:Errors xmlns:err="http://www.ups.com/XMLSchema/XOLTWS/Error/v1.1">
+          <err:ErrorDetail>
+            <err:Severity>Hard</err:Severity>
+            <err:PrimaryErrorCode>
+              <err:Code>190102</err:Code>
+              <err:Description>No shipment found within the allowed void period</err:Description>
+            </err:PrimaryErrorCode>
+          </err:ErrorDetail>
+        </err:Errors>
+      </detail>
+    </soapenv:Fault>
+  </soapenv:Body>
+</soapenv:Envelope>

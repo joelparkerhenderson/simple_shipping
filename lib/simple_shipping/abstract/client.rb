@@ -38,6 +38,8 @@ module SimpleShipping
     def initialize(options)
       @options    = options.dup
       @live       = options.delete(:live)
+      @debug      = options.delete(:debug)
+      @debug_path = options.delete(:debug_path)
       credentials = options.delete(:credentials)
 
       validate_credentials(credentials)
@@ -99,9 +101,8 @@ module SimpleShipping
     # @param name [String] file name without .xml
     # @param soap [Savon::HTTPRequest, Savon::Response]
     def log_soap(name, soap)
-      if @options[:debug]
-        debug_path = @options.fetch(:debug_path, '.')
-        path = File.join(debug_path, "#{name}.xml")
+      if @debug
+        path = File.join(@debug_path, "#{name}.xml")
         File.open(path, 'w') {|f| f.write soap.to_xml}
       end
     end

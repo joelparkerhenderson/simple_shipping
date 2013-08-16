@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope
+    xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ns="http://fedex.com/ws/ship/v10"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+  <env:Body>
+    <ns:ProcessShipmentRequest>
+      <ns:WebAuthenticationDetail>
+        <ns:UserCredential>
+          <ns:Key><%= key %></ns:Key>
+          <ns:Password><%= password %></ns:Password>
+        </ns:UserCredential>
+      </ns:WebAuthenticationDetail>
+      <ns:ClientDetail>
+        <ns:AccountNumber><%= account_number %></ns:AccountNumber>
+        <ns:MeterNumber><%= meter_number %></ns:MeterNumber>
+      </ns:ClientDetail>
+      <ns:Version>
+        <ns:ServiceId>ship</ns:ServiceId>
+        <ns:Major>10</ns:Major>
+        <ns:Intermediate>0</ns:Intermediate>
+        <ns:Minor>0</ns:Minor>
+      </ns:Version>
+      <ns:RequestedShipment>
+        <ns:ShipTimestamp><%= defined?(time) ? time : Time.now.iso8601 %></ns:ShipTimestamp>
+        <ns:DropoffType>BUSINESS_SERVICE_CENTER</ns:DropoffType>
+        <ns:ServiceType>FEDEX_GROUND</ns:ServiceType>
+        <ns:PackagingType>YOUR_PACKAGING</ns:PackagingType>
+        <ns:Shipper>
+          <ns:Contact>
+            <ns:PersonName>Mister Someone</ns:PersonName>
+            <ns:PhoneNumber>1234567890</ns:PhoneNumber>
+          </ns:Contact>
+          <ns:Address>
+            <ns:StreetLines>SN2000 Test Meter 8</ns:StreetLines>
+            <ns:City>Texas</ns:City>
+            <ns:StateOrProvinceCode>TX</ns:StateOrProvinceCode>
+            <ns:PostalCode>73301</ns:PostalCode>
+            <ns:CountryCode>US</ns:CountryCode>
+          </ns:Address>
+        </ns:Shipper>
+        <ns:Recipient>
+          <ns:Contact>
+            <ns:PersonName>John Recipient Smith</ns:PersonName>
+            <ns:PhoneNumber>1234567890</ns:PhoneNumber>
+          </ns:Contact>
+          <ns:Address>
+            <ns:StreetLines>Nightmare Avenue 13</ns:StreetLines>
+            <ns:City>Minneapolis</ns:City>
+            <ns:StateOrProvinceCode>MN</ns:StateOrProvinceCode>
+            <ns:PostalCode>55411</ns:PostalCode>
+            <ns:CountryCode>US</ns:CountryCode>
+          </ns:Address>
+        </ns:Recipient>
+        <ns:ShippingChargesPayment>
+          <ns:PaymentType>SENDER</ns:PaymentType>
+          <ns:Payor>
+            <ns:AccountNumber><%= account_number %></ns:AccountNumber>
+          </ns:Payor>
+        </ns:ShippingChargesPayment>
+        <ns:LabelSpecification>
+          <ns:LabelFormatType>COMMON2D</ns:LabelFormatType>
+          <ns:ImageType>PNG</ns:ImageType>
+          <ns:LabelStockType>PAPER_4X6</ns:LabelStockType>
+        </ns:LabelSpecification>
+        <ns:RateRequestTypes>ACCOUNT</ns:RateRequestTypes>
+        <ns:PackageCount>1</ns:PackageCount>
+        <ns:RequestedPackageLineItems>
+          <ns:Weight>
+            <ns:Units>LB</ns:Units>
+            <ns:Value>1</ns:Value>
+          </ns:Weight>
+          <ns:Dimensions>
+            <ns:Length>2</ns:Length>
+            <ns:Width>4</ns:Width>
+            <ns:Height>3</ns:Height>
+            <ns:Units>IN</ns:Units>
+          </ns:Dimensions>
+        </ns:RequestedPackageLineItems>
+      </ns:RequestedShipment>
+    </ns:ProcessShipmentRequest>
+  </env:Body>
+</env:Envelope>
