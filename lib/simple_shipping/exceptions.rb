@@ -14,10 +14,8 @@ module SimpleShipping
       when String
         model_or_msg
       end
-    end
 
-    def message
-      @message
+      super(@message)
     end
   end
 
@@ -32,10 +30,8 @@ module SimpleShipping
         elsif fault[:code] # SOAP 1.2 fault.
           "(#{fault[:code][:value]}) #{fault[:reason][:text]}"
         end
-    end
 
-    def message
-      @message
+      super(@message)
     end
   end
 end
