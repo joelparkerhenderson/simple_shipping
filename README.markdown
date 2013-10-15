@@ -147,13 +147,6 @@ All clients provide the same interface:
 * .new(credentials_hash)
 * #request(shipper, recipient, package, opts)
 
-## Deploying to GemFury
-
-Make sure you have an account on GemFury and it has been made a collaborator of the TMXCredit corporate account, then run:
-```
-rake gemfury:push
-```
-
 
 ## Demo rake tasks
 
