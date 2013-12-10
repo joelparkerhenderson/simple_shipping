@@ -26,7 +26,7 @@ module SimpleShipping
       @message = 
         if fault[:faultcode] # SOAP 1.1 fault.
           detail = fault[:detail][:errors][:error_detail][:primary_error_code]
-          "#{fault[:faultstring]} #{detail[:description]}"
+          "#{fault[:faultstring]} (#{detail[:code]}) #{detail[:description]}"
         elsif fault[:code] # SOAP 1.2 fault.
           "(#{fault[:code][:value]}) #{fault[:reason][:text]}"
         end

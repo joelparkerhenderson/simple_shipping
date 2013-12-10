@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "activesupport" , "~> 3.1"
 gem "activemodel"   , "~> 3.1"
-gem "savon", "~> 2.1"
+gem "savon", "~> 2.1.0"
 
 group :development do
   gem "rspec",   "~> 2.14.0"

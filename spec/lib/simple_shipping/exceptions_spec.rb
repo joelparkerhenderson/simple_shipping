@@ -35,14 +35,15 @@ describe SimpleShipping::ValidationError do
         :errors => {
           :error_detail => {
             :primary_error_code => {
-              :description => "description"
+              :description => "description",
+              :code => "12345"
             }
           }
         }
       }
 
       error = SimpleShipping::RequestError.new(:fault => fault)
-      error.to_s.should == "faultstring description"
+      error.to_s.should == "faultstring (12345) description"
     end
 
     it "should create message with SOAP 1.2 faultcode information" do
