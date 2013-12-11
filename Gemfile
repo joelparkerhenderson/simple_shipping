@@ -8,7 +8,7 @@ group :development do
   gem "rspec",   "~> 2.14.0"
   gem "yard",    "~> 0.6.0"
   gem "bundler"
-  gem "jeweler", "~> 1.6.4"
+  gem "jeweler"
   gem "gemfury", :require => false
   gem "json_pure"
   gem "forgery"
