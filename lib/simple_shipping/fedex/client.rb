@@ -18,12 +18,14 @@ module SimpleShipping::Fedex
     set_testing_address     "https://wsbeta.fedex.com:443/web-services/ship"
     set_production_address  "https://wsbeta.fedex.com:443/web-services/ship" # Not configured
 
+    # Send shipment request to Fedex.
     def shipment_request(shipper, recipient, package, opts = {})
       shipment = create_shipment(shipper, recipient, package, opts)
       request = ShipmentRequest.new(@credentials, shipment)
       execute(request)
     end
 
+    # Send shipment confirmation request.
     def ship_confirm_request(shipper, recipient, package, opts = {})
       fail "Not Implemented"
     end

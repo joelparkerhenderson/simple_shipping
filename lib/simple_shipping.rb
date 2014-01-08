@@ -4,9 +4,11 @@ require 'savon'
 require 'ostruct'
 
 
+# Namespace for SimpleShipping library.
 module SimpleShipping
   extend ActiveSupport::Autoload
 
+  # Path to the directory with WDSL files.
   WSDL_DIR = File.expand_path("../../wsdl", __FILE__)
 
   autoload :Abstract

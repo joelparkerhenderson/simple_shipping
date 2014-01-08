@@ -12,6 +12,9 @@ module SimpleShipping::Ups
       }
     end
 
+    # Build address element.
+    #
+    # @return [Hash]
     def build_address
       addr = @model.address
       {'AddressLine'       => [addr.street_line, addr.street_line_2, addr.street_line_3].compact,
@@ -23,6 +26,9 @@ module SimpleShipping::Ups
       }
     end
 
+    # Validate presence of account_number.
+    #
+    # @return [void]
     def validate
       if @opts[:shipper] && !@model.account_number
         raise SimpleShipping::ValidationError.new("account_number is required for party who is shipper")

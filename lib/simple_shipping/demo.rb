@@ -1,3 +1,4 @@
+# Allows to send test requests to verify credentials.
 class SimpleShipping::Demo
   extend ActiveSupport::Autoload
 
@@ -7,6 +8,7 @@ class SimpleShipping::Demo
   autoload :Ups
 
 
+  # :nodoc:
   def shipper_address
     @shipper_address ||= SimpleShipping::Address.new(
         :country_code => 'US',
@@ -17,6 +19,7 @@ class SimpleShipping::Demo
     )
   end
 
+  # :nodoc:
   def shipper_contact
     @shipper_contact ||= SimpleShipping::Contact.new(
         :person_name  => 'Mister Someone',
@@ -24,6 +27,7 @@ class SimpleShipping::Demo
     )
   end
 
+  # :nodoc:
   def shipper
     @shipper ||= SimpleShipping::Party.new(
         :address => shipper_address,
@@ -33,6 +37,7 @@ class SimpleShipping::Demo
   end
 
 
+  # :nodoc:
   def recipient_address
     @recipient_address ||= SimpleShipping::Address.new(
         :country_code => 'US',
@@ -43,6 +48,7 @@ class SimpleShipping::Demo
     )
   end
 
+  # :nodoc:
   def recipient_contact
     @recipient_contact ||= SimpleShipping::Contact.new(
       :person_name  => "John Recipient Smith",
@@ -50,6 +56,7 @@ class SimpleShipping::Demo
   )
   end
 
+  # :nodoc:
   def recipient
     @recipient ||= SimpleShipping::Party.new(
       :address        => recipient_address,
@@ -57,6 +64,7 @@ class SimpleShipping::Demo
   )
   end
 
+  # Overrides options with environment variables.
   def override_options_from_env
     keys = options.keys.map(&:to_s)
     overrides = ENV.to_hash.slice(*keys).symbolize_keys

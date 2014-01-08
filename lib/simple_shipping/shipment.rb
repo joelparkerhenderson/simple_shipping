@@ -26,11 +26,14 @@ module SimpleShipping
       case payor
       when :shipper
         shipper.account_number if shipper.respond_to?(:account_number)
-      when :recipient 
-        recipient.account_number if recipient.respond_to?(:account_number) 
+      when :recipient
+        recipient.account_number if recipient.respond_to?(:account_number)
       end
     end
 
+    # Validate presence of payor account number.
+    #
+    # @retunr [void]
     def validate_payor_account_number
       errors.add(:abstract, "Payor account number is missing") unless payor_account_number
     end

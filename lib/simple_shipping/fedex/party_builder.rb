@@ -8,6 +8,9 @@ module SimpleShipping::Fedex
        :order! => ['Contact', 'Address']}
     end
 
+    # Build body for Contact element.
+    #
+    # @return [Hash]
     def build_contact
       result = {:order! => []}
       contact = @model.contact
@@ -25,6 +28,9 @@ module SimpleShipping::Fedex
     end
     private :build_contact
 
+    # Build body for Address element.
+    #
+    # @return [Hash]
     def build_address
       addr = @model.address
       {'StreetLines'         => addr.street_line,

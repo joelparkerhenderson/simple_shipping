@@ -8,10 +8,18 @@ module SimpleShipping
       @credentials = credentials
     end
 
+    # Wraps savon response with specific for shipment provider response.
+    #
+    # @param savon_response [Savon::Response]
+    #
+    # @return [SimpleShipping::Abstract::Response]
     def response(savon_response)
       response_class.new(savon_response)
     end
 
+    # Response class to wrap Savon response
+    #
+    # @return [Class]
     def response_class
       Response
     end

@@ -1,9 +1,16 @@
 module SimpleShipping::Ups
+  # Response from UPS.
   class Response < SimpleShipping::Abstract::Response
+    # Digest what can be used to get a label.
+    #
+    # @return [String]
     def digest
       value_of(:shipment_results, :shipment_digest)
     end
 
+    # Unique shipment ID returned by UPS.
+    #
+    # @return [Strig]
     def shipment_identification_number
       value_of(:shipment_results, :shipment_identification_number)
     end
@@ -23,11 +30,17 @@ module SimpleShipping::Ups
       value_of(:shipment_results, :package_results, :shipping_label, :graphic_image)
     end
 
+    # Label image.
+    #
+    # @return [String] binary
     def label_html
       value = value_of(:shipment_results, :package_results, :shipping_label, :html_image)
       Base64.decode64(value) if value
     end
 
+    # Receipt.
+    #
+    # @return [String] binary
     def receipt_html
       value = value_of(:shipment_results, :control_log_receipt, :graphic_image)
       Base64.decode64(value) if value

@@ -1,4 +1,5 @@
 module SimpleShipping::Ups
+  # Request to verify a shipment was delivered.
   class ShipConfirmRequest < Request
     def initialize(credentials, shipment, options = {})
       @credentials = credentials

@@ -1,4 +1,5 @@
 module SimpleShipping::Ups
+  # Shipment request model.
   class ShipmentRequest < Request
     def initialize(credentials, shipment, options = {})
       @credentials = credentials

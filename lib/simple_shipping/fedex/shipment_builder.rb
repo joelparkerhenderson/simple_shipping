@@ -1,7 +1,10 @@
 module SimpleShipping::Fedex
   # Builds a shipment element for Fedex SOAP service
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
+    # Value for RateRequestTypes XML element.
     RATE_REQUEST_TYPE = 'ACCOUNT'
+
+    # Number of packages.
     PACKAGE_COUNT = '1'
 
     # Mapping for package types
@@ -77,11 +80,20 @@ module SimpleShipping::Fedex
       validate_inclusion_of(:service_type  , SERVICE_TYPES)
     end
 
+    # Get ship timestamps in a specific format.
+    #
+    # @example
+    #   ship_timestamp  # => "2014-01-08T14:41:53+02:00"
+    #
+    # @return [String]
     def ship_timestamp
       Time.new.strftime('%Y-%m-%dT%H:%M:%S%z').tap{|str| str[-2,0] = ':' }
     end
     private :ship_timestamp
 
+    # Build hash for ShippingChargesPayment element.
+    #
+    # @return [Hash]
     def shipping_charges_payment
       {'PaymentType' => payment_type,
        'Payor'       => {'AccountNumber' => @model.payor_account_number},
@@ -89,11 +101,17 @@ module SimpleShipping::Fedex
     end
     private :shipping_charges_payment
 
+    # Get payment type.
+    #
+    # @retrun [String]
     def payment_type
       (@model.payor == :shipper) ? 'SENDER' : 'RECIPIENT'
     end
     private :payment_type
 
+    # Build label parameters according to Fedex's API.
+    #
+    # @return [Hash]
     def label_speicfication
       { 'LabelFormatType' => 'COMMON2D',
         'ImageType'       => 'PNG',

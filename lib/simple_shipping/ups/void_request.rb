@@ -1,5 +1,10 @@
 module SimpleShipping::Ups
+  # UPS request to void shipment.
   class VoidRequest < Request
+
+    # @param credentials [Hash]
+    # @param shipment_identification_number [String]
+    # @param options [Hash]
     def initialize(credentials, shipment_identification_number, options = {})
       @credentials = credentials
       @shipment_identification_number = shipment_identification_number
@@ -19,6 +24,9 @@ module SimpleShipping::Ups
       }
     end
 
+    # Data for VoidShipment.
+    #
+    # @return [Hash]
     def void_shipment
       data = { 'ShipmentIdentificationNumber' => @shipment_identification_number }
 

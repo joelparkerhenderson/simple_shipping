@@ -1,3 +1,4 @@
+# Namespace for UPS provider.
 module SimpleShipping::Ups
   extend ActiveSupport::Autoload
 

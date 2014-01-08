@@ -1,5 +1,6 @@
 # Colorizes text with ASCII colors.
-# == Usage:
+#
+# @example
 #   include ColorizedText
 #
 #   puts green "OK"          # => green output

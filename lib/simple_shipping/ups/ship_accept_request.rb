@@ -1,4 +1,5 @@
 module SimpleShipping::Ups
+  # Shipping accept request.
   class ShipAcceptRequest < Request
     def initialize(credentials, shipment_digest, options = {})
       @credentials = credentials
@@ -7,6 +8,7 @@ module SimpleShipping::Ups
       @type = :prcoess_ship_accept
     end
 
+    # :nodoc:
     def body
       { 'common:Request' => {
           'common:RequestOption' => REQUEST_OPTION
