@@ -26,18 +26,21 @@ module SimpleShipping::Ups
     # @raise [::SimpleShipping::RequestError] in case of SOAP errors
     def shipment_request(shipper, recipient, package, options = {})
       shipment = create_shipment(shipper, recipient, package, options)
-      request =  ShipmentRequest.new(@credentials, shipment, options)
+      request  = ShipmentRequest.new(@credentials, shipment, options)
       execute(request)
     end
 
+    # Send shipment confirmation request.
     def ship_confirm_request(shipper, recipient, package, options = {})
       shipment = create_shipment(shipper, recipient, package, options)
-      request =  ShipConfirmRequest.new(@credentials, shipment, options)
+      request  = ShipConfirmRequest.new(@credentials, shipment, options)
       execute(request)
     end
 
+
+    # Perform shipping accept request.
     def ship_accept_request(shipment_digest, options = {})
-      request =  ShipAcceptRequest.new(@credentials, shipment_digest, options)
+      request  = ShipAcceptRequest.new(@credentials, shipment_digest, options)
       execute(request)
     end
 
@@ -54,7 +57,7 @@ module SimpleShipping::Ups
     protected :client_options
 
 
-    # Performs ShipmentRequest to UPS service.
+    # Perform ShipmentRequest to UPS service.
     def execute(request)
       savon_response = @client.call(request.type, :message => request.body)
       log_response(savon_response)

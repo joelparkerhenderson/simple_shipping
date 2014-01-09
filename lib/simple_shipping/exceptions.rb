@@ -7,6 +7,7 @@ module SimpleShipping
 
   # Raises when some data is invalid or missing to build a request
   class ValidationError < Error
+    # @param model_or_msg [Abstract::Model, String]
     def initialize(model_or_msg)
       @message = case model_or_msg
       when Abstract::Model
@@ -19,11 +20,13 @@ module SimpleShipping
     end
   end
 
+  # Is raised when remote request fails.
   class RequestError < Error
+    # @param [Savon::SOAPFault] savon_fault Savon exception
     def initialize(savon_fault)
       fault = savon_fault.to_hash[:fault]
 
-      @message = 
+      @message =
         if fault[:faultcode] # SOAP 1.1 fault.
           detail = fault[:detail][:errors][:error_detail][:primary_error_code]
           "#{fault[:faultstring]} (#{detail[:code]}) #{detail[:description]}"

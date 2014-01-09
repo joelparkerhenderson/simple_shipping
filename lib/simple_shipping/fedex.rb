@@ -1,3 +1,4 @@
+# Namespace for Fedex provider.
 module SimpleShipping::Fedex
   extend ActiveSupport::Autoload
 

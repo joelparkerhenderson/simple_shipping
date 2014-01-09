@@ -1,5 +1,6 @@
 # Builds hash for Savon which represents {Package package}
 module SimpleShipping::Ups
+  # Builds hash structure for Savon that represents package element in UPS's API.
   class PackageBuilder < SimpleShipping::Abstract::Builder
     # Mapping for UPS packaging types
     # Not all UPS values listed here in order to provide common interface with Fedex.
@@ -9,7 +10,7 @@ module SimpleShipping::Ups
       :tube     => '03',  # tube
       :pak      => '04',  # UPS Packaging
       :box      => '2b',  # medium box
-      :box_10kg => '25',  
+      :box_10kg => '25',
       :box_10kg => '24'
     }
 
@@ -18,7 +19,7 @@ module SimpleShipping::Ups
       :kg => 'KGS',
       :lb => 'LBS'
     }
-    
+
     # Mapping for UPS dimension units
     DIMENSION_UNITS = {
       :in => 'IN',
@@ -31,6 +32,10 @@ module SimpleShipping::Ups
     # Standard package order
     STANDARD_PACKAGE_ORDER = %w(Packaging PackageServiceOptions PackageWeight)
 
+    # Build basic skeleton for package element. It can be customized by
+    # overriding some subelements.
+    #
+    # @return [Hash]
     def base_package
       base = {
         'Packaging' => {
@@ -83,7 +88,7 @@ module SimpleShipping::Ups
     # Build a hash from a standard {Package package} which will be used by Savon.
     # A standard package requires no specification of LWH dimensions.
     def standard_package
-      base_package.tap do |package| 
+      base_package.tap do |package|
         package[:order!] = STANDARD_PACKAGE_ORDER.clone
       end
     end

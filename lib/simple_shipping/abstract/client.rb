@@ -18,10 +18,16 @@ module SimpleShipping
       self.wsdl_document = wsdl_path
     end
 
+    # Sets production endpoint.
+    #
+    # @param address [String]
     def self.set_production_address(address)
       self.production_address = address
     end
 
+    # Sets testing endpoint.
+    #
+    # @param address [String]
     def self.set_testing_address(address)
       self.testing_address = address
     end
@@ -72,16 +78,26 @@ module SimpleShipping
     end
     private :create_shipment
 
+    # Write request information to request.xml.
+    #
+    # @param soap [Savon::HTTPRequest]
     def log_request(soap)
       log_soap("request", soap)
     end
     private :log_request
 
+    # Write response information to response.xml.
+    #
+    # @param [Savon::Response] soap
     def log_response(soap)
       log_soap("response", soap)
     end
     private :log_response
 
+    # Write request/response to .xml file.
+    #
+    # @param name [String] file name without .xml
+    # @param soap [Savon::HTTPRequest, Savon::Response]
     def log_soap(name, soap)
       if @options[:debug]
         debug_path = @options.fetch(:debug_path, '.')

@@ -6,8 +6,8 @@ module SimpleShipping::Ups
   #
   # = Usage
   #  client = SimpleShipping::Ups::VoidClient.new(:username              => "USER NAME",
-#                                             :password              => "PASSWORD",
-#                                             :access_license_number => "LICENSE NUMBER")
+  #                                               :password              => "PASSWORD",
+  #                                               :access_license_number => "LICENSE NUMBER")
   #  client.request(shipper, recipient, package) # => #<SimpleShipping::Ups::Response ...>
   class VoidClient < Client
     set_required_credentials :username, :password, :access_license_number
@@ -16,8 +16,12 @@ module SimpleShipping::Ups
     set_production_address  "https://onlinetools.ups.com/webservices/Void"
     set_testing_address     "https://wwwcie.ups.com/webservices/Void"
 
+    # Build VoidRequest and perform the request.
+    #
+    # @param shipment_identification_number [String]
+    # @param options [Hash]
     def void_request(shipment_identification_number, options = {})
-      request =  VoidRequest.new(@credentials, shipment_identification_number, options)
+      request = VoidRequest.new(@credentials, shipment_identification_number, options)
       execute(request)
     end
 
@@ -33,13 +37,13 @@ module SimpleShipping::Ups
     end
     protected :client_options
 
-    # Performs ShipmentRequest to UPS service.
+    # Perform ShipmentRequest to UPS service.
     def execute(request)
       savon_response = @client.call(request.type, :message => request.body)
       log_response(savon_response)
       request.response(savon_response)
-    rescue Savon::SOAPFault => e
-      raise SimpleShipping::RequestError.new(e)
+    rescue Savon::SOAPFault => err
+      raise SimpleShipping::RequestError.new(err)
     end
     private :execute
   end

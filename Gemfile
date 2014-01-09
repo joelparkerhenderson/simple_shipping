@@ -6,7 +6,7 @@ gem "savon", "~> 2.2.0"
 
 group :development do
   gem "rspec",   "~> 2.14.0"
-  gem "yard",    "~> 0.6.0"
+  gem "yard"
   gem "bundler"
   gem "jeweler"
   gem "gemfury", :require => false

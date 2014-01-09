@@ -1,5 +1,5 @@
 module SimpleShipping
-  # Represents a contact information of {SimpleShipping::Party party} who takes 
+  # Represents a contact information of {SimpleShipping::Party party} who takes
   # a part in shipment process.
   #
   # == Attributes
@@ -16,6 +16,7 @@ module SimpleShipping
     validates_presence_of :phone_number
     validate :validate_name
 
+    # Validate presence of person or company name.
     def validate_name
       errors.add(:abstract, "person_name or company_name must be present") unless (person_name || company_name)
     end

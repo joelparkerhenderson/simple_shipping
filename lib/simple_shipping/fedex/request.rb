@@ -19,6 +19,9 @@ module SimpleShipping::Fedex
        :order! => ['WebAuthenticationDetail', 'ClientDetail', 'Version', 'RequestedShipment'] }
     end
 
+    # Build body for WebAuthenticationDetail element.
+    #
+    # @return [Hash]
     def web_authentication_detail
       { 'UserCredential' => {'Key'      => @credentials.key,
                              'Password' => @credentials.password,
@@ -26,6 +29,9 @@ module SimpleShipping::Fedex
     end
     private :web_authentication_detail
 
+    # Build body for UserCredential element.
+    #
+    # @return [Hash]
     def client_detail
       {'AccountNumber' => @credentials.account_number,
        'MeterNumber'   => @credentials.meter_number,
@@ -33,6 +39,9 @@ module SimpleShipping::Fedex
     end
     private :client_detail
 
+    # Build body for Version element.
+    #
+    # @return [Hash]
     def version
       {'ServiceId'    => 'ship',
        'Major'        => '10',
