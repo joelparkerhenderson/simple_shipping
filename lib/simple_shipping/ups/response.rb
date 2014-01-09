@@ -46,15 +46,15 @@ module SimpleShipping::Ups
       Base64.decode64(value) if value
     end
 
-    # Fetches the value of an XML attribute at the path specified as an array
+    # Fetch the value of an XML attribute at the path specified as an array
     # of node names but appends the implicit namespace on to the front of the
-    # path
+    # path.
     def value_of(*path)
       super(*path.unshift(name_token))
     end
 
     # All UPS requests are namespaced within the same name of the class by
-    # convention
+    # convention.
     def name_token
       self.class.name.split('::').last.underscore.to_sym
     end

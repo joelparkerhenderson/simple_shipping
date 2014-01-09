@@ -12,7 +12,7 @@ module SimpleShipping::Fedex
     #
     # @return [Hash]
     def build_contact
-      result = {:order! => []}
+      result  = {:order! => []}
       contact = @model.contact
       if contact.company_name
         result['CompanyName'] = contact.company_name

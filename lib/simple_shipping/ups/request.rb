@@ -9,10 +9,10 @@ module SimpleShipping::Ups
     # @return [Hash]
     def label_specification
       { 'LabelImageFormat' => {'Code' => 'GIF'},
-        'LabelStockSize' => {
+        'LabelStockSize'   => {
           'Height' => '6',
-          'Width' => '4',
-          :order! => ['Height', 'Width']
+          'Width'  => '4',
+          :order!  => ['Height', 'Width']
         },
         :order! => ['LabelImageFormat', 'LabelStockSize']
       }
@@ -22,5 +22,5 @@ module SimpleShipping::Ups
       self.class.name.sub(/Request/, 'Response').constantize
     end
     private :response_class
- end
+  end
 end

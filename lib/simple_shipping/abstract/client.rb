@@ -78,7 +78,7 @@ module SimpleShipping
     end
     private :create_shipment
 
-    # Write request information to the request.xml
+    # Write request information to request.xml.
     #
     # @param soap [Savon::HTTPRequest]
     def log_request(soap)
@@ -86,7 +86,7 @@ module SimpleShipping
     end
     private :log_request
 
-    # Write response information to response.xml
+    # Write response information to response.xml.
     #
     # @param [Savon::Response]
     def log_response(soap)

@@ -17,7 +17,7 @@ module SimpleShipping
       response_class.new(savon_response)
     end
 
-    # Response class to wrap Savon response
+    # Response class to wrap Savon response.
     #
     # @return [Class]
     def response_class

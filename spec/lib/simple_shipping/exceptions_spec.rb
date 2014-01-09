@@ -4,9 +4,9 @@ describe SimpleShipping::ValidationError do
   describe "to_s" do
     it "should create message with full messages from Abstract::Model argument" do
       TestModel = Class.new(SimpleShipping::Abstract::Model)
-      model = TestModel.new
+      model     = TestModel.new
 
-      errors = double('ActiveModel::Errors')
+      errors        = double('ActiveModel::Errors')
       full_messages = ["error one", "error two"]
 
       model.should_receive(:errors).and_return(errors)
@@ -17,7 +17,7 @@ describe SimpleShipping::ValidationError do
     end
 
     it "should create message with given string" do
-      test = "test string"
+      test  = "test string"
       error = SimpleShipping::ValidationError.new(test)
       error.to_s.should == test
     end
@@ -28,7 +28,7 @@ describe SimpleShipping::ValidationError do
   describe "to_s" do
     it "should create message with SOAP 1.1 faultcode information" do
       fault = Hash.new
-      fault[:faultcode] = "faultcode"
+      fault[:faultcode]   = "faultcode"
       fault[:faultstring] = "faultstring"
 
       fault[:detail] = {
@@ -48,7 +48,7 @@ describe SimpleShipping::ValidationError do
 
     it "should create message with SOAP 1.2 faultcode information" do
       fault = Hash.new
-      fault[:code] = {:value => "value"}
+      fault[:code]   = {:value => "value"}
       fault[:reason] = {:text => "reason"}
 
       error = SimpleShipping::RequestError.new(:fault => fault)

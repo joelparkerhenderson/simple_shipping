@@ -30,7 +30,7 @@ module SimpleShipping::Fedex
       fail "Not Implemented"
     end
 
-    # Sends ProcessShipmentRequest request to the Fedex service and returns
+    # Send ProcessShipmentRequest request to the Fedex service and return
     # response wrapped in {Fedex::Response} object.
     def execute(request)
       savon_response = @client.call(request.type, :message => request.body)

@@ -16,7 +16,7 @@ namespace :demo do
       demo = SimpleShipping::Demo::Fedex.new
       demo.override_options_from_env
       resp = demo.shipment_request
-      img = Magick::Image.read_inline(resp.label_image_base64).first
+      img  = Magick::Image.read_inline(resp.label_image_base64).first
 
       img.write(args[:output_filename])
       puts "Label received. #{args[:output_filename]} written"
@@ -32,7 +32,7 @@ namespace :demo do
       demo.override_options_from_env
 
       resp = demo.shipment_request
-      img = Magick::Image.read_inline(resp.label_image_base64).first
+      img  = Magick::Image.read_inline(resp.label_image_base64).first
 
       img.write(args[:output_filename])
       puts "Label received. #{args[:output_filename]} written"
