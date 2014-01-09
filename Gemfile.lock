@@ -108,7 +108,7 @@ GEM
       roodi (~> 3.1)
     metric_fu-Saikuro (1.1.1.0)
     mini_portile (0.5.2)
-    multi_json (1.8.2)
+    multi_json (1.8.3)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     netrc (0.7.7)
@@ -206,4 +206,4 @@ DEPENDENCIES
   simplecov-rcov-text
   timecop
   webmock
-  yard (~> 0.8.7)
+  yard
