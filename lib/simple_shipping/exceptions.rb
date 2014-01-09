@@ -22,7 +22,7 @@ module SimpleShipping
 
   # Is raised when remote request fails.
   class RequestError < Error
-    # @param [Savon::SOAPFault] Savon exception
+    # @param [Savon::SOAPFault] savon_fault Savon exception
     def initialize(savon_fault)
       fault = savon_fault.to_hash[:fault]
 

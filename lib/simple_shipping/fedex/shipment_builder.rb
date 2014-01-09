@@ -103,7 +103,7 @@ module SimpleShipping::Fedex
 
     # Get payment type.
     #
-    # @retrun [String]
+    # @return [String]
     def payment_type
       (@model.payor == :shipper) ? 'SENDER' : 'RECIPIENT'
     end

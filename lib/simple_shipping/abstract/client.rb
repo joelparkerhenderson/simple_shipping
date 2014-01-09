@@ -88,7 +88,7 @@ module SimpleShipping
 
     # Write response information to response.xml.
     #
-    # @param [Savon::Response]
+    # @param [Savon::Response] soap
     def log_response(soap)
       log_soap("response", soap)
     end

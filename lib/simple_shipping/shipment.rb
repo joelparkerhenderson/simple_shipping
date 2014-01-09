@@ -1,5 +1,5 @@
 module SimpleShipping
-  # Represent a shipment
+  # Represents a shipment.
   #
   # == Attributes:
   # * _shipper_ (an instance of {SimpleShipping::Party}
@@ -21,7 +21,7 @@ module SimpleShipping
     validates_submodel :package  , :as => SimpleShipping::Package
     validate :validate_payor_account_number
 
-    # returns account number of payor.
+    # Account number of payor.
     def payor_account_number
       case payor
       when :shipper
@@ -33,7 +33,7 @@ module SimpleShipping
 
     # Validate presence of payor account number.
     #
-    # @retunr [void]
+    # @return [void]
     def validate_payor_account_number
       errors.add(:abstract, "Payor account number is missing") unless payor_account_number
     end
