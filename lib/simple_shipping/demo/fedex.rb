@@ -1,4 +1,19 @@
+# Helper object to send demo requests to Fedex in order to test credentials
+# and the library.
+#
+# @example
+#   demo = SimpleShipping::Demo::Fedex.new(credentials)
+#   response = demo.shipment_request
 class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
+  attr_reader :credentials
+
+  def initialize(options = {})
+    @options = options.reverse_merge(:log => false)
+  end
+
+  # Build package object.
+  #
+  # @return [SimpleShipping::Package]
   def package
     @package ||= SimpleShipping::Package.new(
         :weight          => 1,
@@ -11,6 +26,9 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
+  # Initialize fedex client.
+  #
+  # @return [SimpleShipping::Fedex::Client]
   def fedex_client
     @fedex_client ||= SimpleShipping::Fedex::Client.new(
         :credentials => options.slice(:key, :password, :account_number, :meter_number),
@@ -19,12 +37,9 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
-  attr_reader :credentials
-
-  def initialize(options = {})
-    @options = options.reverse_merge(:log => false)
-  end
-
+  # Send shipment request to Fedex.
+  #
+  # @return [SimpleShipping::Fedex::Response]
   def shipment_request
     fedex_client.shipment_request(shipper, recipient, package)
   end

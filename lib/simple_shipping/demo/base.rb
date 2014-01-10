@@ -2,6 +2,9 @@
 class SimpleShipping::Demo::Base
   attr_reader :options
 
+  # Build a shipper address with random attributes.
+  #
+  # @return [SimpleShipping::Address]
   def shipper_address
     @shipper_address ||= SimpleShipping::Address.new(
         :country_code => 'US',
@@ -12,6 +15,9 @@ class SimpleShipping::Demo::Base
     )
   end
 
+  # Build shipper contact object.
+  #
+  # @return [SimpleShipping::Contact]
   def shipper_contact
     @shipper_contact ||= SimpleShipping::Contact.new(
         :person_name  => 'Mister Someone',
@@ -19,6 +25,9 @@ class SimpleShipping::Demo::Base
     )
   end
 
+  # Build shipper object.
+  #
+  # @return [SimpleShipping::Party]
   def shipper
     @shipper ||= SimpleShipping::Party.new(
         :address => shipper_address,
@@ -27,7 +36,9 @@ class SimpleShipping::Demo::Base
     )
   end
 
-
+  # Build recipient address with random attributes.
+  #
+  # @return [SimpleShipping::Address]
   def recipient_address
     @recipient_address ||= SimpleShipping::Address.new(
         :country_code => 'US',
@@ -38,6 +49,9 @@ class SimpleShipping::Demo::Base
     )
   end
 
+  # Build recipient contact.
+  #
+  # @return [SimpleShipping::Contact]
   def recipient_contact
     @recipient_contact ||= SimpleShipping::Contact.new(
       :person_name  => "John Recipient Smith",
@@ -45,6 +59,9 @@ class SimpleShipping::Demo::Base
   )
   end
 
+  # Build recipient object.
+  #
+  # @return [SimpleShipping::Party]
   def recipient
     @recipient ||= SimpleShipping::Party.new(
       :address        => recipient_address,
@@ -52,6 +69,9 @@ class SimpleShipping::Demo::Base
   )
   end
 
+  # Overrides options with environment variables.
+  #
+  # @return [Hash] overridden options
   def override_options_from_env
     keys = options.keys.map(&:to_s)
     overrides = ENV.to_hash.slice(*keys).symbolize_keys
