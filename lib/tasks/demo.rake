@@ -19,7 +19,6 @@ namespace :demo do
       credentials = YAML.load_file(args[:credentials_file])['fedex'].symbolize_keys!
 
       demo = SimpleShipping::Demo::Fedex.new(credentials)
-      demo.override_options_from_env
       resp = demo.shipment_request
       img  = Magick::Image.read_inline(resp.label_image_base64).first
 
@@ -36,7 +35,6 @@ namespace :demo do
       credentials = YAML.load_file(args[:credentials_file])['ups'].symbolize_keys!
 
       demo = SimpleShipping::Demo::Ups.new(credentials)
-      demo.override_options_from_env
 
       resp = demo.shipment_request
       img  = Magick::Image.read_inline(resp.label_image_base64).first
@@ -49,7 +47,6 @@ namespace :demo do
     task :void_request, [:credentials_file] => :environment do |task, args|
       credentials = YAML.load_file(args[:credentials_file])['ups'].symbolize_keys!
       demo = SimpleShipping::Demo::Ups.new(credentials)
-      demo.override_options_from_env
 
       begin
         resp = demo.void_request

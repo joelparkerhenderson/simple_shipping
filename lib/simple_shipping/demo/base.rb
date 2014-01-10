@@ -68,13 +68,4 @@ class SimpleShipping::Demo::Base
       :contact        => recipient_contact
   )
   end
-
-  # Overrides options with environment variables.
-  #
-  # @return [Hash] overridden options
-  def override_options_from_env
-    keys = options.keys.map(&:to_s)
-    overrides = ENV.to_hash.slice(*keys).symbolize_keys
-    options.merge!(overrides)
-  end
 end
