@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # A wrapper for UPS ShipmentResponse
+  # A wrapper for UPS ShipmentResponse.
   class ShipmentResponse < Response
     # Get the label as abstract64 encoded data
     #   response.label_image_base64 # => "odGqk/KmgLaawV..."

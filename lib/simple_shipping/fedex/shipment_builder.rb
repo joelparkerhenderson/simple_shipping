@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # Builds a shipment element for Fedex SOAP service
+  # Builds a shipment element for FedEx SOAP service.
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
     # Value for RateRequestTypes XML element.
     RATE_REQUEST_TYPE = 'ACCOUNT'
@@ -43,7 +43,7 @@ module SimpleShipping::Fedex
       :standard_overnight                  => 'STANDARD_OVERNIGHT'
     }
 
-    # Mapping for dropoff types
+    # Mapping for dropoff types.
     DROPOFF_TYPES = {
       :business_service_center => 'BUSINESS_SERVICE_CENTER',
       :drop_box                => 'DROP_BOX',
@@ -52,10 +52,10 @@ module SimpleShipping::Fedex
       :station                 => 'STATION'
     }
 
-    set_default_opts :dropoff_type   => :business_service_center,
-                     :service_type   => :fedex_ground
+    set_default_opts :dropoff_type => :business_service_center,
+                     :service_type => :fedex_ground
 
-    # Builds shipment representation a hash for Savon client.
+    # Build the shipment representation as a hash for the Savon client.
     def build
       {'ShipTimestamp'             => ship_timestamp,
        'DropoffType'               => DROPOFF_TYPES[@opts[:dropoff_type]],
@@ -64,23 +64,23 @@ module SimpleShipping::Fedex
        'Shipper'                   => PartyBuilder.build(@model.shipper),
        'Recipient'                 => PartyBuilder.build(@model.recipient),
        'ShippingChargesPayment'    => shipping_charges_payment,
-       'LabelSpecification'        => label_speicfication,
+       'LabelSpecification'        => label_specification,
        'RateRequestTypes'          => RATE_REQUEST_TYPE,
        'PackageCount'              => PACKAGE_COUNT,
        'RequestedPackageLineItems' => PackageBuilder.build(@model.package),
-       :order! => ['ShipTimestamp', 'DropoffType'           , 'ServiceType'       , 'PackagingType'   , 'Shipper',
-                   'Recipient'    , 'ShippingChargesPayment', 'LabelSpecification', 'RateRequestTypes', 'PackageCount',
-                   'RequestedPackageLineItems']
+       :order! => ['ShipTimestamp'   , 'DropoffType'    , 'ServiceType'           , 'PackagingType',
+                   'Shipper'         , 'Recipient'      , 'ShippingChargesPayment', 'LabelSpecification',
+                   'RateRequestTypes', 'PackageCount'   , 'RequestedPackageLineItems']
       }
     end
 
-    # Performs validations
+    # Perform validations.
     def validate
       validate_inclusion_of(:dropoff_type  , DROPOFF_TYPES)
       validate_inclusion_of(:service_type  , SERVICE_TYPES)
     end
 
-    # Get ship timestamps in a specific format.
+    # Get the shipping timestamps in a specific format.
     #
     # @example
     #   ship_timestamp  # => "2014-01-08T14:41:53+02:00"
@@ -91,7 +91,7 @@ module SimpleShipping::Fedex
     end
     private :ship_timestamp
 
-    # Build hash for ShippingChargesPayment element.
+    # Build the hash for the ShippingChargesPayment element.
     #
     # @return [Hash]
     def shipping_charges_payment
@@ -101,7 +101,7 @@ module SimpleShipping::Fedex
     end
     private :shipping_charges_payment
 
-    # Get payment type.
+    # Get the payment type.
     #
     # @return [String]
     def payment_type
@@ -109,15 +109,15 @@ module SimpleShipping::Fedex
     end
     private :payment_type
 
-    # Build label parameters according to Fedex's API.
+    # Build the label parameters according to FedEx's API.
     #
     # @return [Hash]
-    def label_speicfication
+    def label_specification
       { 'LabelFormatType' => 'COMMON2D',
         'ImageType'       => 'PNG',
         'LabelStockType'  => 'PAPER_4X6',
-        :order! => ['LabelFormatType', 'ImageType', 'LabelStockType'] }
+        :order!           => ['LabelFormatType', 'ImageType', 'LabelStockType'] }
     end
-    private :label_speicfication
+    private :label_specification
   end
 end

@@ -18,7 +18,7 @@ describe SimpleShipping::Ups::Response do
         {}
       )
     end
-    let(:response)       { ::SimpleShipping::Ups::ShipmentResponse.new(savon_response) }
+    let(:response) { ::SimpleShipping::Ups::ShipmentResponse.new(savon_response) }
 
     its(:shipment_identification_number) { should eq("1Z35679R0294268838") }
     its(:tracking_number)                { should eq("1Z35679R0294268838") }

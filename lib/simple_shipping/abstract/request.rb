@@ -8,7 +8,7 @@ module SimpleShipping
       @credentials = credentials
     end
 
-    # Wraps savon response with specific for shipment provider response.
+    # Wrap the Savon response with specific response for shipment provider.
     #
     # @param savon_response [Savon::Response]
     #

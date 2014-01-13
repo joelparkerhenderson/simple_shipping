@@ -17,11 +17,12 @@ GEM
     cane (2.6.1)
       parallel
     chronic (0.10.2)
-    churn (0.0.34)
+    churn (0.0.35)
       chronic (>= 0.2.3)
       hirb
       json_pure
       main
+      rest-client (>= 1.6.0)
       ruby_parser (~> 3.0)
       sexp_processor (~> 4.1)
     code_analyzer (0.4.4)
@@ -33,11 +34,11 @@ GEM
       safe_yaml (~> 0.9.0)
     descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
-    docile (1.1.1)
+    docile (1.1.2)
     equivalent-xml (0.4.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
-    faraday (0.8.8)
+    faraday (0.8.9)
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
@@ -107,6 +108,7 @@ GEM
       reek (~> 1.3, >= 1.3.4)
       roodi (~> 3.1)
     metric_fu-Saikuro (1.1.1.0)
+    mime-types (2.0)
     mini_portile (0.5.2)
     multi_json (1.8.3)
     multi_xml (0.5.5)
@@ -134,7 +136,7 @@ GEM
       require_all
       ruby-progressbar
     rake (10.1.1)
-    rdoc (4.1.0)
+    rdoc (4.1.1)
       json (~> 1.4)
     redcard (1.1.0)
     reek (1.3.6)
@@ -142,6 +144,8 @@ GEM
       ruby_parser (~> 3.2)
       sexp_processor
     require_all (1.3.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rmagick (2.13.2)
     roodi (3.3.1)
       ruby_parser (~> 3.2, >= 3.2.2)

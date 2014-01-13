@@ -8,36 +8,38 @@ module SimpleShipping
                     :production_address,
                     :testing_address
 
-    # Sets credentials which should be validated.
+    # Set credentials which should be validated.
     def self.set_required_credentials(*args)
       self.required_credentials = args
     end
 
-    # Sets WSDL document used by Savon.
+    # Set the WSDL document used by Savon.
     def self.set_wsdl_document(wsdl_path)
       self.wsdl_document = wsdl_path
     end
 
-    # Sets production endpoint.
+    # Set the production endpoint.
     #
     # @param address [String]
     def self.set_production_address(address)
       self.production_address = address
     end
 
-    # Sets testing endpoint.
+    # Set the testing endpoint.
     #
     # @param address [String]
     def self.set_testing_address(address)
       self.testing_address = address
     end
 
-    # Creates instance of a client.
+    # Create an instance of a client.
     # == Parameters:
     #   * credentials - a hash with credentials.
     def initialize(options)
       @options    = options.dup
       @live       = options.delete(:live)
+      @debug      = options.delete(:debug)
+      @debug_path = options.delete(:debug_path)
       credentials = options.delete(:credentials)
 
       validate_credentials(credentials)
@@ -59,7 +61,7 @@ module SimpleShipping
     protected :client_options
 
 
-    # Validates all required credentials are passed.
+    # Validate that all required credentials are passed.
     def validate_credentials(credentials)
       credentials.assert_valid_keys(required_credentials)
       missing = required_credentials - credentials.keys
@@ -67,7 +69,7 @@ module SimpleShipping
     end
     private :validate_credentials
 
-    # Builds {Shipment shipment} model
+    # Build the {Shipment shipment} model.
     def create_shipment(shipper, recipient, package, opts = {})
       shipment = SimpleShipping::Shipment.new(
         :shipper   => shipper,
@@ -78,7 +80,7 @@ module SimpleShipping
     end
     private :create_shipment
 
-    # Write request information to request.xml.
+    # Write the request information to request.xml.
     #
     # @param soap [Savon::HTTPRequest]
     def log_request(soap)
@@ -86,7 +88,7 @@ module SimpleShipping
     end
     private :log_request
 
-    # Write response information to response.xml.
+    # Write the response information to response.xml.
     #
     # @param [Savon::Response] soap
     def log_response(soap)
@@ -94,14 +96,13 @@ module SimpleShipping
     end
     private :log_response
 
-    # Write request/response to .xml file.
+    # Write the request/response to .xml file.
     #
     # @param name [String] file name without .xml
     # @param soap [Savon::HTTPRequest, Savon::Response]
     def log_soap(name, soap)
-      if @options[:debug]
-        debug_path = @options.fetch(:debug_path, '.')
-        path = File.join(debug_path, "#{name}.xml")
+      if @debug
+        path = File.join(@debug_path, "#{name}.xml")
         File.open(path, 'w') {|f| f.write soap.to_xml}
       end
     end

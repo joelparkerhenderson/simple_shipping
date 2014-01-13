@@ -1,11 +1,11 @@
 module SimpleShipping
-  # Parent error for all SimpleShipping errors
+  # Parent error for all SimpleShipping errors.
   class Error < StandardError; end
 
-  # Error raises when response does not contain a label
+  # Error raises when response does not contain a label.
   class NoLabelError < Error ; end
 
-  # Raises when some data is invalid or missing to build a request
+  # Raises when some data is invalid or missing to build a request.
   class ValidationError < Error
     # @param model_or_msg [Abstract::Model, String]
     def initialize(model_or_msg)
@@ -20,7 +20,7 @@ module SimpleShipping
     end
   end
 
-  # Is raised when remote request fails.
+  # Raised when a remote request fails.
   class RequestError < Error
     # @param [Savon::SOAPFault] savon_fault Savon exception
     def initialize(savon_fault)

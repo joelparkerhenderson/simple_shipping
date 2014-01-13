@@ -1,8 +1,9 @@
 module SimpleShipping
-  # Represents a response returned by remote service for request initiated
+  # Represents a response returned by the remote service for a request initiated
   # by {SimpleShipping::Abstract::Client client}.
   #
-  # It's kind of an abstract class which provides a common interface. In real world you have deal with its subclasses:
+  # An abstract class which provides a common interface.
+  # In the real world, you will deal with its subclasses:
   # * {SimpleShipping::Fedex::Response}
   # * {SimpleShipping::Ups::Response}
   #
@@ -16,7 +17,7 @@ module SimpleShipping
       @response = savon_resp
     end
 
-    # Fetches the value of an XML attribute at the path specified as an array
+    # Fetch the value of an XML attribute at the path specified as an array.
     # of node names
     def value_of(*path)
       @response.to_array(*path).first

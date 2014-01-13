@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # Builds complete for Fedex service.
+  # Builds a complete request for the FedEx service.
   class Request < SimpleShipping::Abstract::Request
     extend ActiveSupport::Autoload
 
@@ -10,7 +10,7 @@ module SimpleShipping::Fedex
       @shipment = shipment
     end
 
-    # Build complete request from {Shipment shipment} object
+    # Build a complete request from a {Shipment shipment} object.
     def body(opts = {})
       {'WebAuthenticationDetail' => web_authentication_detail,
        'ClientDetail'            => client_detail,
@@ -19,7 +19,7 @@ module SimpleShipping::Fedex
        :order! => ['WebAuthenticationDetail', 'ClientDetail', 'Version', 'RequestedShipment'] }
     end
 
-    # Build body for WebAuthenticationDetail element.
+    # Build the body for the WebAuthenticationDetail element.
     #
     # @return [Hash]
     def web_authentication_detail
@@ -29,7 +29,7 @@ module SimpleShipping::Fedex
     end
     private :web_authentication_detail
 
-    # Build body for UserCredential element.
+    # Build the body for the UserCredential element.
     #
     # @return [Hash]
     def client_detail
@@ -39,7 +39,7 @@ module SimpleShipping::Fedex
     end
     private :client_detail
 
-    # Build body for Version element.
+    # Build the body for the Version element.
     #
     # @return [Hash]
     def version

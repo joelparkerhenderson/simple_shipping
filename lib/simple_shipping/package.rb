@@ -35,6 +35,7 @@ module SimpleShipping
                        :weight_units    => :lb,
                        :dimension_units => :in
 
+    # Whether the package is a custom package.
     def custom_package?
       packaging_type == :your
     end

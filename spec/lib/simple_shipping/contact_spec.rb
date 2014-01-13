@@ -20,7 +20,7 @@ describe SimpleShipping::Contact do
       contact.person_name = "John"
       contact.should be_valid
 
-      contact.person_name = nil
+      contact.person_name  = nil
       contact.company_name = "Osborn Inc"
       contact.should be_valid
     end

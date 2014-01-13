@@ -1,5 +1,5 @@
 module SimpleShipping
-  # Represents an address information of {SimpleShipping::Party party}
+  # Represents an address information of {SimpleShipping::Party party}.
   # == Attributes:
   # * _country_code_
   # * _state_code_

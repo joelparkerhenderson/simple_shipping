@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:ship="http://www.ups.com/XMLSchema/XOLTWS/Ship/v1.0"
+              xmlns:upss="http://www.ups.com/XMLSchema/XOLTWS/UPSS/v1.0"
+              xmlns:common="http://www.ups.com/XMLSchema/XOLTWS/Common/v1.0"
+              xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+  <env:Header>
+    <upss:UPSSecurity>
+      <upss:ServiceAccessToken>
+        <upss:AccessLicenseNumber><%= access_license_number %></upss:AccessLicenseNumber>
+      </upss:ServiceAccessToken>
+      <upss:UsernameToken>
+        <upss:Username><%= username %></upss:Username>
+        <upss:Password><%= password %></upss:Password>
+      </upss:UsernameToken>
+    </upss:UPSSecurity>
+  </env:Header>
+  <env:Body>
+    <ship:ShipmentRequest>
+      <common:Request>
+        <common:RequestOption>nonvalidate</common:RequestOption>
+      </common:Request>
+      <ship:Shipment>
+        <ship:Shipper>
+          <ship:Name>Mister Someone</ship:Name>
+          <ship:Phone>
+            <ship:Number>1234567890</ship:Number>
+          </ship:Phone>
+          <ship:ShipperNumber><%= account_number %></ship:ShipperNumber>
+          <ship:Address>
+            <ship:AddressLine>SN2000 Test Meter 8</ship:AddressLine>
+            <ship:City>Texas</ship:City>
+            <ship:StateProvinceCode>TX</ship:StateProvinceCode>
+            <ship:PostalCode>73301</ship:PostalCode>
+            <ship:CountryCode>US</ship:CountryCode>
+          </ship:Address>
+        </ship:Shipper>
+        <ship:ShipTo>
+          <ship:Name>John Recipient Smith</ship:Name>
+          <ship:Phone>
+            <ship:Number>1234567890</ship:Number>
+          </ship:Phone>
+          <ship:ShipperNumber xsi:nil="true"/>
+          <ship:Address>
+            <ship:AddressLine>Nightmare Avenue 13</ship:AddressLine>
+            <ship:City>Minneapolis</ship:City>
+            <ship:StateProvinceCode>MN</ship:StateProvinceCode>
+            <ship:PostalCode>55411</ship:PostalCode>
+            <ship:CountryCode>US</ship:CountryCode>
+          </ship:Address>
+        </ship:ShipTo>
+        <ship:PaymentInformation>
+          <ship:ShipmentCharge>
+            <ship:Type>01</ship:Type>
+            <ship:BillShipper>
+              <ship:AccountNumber><%= account_number %></ship:AccountNumber>
+            </ship:BillShipper>
+          </ship:ShipmentCharge>
+        </ship:PaymentInformation>
+        <ship:Service>
+          <ship:Code>02</ship:Code>
+        </ship:Service>
+        <ship:Package>
+          <ship:Packaging>
+            <ship:Code>01</ship:Code>
+          </ship:Packaging>
+          <ship:PackageServiceOptions/>
+          <ship:PackageWeight>
+            <ship:UnitOfMeasurement>
+              <ship:Code>LBS</ship:Code>
+            </ship:UnitOfMeasurement>
+            <ship:Weight>0.5</ship:Weight>
+          </ship:PackageWeight>
+        </ship:Package>
+      </ship:Shipment>
+      <ship:LabelSpecification>
+        <ship:LabelImageFormat>
+          <ship:Code>GIF</ship:Code>
+        </ship:LabelImageFormat>
+        <ship:LabelStockSize>
+          <ship:Height>6</ship:Height>
+          <ship:Width>4</ship:Width>
+        </ship:LabelStockSize>
+      </ship:LabelSpecification>
+    </ship:ShipmentRequest>
+  </env:Body>
+</env:Envelope>

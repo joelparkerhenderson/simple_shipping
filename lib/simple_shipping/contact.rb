@@ -1,6 +1,6 @@
 module SimpleShipping
-  # Represents a contact information of {SimpleShipping::Party party} who takes
-  # a part in shipment process.
+  # Represents the contact information of the {SimpleShipping::Party party} who takes
+  # part in shipment process.
   #
   # == Attributes
   # * _person_name_ (optional if company_name is provided)

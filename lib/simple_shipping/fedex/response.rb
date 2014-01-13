@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # A wrapper for Fedex response.
+  # A wrapper for FedEx response.
   class Response < SimpleShipping::Abstract::Response
   end
 end

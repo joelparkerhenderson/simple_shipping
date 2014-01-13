@@ -18,6 +18,7 @@ module SimpleShipping::Ups
       }
     end
 
+    # The class of the response in the same name space.
     def response_class
       self.class.name.sub(/Request/, 'Response').constantize
     end
