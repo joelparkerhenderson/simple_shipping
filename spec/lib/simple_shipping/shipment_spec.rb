@@ -22,7 +22,7 @@ describe SimpleShipping::Shipment do
 
     it 'validates payor account number' do
       recipient = SimpleShipping::Party.new(:account_number => '123')
-      shipment = SimpleShipping::Shipment.new(:recipient => recipient, :payor => :recipient)
+      shipment  = SimpleShipping::Shipment.new(:recipient => recipient, :payor => :recipient)
       shipment.should_not have_errors_on(:abstract)
       shipment.recipient.account_number = nil
       shipment.should have_errors_on(:abstract)

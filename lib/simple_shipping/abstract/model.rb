@@ -6,12 +6,12 @@ module SimpleShipping
     # hash with default attribute values
     class_attribute :default_values
 
-    # Defines default values of attributes which should be setted when model is created.
+    # Define the default values of the attributes which should be set when the model is created.
     def self.set_default_values(values = {})
       self.default_values = values 
     end
 
-    # Adds validation callback to validate submodel. Submodel is a model 
+    # Add a validation callback to validate the submodel. Submodel is a model
     # which belongs to current model.
     # == Parameters:
     # * name - name of attribute which is submodel
@@ -28,7 +28,7 @@ module SimpleShipping
       end
     end
 
-    # Creates new model and sets default and passed values.
+    # Create a new model and set the default and passed values.
     def initialize(values = {})
       values.reverse_merge!(default_values || {})
       values.each do |attribute, value|

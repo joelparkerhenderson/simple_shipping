@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "FedEx integration test" do
-  before{ Timecop.freeze }
-  after{ Timecop.return }
+  before { Timecop.freeze }
+  after  { Timecop.return }
 
   #let(:credentials) do
   #  YAML.load_file(SimpleShipping::DEMO_CREDENTIALS_FILE)['fedex'].symbolize_keys!

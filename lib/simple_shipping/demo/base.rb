@@ -2,7 +2,7 @@
 class SimpleShipping::Demo::Base
   attr_reader :options
 
-  # Build a shipper address with random attributes.
+  # Build the shipper address with random attributes.
   #
   # @return [SimpleShipping::Address]
   def shipper_address
@@ -15,7 +15,7 @@ class SimpleShipping::Demo::Base
     )
   end
 
-  # Build shipper contact object.
+  # Build the shipper contact object.
   #
   # @return [SimpleShipping::Contact]
   def shipper_contact
@@ -25,7 +25,7 @@ class SimpleShipping::Demo::Base
     )
   end
 
-  # Build shipper object.
+  # Build the shipper object.
   #
   # @return [SimpleShipping::Party]
   def shipper
@@ -36,7 +36,7 @@ class SimpleShipping::Demo::Base
     )
   end
 
-  # Build recipient address with random attributes.
+  # Build the recipient address with random attributes.
   #
   # @return [SimpleShipping::Address]
   def recipient_address
@@ -49,7 +49,7 @@ class SimpleShipping::Demo::Base
     )
   end
 
-  # Build recipient contact.
+  # Build the recipient contact.
   #
   # @return [SimpleShipping::Contact]
   def recipient_contact
@@ -59,7 +59,7 @@ class SimpleShipping::Demo::Base
   )
   end
 
-  # Build recipient object.
+  # Build the recipient object.
   #
   # @return [SimpleShipping::Party]
   def recipient

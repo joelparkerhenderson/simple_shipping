@@ -1,6 +1,6 @@
 # Simple Shipping
 
-Provides common simple API to build labels for the next shipping services:
+Provides a common simple API to build labels for the following shipping services:
 
 * FedEx (http://fedex.com)
 * UPS (http://ups.com) API (https://www.ups.com/upsdeveloperkit)
@@ -76,7 +76,7 @@ fedex_resp = fedex.request(shipper, recipient, package, :payor => :recipient)
 ```
 
 ## Specific extra options
-You can customize request using specific for service options passing an options hash
+You can customize the request using specific options for the service by passing an options hash:
 
 ### FedEx extra options
 * *:dropoff_type* (see `SimpleShipping::Fedex::ShipmentBuilder::DROPOFF_TYPES` for available values)
@@ -125,8 +125,7 @@ You must have ImageMagick installed to run the demos.
 
 ## Developers information
 
-SimpleShipping provides the next models which inherit
-SimpleShipping::Abstract::Model:
+SimpleShipping provides the following models which inherit SimpleShipping::Abstract::Model:
 * Shipment
 * Package
 * Party
@@ -135,7 +134,7 @@ SimpleShipping::Abstract::Model:
 
 Every service adapter has its own builders which know how to represent every
 separated model to build SOAP request for a specific service. For example to represent
-Package model FedEx adapter has Fedex::PackageBuilder and UPS adapter has
+Package model, the FedEx adapter has Fedex::PackageBuilder and the UPS adapter has
 Ups::PackageBuilder. All these model builders inherit SimpleShipping::Abstract::Builder.
 
 Request builders are used to build whole request for the service. They inherit
@@ -203,5 +202,4 @@ Where `credentials.yml` is file with format described above.
 
 ## Copyright
 
-Copyright (c) 2011 TMX Credit. Author Potapov Sergey. See LICENSE.txt for
-further details.
+Copyright (c) 2011 TMX Credit. Author Potapov Sergey. See LICENSE.txt for further details.

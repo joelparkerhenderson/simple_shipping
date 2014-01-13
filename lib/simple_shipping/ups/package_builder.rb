@@ -1,4 +1,4 @@
-# Builds hash for Savon which represents {Package package}
+# Builds hash for Savon which represents {Package package}.
 module SimpleShipping::Ups
   # Builds hash structure for Savon that represents package element in UPS's API.
   class PackageBuilder < SimpleShipping::Abstract::Builder
@@ -14,22 +14,22 @@ module SimpleShipping::Ups
       :box_10kg => '24'
     }
 
-    # Mapping for UPS weight units
+    # Mapping for UPS weight units.
     WEIGHT_UNITS = {
       :kg => 'KGS',
       :lb => 'LBS'
     }
 
-    # Mapping for UPS dimension units
+    # Mapping for UPS dimension units.
     DIMENSION_UNITS = {
       :in => 'IN',
       :cm => 'CM'
     }
 
-    # Custom package order
+    # Custom package order.
     CUSTOM_PACKAGE_ORDER = %w(Packaging PackageServiceOptions Dimensions PackageWeight)
 
-    # Standard package order
+    # Standard package order.
     STANDARD_PACKAGE_ORDER = %w(Packaging PackageServiceOptions PackageWeight)
 
     # Build basic skeleton for package element. It can be customized by
@@ -46,21 +46,21 @@ module SimpleShipping::Ups
             'Code' => WEIGHT_UNITS[@model.weight_units]
           },
           'Weight' => @model.weight,
-          :order! => ['UnitOfMeasurement', 'Weight']
+          :order!  => ['UnitOfMeasurement', 'Weight']
         },
         'PackageServiceOptions' => {}
       }
 
       if @model.insured_value
         base['PackageServiceOptions']['InsuredValue'] = {
-          'CurrencyCode' => 'USD',
+          'CurrencyCode'  => 'USD',
           'MonetaryValue' => @model.insured_value
         }
       end
 
       if @model.declared_value
         base['PackageServiceOptions']['DeclaredValue'] = {
-          'CurrencyCode' => 'USD',
+          'CurrencyCode'  => 'USD',
           'MonetaryValue' => @model.declared_value
         }
       end
@@ -93,6 +93,7 @@ module SimpleShipping::Ups
       end
     end
 
+    # Build the package, whether custom or standard.
     def build
       @model.custom_package? ? custom_package : standard_package
     end

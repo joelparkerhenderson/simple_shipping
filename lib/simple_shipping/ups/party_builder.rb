@@ -1,5 +1,5 @@
 module SimpleShipping::Ups
-  # Knows how to convert {Party} model to SOAP element for UPS
+  # Knows how to convert {Party} model to SOAP element for UPS.
   class PartyBuilder < SimpleShipping::Abstract::Builder
     # Builds a hash for Savon which represents {Party party}.
     def build
@@ -8,7 +8,7 @@ module SimpleShipping::Ups
        'Phone'         => {'Number' => contact.phone_number},
        'ShipperNumber' => @model.account_number,
        'Address'       => build_address,
-       :order!             => ['Name', 'Phone', 'ShipperNumber', 'Address']
+       :order!         => ['Name', 'Phone', 'ShipperNumber', 'Address']
       }
     end
 
@@ -22,7 +22,7 @@ module SimpleShipping::Ups
        'StateProvinceCode' => addr.state_code,
        'PostalCode'        => addr.postal_code,
        'CountryCode'       => addr.country_code,
-       :order! => ['AddressLine', 'City', 'StateProvinceCode', 'PostalCode', 'CountryCode']
+       :order!             => ['AddressLine', 'City', 'StateProvinceCode', 'PostalCode', 'CountryCode']
       }
     end
 

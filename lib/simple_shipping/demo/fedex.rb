@@ -11,7 +11,7 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     @options = options.reverse_merge(:log => false)
   end
 
-  # Build package object.
+  # Build the package object.
   #
   # @return [SimpleShipping::Package]
   def package
@@ -26,7 +26,7 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
-  # Initialize FedEx client.
+  # Initialize the FedEx client.
   #
   # @return [SimpleShipping::Fedex::Client]
   def fedex_client
@@ -37,7 +37,7 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
-  # Send shipment request to FedEx.
+  # Send the shipment request to FedEx.
   #
   # @return [SimpleShipping::Fedex::Response]
   def shipment_request

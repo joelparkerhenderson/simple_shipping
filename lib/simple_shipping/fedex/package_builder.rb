@@ -8,7 +8,7 @@ module SimpleShipping::Fedex
     DIMENSION_UNITS = {:in => 'IN',
                        :cm => 'CM'}
     
-    # Builds a SOAP package element as a hash for Savon.
+    # Build a SOAP package element as a hash for Savon.
     def build
       { 'Weight'     => {'Units' => WEIGHT_UNITS[@model.weight_units],
                          'Value' => @model.weight,

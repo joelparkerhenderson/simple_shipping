@@ -13,7 +13,7 @@ module SimpleShipping::Ups
       @type                           = :process_void
     end
 
-    # Builds a request from {Shipment shipment} object.
+    # Build a request from a {Shipment shipment} object.
     def body
       {
         'common:Request' => {

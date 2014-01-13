@@ -1,6 +1,7 @@
 module SimpleShipping::Ups
   # Builds shipment element for UPS SOAP service.
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
+    # The type of payment for this shipment.
     PAYMENT_TYPE = '01' # 01 - Transportation, 02 - Duties and Taxes
 
     # Service codes in UPS terminology.

@@ -14,7 +14,7 @@ class SimpleShipping::Demo::Ups < SimpleShipping::Demo::Base
     )
   end
 
-  # Build package object.
+  # Build the package object.
   #
   # @return [SimpleShipping::Package]
   def package
@@ -24,7 +24,7 @@ class SimpleShipping::Demo::Ups < SimpleShipping::Demo::Base
     )
   end
 
-  # Initialize UPS client for shipment requests.
+  # Initialize the UPS client for shipment requests.
   #
   # @return [SimpleShipping::Ups::ShipClient]
   def ship_client
@@ -34,7 +34,7 @@ class SimpleShipping::Demo::Ups < SimpleShipping::Demo::Base
     )
   end
 
-  # Initialize UPS client for void requests.
+  # Initialize the UPS client for void requests.
   #
   # @return [SimpleShipping::Ups::VoidClient]
   def void_client

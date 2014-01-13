@@ -18,7 +18,7 @@ unless credentials_file = ARGV.pop
   abort "Usage:\n  #{$0} <PATH_TO_CREDENTIALS.yml>"
 end
 
-CREDENTIALS = YAML.load_file(credentials_file )['ups'].symbolize_keys!
+CREDENTIALS    = YAML.load_file(credentials_file )['ups'].symbolize_keys!
 ACCOUNT_NUMBER = CREDENTIALS.delete(:account_number)
 
 5.times do |iteration|
@@ -67,8 +67,8 @@ ACCOUNT_NUMBER = CREDENTIALS.delete(:account_number)
   FileUtils.mkdir_p(confirm_path)
 
   confirm_client = SimpleShipping::Ups::ShipClient.new(
-    :debug => true,
-    :debug_path => confirm_path,
+    :debug       => true,
+    :debug_path  => confirm_path,
     :credentials => CREDENTIALS
   )
 

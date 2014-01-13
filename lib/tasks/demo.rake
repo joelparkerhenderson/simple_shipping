@@ -46,7 +46,7 @@ namespace :demo do
     desc 'Call real UPS API with void_request'
     task :void_request, [:credentials_file] => :environment do |task, args|
       credentials = YAML.load_file(args[:credentials_file])['ups'].symbolize_keys!
-      demo = SimpleShipping::Demo::Ups.new(credentials)
+      demo        = SimpleShipping::Demo::Ups.new(credentials)
 
       begin
         resp = demo.void_request
