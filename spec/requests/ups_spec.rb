@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "UPS test" do
   let(:credentials) {{
-    :username => "Joe13",
-    :password => "JoesSecretWord",
-    :account_number => "1010101",
+    :username              => "Joe13",
+    :password              => "JoesSecretWord",
+    :account_number        => "1010101",
     :access_license_number => "Joe's license"
   }}
 
@@ -22,7 +22,7 @@ describe "UPS test" do
       it "builds correct SOAP request envelope" do
         req_matcher = lambda do |req|
           expected = Nokogiri::XML(fixture(:ups_shipment_request, erb_request_vars))
-          actual = Nokogiri::XML(req.body)
+          actual   = Nokogiri::XML(req.body)
 
           actual.root.should be_equivalent_to(expected.root)
           #actual.root.to_s.should == expected.root.to_s
@@ -51,8 +51,7 @@ describe "UPS test" do
       it "builds correct SOAP request envelope" do
         req_matcher = lambda do |req|
           expected = Nokogiri::XML(fixture(:ups_void_request, erb_request_vars))
-
-          actual = Nokogiri::XML(req.body)
+          actual   = Nokogiri::XML(req.body)
 
           actual.root.should be_equivalent_to(expected.root)
           #actual.root.to_s.should == expected.root.to_s

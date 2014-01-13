@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # Knows how to convert {Party} model to SOAP element for Fedex.
+  # Knows how to convert {Party} model to SOAP element for FedEx.
   class PartyBuilder < SimpleShipping::Abstract::Builder
     # Builds a SOAP party element as a hash for Savon.
     def build

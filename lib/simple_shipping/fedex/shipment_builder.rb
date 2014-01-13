@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # Builds a shipment element for Fedex SOAP service
+  # Builds a shipment element for FedEx SOAP service
   class ShipmentBuilder < SimpleShipping::Abstract::Builder
     # Value for RateRequestTypes XML element.
     RATE_REQUEST_TYPE = 'ACCOUNT'
@@ -109,7 +109,7 @@ module SimpleShipping::Fedex
     end
     private :payment_type
 
-    # Build label parameters according to Fedex's API.
+    # Build label parameters according to FedEx's API.
     #
     # @return [Hash]
     def label_speicfication

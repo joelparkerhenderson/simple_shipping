@@ -1,10 +1,10 @@
 module SimpleShipping::Fedex
-  # Knows how to convert {Package} model to SOAP element for Fedex.
+  # Knows how to convert {Package} model to SOAP element for FedEx.
   class PackageBuilder < SimpleShipping::Abstract::Builder
-    # Fedex mapping for weight units
+    # FedEx mapping for weight units.
     WEIGHT_UNITS = {:kg => 'KG',
                     :lb => 'LB'}
-    # Fedex mapping for dimension units
+    # FedEx mapping for dimension units.
     DIMENSION_UNITS = {:in => 'IN',
                        :cm => 'CM'}
     

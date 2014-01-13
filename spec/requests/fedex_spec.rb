@@ -24,7 +24,7 @@ describe "FedEx integration test" do
     it "builds correct SOAP request envelope" do
       req_matcher = lambda do |req|
         expected = Nokogiri::XML(fixture(:fedex_shipment_request, credentials))
-        actual = Nokogiri::XML(req.body)
+        actual   = Nokogiri::XML(req.body)
 
         actual.root.should be_equivalent_to(expected.root).respecting_element_order
 

@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # The model that represents shipment request to Fedex.
+  # The model that represents shipment request to FedEx.
   class ShipmentRequest < Request
     def initialize(credentials, shipment)
       super

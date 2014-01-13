@@ -1,8 +1,8 @@
-# Helper object to send demo requests to Fedex in order to test credentials
+# Helper object to send demo requests to FedEx in order to test credentials
 # and the library.
 #
 # @example
-#   demo = SimpleShipping::Demo::Fedex.new(credentials)
+#   demo     = SimpleShipping::Demo::Fedex.new(credentials)
 #   response = demo.shipment_request
 class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
   attr_reader :credentials
@@ -26,7 +26,7 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
-  # Initialize fedex client.
+  # Initialize FedEx client.
   #
   # @return [SimpleShipping::Fedex::Client]
   def fedex_client
@@ -37,7 +37,7 @@ class SimpleShipping::Demo::Fedex < SimpleShipping::Demo::Base
     )
   end
 
-  # Send shipment request to Fedex.
+  # Send shipment request to FedEx.
   #
   # @return [SimpleShipping::Fedex::Response]
   def shipment_request

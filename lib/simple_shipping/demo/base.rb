@@ -1,4 +1,4 @@
-# Base class for UPS and Fedex demos.
+# Base class for UPS and FedEx demos.
 class SimpleShipping::Demo::Base
   attr_reader :options
 

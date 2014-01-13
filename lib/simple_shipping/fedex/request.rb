@@ -1,5 +1,5 @@
 module SimpleShipping::Fedex
-  # Builds complete for Fedex service.
+  # Builds complete for FedEx service.
   class Request < SimpleShipping::Abstract::Request
     extend ActiveSupport::Autoload
 

@@ -3,7 +3,7 @@ module SimpleShipping::Ups
   # Builds hash structure for Savon that represents package element in UPS's API.
   class PackageBuilder < SimpleShipping::Abstract::Builder
     # Mapping for UPS packaging types
-    # Not all UPS values listed here in order to provide common interface with Fedex.
+    # Not all UPS values listed here in order to provide common interface with FedEx.
     PACKAGING_TYPES = {
       :envelope => '01',  # letter
       :your     => '02',  # customer supplied

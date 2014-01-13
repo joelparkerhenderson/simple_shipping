@@ -135,7 +135,7 @@ SimpleShipping::Abstract::Model:
 
 Every service adapter has its own builders which know how to represent every
 separated model to build SOAP request for a specific service. For example to represent
-Package model Fedex adapter has Fedex::PackageBuilder and UPS adapter has
+Package model FedEx adapter has Fedex::PackageBuilder and UPS adapter has
 Ups::PackageBuilder. All these model builders inherit SimpleShipping::Abstract::Builder.
 
 Request builders are used to build whole request for the service. They inherit

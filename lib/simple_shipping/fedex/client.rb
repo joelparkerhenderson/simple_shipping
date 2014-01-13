@@ -18,7 +18,7 @@ module SimpleShipping::Fedex
     set_testing_address     "https://wsbeta.fedex.com:443/web-services/ship"
     set_production_address  "https://wsbeta.fedex.com:443/web-services/ship" # Not configured
 
-    # Send shipment request to Fedex.
+    # Send shipment request to FedEx.
     def shipment_request(shipper, recipient, package, opts = {})
       shipment = create_shipment(shipper, recipient, package, opts)
       request = ShipmentRequest.new(@credentials, shipment)
@@ -30,7 +30,7 @@ module SimpleShipping::Fedex
       fail "Not Implemented"
     end
 
-    # Send ProcessShipmentRequest request to the Fedex service and return
+    # Send ProcessShipmentRequest request to the FedEx service and return
     # response wrapped in {Fedex::Response} object.
     def execute(request)
       savon_response = @client.call(request.type, :message => request.body)

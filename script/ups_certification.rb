@@ -60,7 +60,7 @@ ACCOUNT_NUMBER = CREDENTIALS.delete(:account_number)
     :weight         => 0.5,
     :packaging_type => :envelope,
     :insured_value  => iteration * 250.0,
-    :declared_value  => iteration * 250.0
+    :declared_value => iteration * 250.0
   )
 
   confirm_path = File.join(package_path, "confirm")
@@ -78,8 +78,8 @@ ACCOUNT_NUMBER = CREDENTIALS.delete(:account_number)
   accept_path = File.join(package_path, "accept")
   FileUtils.mkdir_p(accept_path)
   accept_client = SimpleShipping::Ups::ShipClient.new(
-    :debug => true,
-    :debug_path => accept_path,
+    :debug       => true,
+    :debug_path  => accept_path,
     :credentials => CREDENTIALS
   )
 
@@ -91,7 +91,7 @@ ACCOUNT_NUMBER = CREDENTIALS.delete(:account_number)
 
   puts "SAVING LABEL GIF"
   image_name = "label#{accept.tracking_number}.gif"
-  img = Magick::Image.read_inline(accept.label_image_base64).first
+  img        = Magick::Image.read_inline(accept.label_image_base64).first
   img.write(File.join(package_path, image_name))
 
 
@@ -131,8 +131,8 @@ VOID_NUMBERS.each do |identifier, tracking_number|
   FileUtils.mkdir_p(package_path)
 
   void_client = SimpleShipping::Ups::VoidClient.new(
-    :debug => true,
-    :debug_path => package_path,
+    :debug       => true,
+    :debug_path  => package_path,
     :credentials => CREDENTIALS
   )
   puts "VOID REQUEST: #{identifier}"
