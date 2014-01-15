@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "simple_shipping"
-  s.version = "0.4.6"
+  s.version = "0.4.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["TMX Credit", "Potapov Sergey", "Zachary Belzer"]
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     ".ruby-gemset",
     ".ruby-version",
     ".simplecov",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -117,7 +118,7 @@ Gem::Specification.new do |s|
     "wsdl/ups/Ship.wsdl",
     "wsdl/ups/Void.wsdl"
   ]
-  s.homepage = "http://github.com/greyblake/simple_shipping"
+  s.homepage = "http://github.com/TMXCredit/simple_shipping"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.3"

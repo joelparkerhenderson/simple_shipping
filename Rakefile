@@ -15,7 +15,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name        = "simple_shipping"
-  gem.homepage    = "http://github.com/greyblake/simple_shipping"
+  gem.homepage    = "http://github.com/TMXCredit/simple_shipping"
   gem.license     = "MIT"
   gem.summary     = %Q{Interacts with UPS and FedEx APIs}
   gem.description = %Q{This gem uses the APIs provided by UPS and FedEx to
