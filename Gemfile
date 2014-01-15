@@ -9,7 +9,6 @@ group :development do
   gem "yard"
   gem "bundler"
   gem "jeweler"
-  gem "gemfury", :require => false
   gem "json_pure"
   gem "forgery"
   gem "rmagick"

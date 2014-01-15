@@ -42,13 +42,6 @@ end
 
 Dir.glob(File.expand_path('../lib/tasks/**/*.rake', __FILE__)).each{ |f| import f }
 
-namespace :gemfury do
-  desc "Build version #{gem_version} into the pkg directory and upload to GemFury"
-  task :push => [:build] do
-    sh "fury push pkg/#{gem_file_name} --as=TMXCredit"
-  end
-end
-
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
