@@ -59,8 +59,8 @@ package = SimpleShipping::Package.new(
   :weight          => 1,
   :length          => 2,
   :height          => 3,
-  :dimension_units => :in,  # you can use :kg as well
-  :weight_units    => :lb,  # you can use :cm as well
+  :dimension_units => :in,  # you can use :cm as well
+  :weight_units    => :lb,  # you can use :kg as well
   :width           => 4,
   :packaging_type  => :your
 )
