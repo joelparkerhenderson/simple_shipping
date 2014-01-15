@@ -4,8 +4,8 @@
 
 Provides a common simple API to build labels for the following shipping services:
 
-* FedEx (http://fedex.com)
-* UPS (http://ups.com) API (https://www.ups.com/upsdeveloperkit)
+* [FedEx](http://fedex.com)
+* [UPS](https://www.ups.com/upsdeveloperkit)
 
 ## Usage
 ```ruby
