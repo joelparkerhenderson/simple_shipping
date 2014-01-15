@@ -1,5 +1,7 @@
 # Simple Shipping
 
+[![Build Status](https://travis-ci.org/TMXCredit/simple_shipping.png?branch=master)](https://travis-ci.org/TMXCredit/simple_shipping)
+
 Provides a common simple API to build labels for the following shipping services:
 
 * FedEx (http://fedex.com)
