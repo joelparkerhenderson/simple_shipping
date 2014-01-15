@@ -7,6 +7,16 @@ Provides a common simple API to build labels for the following shipping services
 * [FedEx](http://fedex.com)
 * [UPS](https://www.ups.com/upsdeveloperkit)
 
+## Installation
+
+Add to `Gemfile`:
+
+```
+gem 'simple_shipping'
+```
+
+Run `bundle install`.
+
 ## Usage
 ```ruby
 # Build shipper
