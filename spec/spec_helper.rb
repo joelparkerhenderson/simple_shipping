@@ -3,12 +3,15 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'simple_shipping'
 
-require "simplecov"
-require "simplecov-rcov-text"
 
-SimpleCov.formatter = SimpleCov::Formatter::RcovTextFormatter
-SimpleCov.start do
-  add_filter "/spec/"
+unless ENV['TRAVIS']
+  require "simplecov"
+  require "simplecov-rcov-text"
+
+  SimpleCov.formatter = SimpleCov::Formatter::RcovTextFormatter
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
 end
 
 
